@@ -6,6 +6,9 @@ body {
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 300;
 }
+header, footer, nav, section, article, figure, figcaption, aside {
+  display: block;
+}
 a {
   color: #3d5c9d;
   text-decoration: none;

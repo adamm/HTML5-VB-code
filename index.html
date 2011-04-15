@@ -13,18 +13,35 @@
       header nav a {
         margin: 10px;
       }
-      section h1, section h2 {
-        font-size: 1em;
-      }
+      /* Join articles and sidebar sections with a background image */
       section#sidebar {
-        border: 3px dotted gray;
         float: right;
         width: 20%;
-        background-color: white;
+        background-image: url('terra_bg.png');
+        background-attachment: fixed;
+        color: white;
+        margin: 2px 0 5px 5px;
+      }
+      section#articles h2, section#sidebar h2 {
+        background-image: url('terra_bg.png');
+        background-attachment: fixed;
+        color: white;
+        margin: 0px;
+        padding: 2px 5px;
+        font-size: 0.9em;
+        font-weight: normal;
+      }
+      section#sidebar ul {
+        border-style: solid;
+        border-color: black;
+        border-width: 0 1px 1px 1px;
+        margin: 0px;
+        font-size: 0.8em;
+        list-style: none;
+        padding-left: 20px;
       }
       section#articles {
-        border: 3px dashed black;
-        margin: 10px;
+        margin: 2px 0;
       }
       section#articles article {
         border: 2px solid gray;

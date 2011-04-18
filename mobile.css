@@ -1,0 +1,18 @@
+/* Shrink the header and logo for the smaller display */
+header { height: 40px; }
+header h1 { clear: both; font-size: 1.5em; }
+
+/* Align the nav to the right, incase it starts to wrap around the header */
+header nav { text-align: right; font-size: 0.75em; white-space: nowrap; width: 100%; }
+header nav a { margin: 0 5px; width: 100%; }
+
+/* Remove the right-alignment of the sidebar, so it appears over top articles */
+section#sidebar { float: none; margin: 2px 0; width: 100%; }
+section#articles article { margin: 2px 0; }
+
+/* Remove the "float: right" default for figures */
+figure { float: none; }
+
+/* Center the image within the figure block */
+figure img { margin-left: auto; margin-right: auto; display: block; }
+

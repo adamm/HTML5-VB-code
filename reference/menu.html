@@ -6,6 +6,7 @@
     <script src='http://html5shim.googlecode.com/svn/trunk/html5.js'></script>
     <![endif]-->
     <script src='highlight.min.js'></script>
+    <script src='../jquery-1.5.1.js'></script>
     <link rel="stylesheet" href='highlight.min.css'>
     <link rel='stylesheet' type='text/css' media='all' href='../base.css'>
     <link rel='stylesheet' type='text/css' media='screen and (max-width: 500px)' href='../mobile.css'>
@@ -49,18 +50,18 @@
         <h4>Example</h4>
         <p>
           <menu type='toolbar'>
-            <li>File<menu type='context'>
+            <li><menu type='context' label='File'>
               <li><a href='#New'>New</a></li>
               <li><a href='#Open'>Open</a></li>
               <li><a href='#Close'>Close</a></li>
               <li><a href='#Exit'>Exit</a></li>
             </menu></li>
-            <li>Edit<menu type='context'>
+            <li><menu type='context' label='Edit'>
               <li><a href='#Cut'>Cut</a></li>
               <li><a href='#Copy'>Copy</a></li>
               <li><a href='#Paste'>Paste</a></li>
             </menu></li>
-            <li>View<menu type='context'>
+            <li><menu type='context' label='View'>
               <li><a href='#Zoom'>Zoom</a></li>
               <li><a href='#Window'>Window</a></li>
               <li><a href='#Cascade'>Cascade</a></li>
@@ -69,6 +70,11 @@
         </p>
       </article>
     </section>
+    <script type='text/javascript'>
+      $("menu[type=context]").each(function(menu){
+        $(this).before($(this).attr('label'));
+      });
+    </script>
     <footer>
       &copy;2011 Adam McDaniel
     </footer>

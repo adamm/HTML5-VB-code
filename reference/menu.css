@@ -1,3 +1,46 @@
+menu[type=toolbar], menu[type=context] {
+  padding: 0px;
+  margin: 0px;
+  list-style: none;
+  height: 1em;
+}
+menu[type=toolbar] li {
+  float: left;
+  width: 101px;
+  cursor: pointer;
+}
+menu[type=toolbar] li:first-child {
+  border-left: 1px solid;
+}
+menu[type=toolbar] li {
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+}
+menu[type=toolbar] li:last-child {
+  border-right: 1px solid;
+}
+menu[type=context] li {
+  border: none;
+  width: 100px;
+  border-left: 1px solid;
+  border-right: 1px solid;
+}
+menu[type=context] li:last-child {
+  border-bottom: 1px solid;
+}
+menu[type=toolbar] a {
+  display: block;
+  width: 100px;
+}
+menu[type=context] {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  width: 100px;
+}
+menu[type=toolbar] li:hover menu[type=context] {
+  display: block;
+}
 menu li {
   background-color: lightgray;
 }

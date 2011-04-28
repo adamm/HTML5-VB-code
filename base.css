@@ -131,6 +131,16 @@ figure {
   float: left;
   background-color: white;
 }
+pre code {
+  margin: 10px 20px;
+  font-family: "Courier", monospace;
+  font-size: 0.9em;
+  padding: 0;
+  background: none;
+}
+pre .value {
+  font-style: italic;
+}
 div.copyright {
   float: left;
 }
@@ -139,4 +149,7 @@ div.html5badge {
 }
 footer div.clear {
   clear: both;
+}
+meter {
+    width: 100px;
 }

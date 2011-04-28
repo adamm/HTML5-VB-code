@@ -45,6 +45,17 @@
           the remaining article paragraphs appear.
         </p>
         <h4>Example</h4>
+        <style>
+          details summary:after {
+            content: '(Read Details)';
+          }
+          details.open summary:after {
+            content: '(Hide Details)';
+          }
+          details summary {
+            cursor: pointer;
+          }
+        </style>
         <details>
           <summary>
             <p>

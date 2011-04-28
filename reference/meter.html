@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+  <head>
+    <title>&lt;meter&gt; Tag - HTML5.array.org</title>
+    <!--[if lt IE 9]>
+    <script src='http://html5shim.googlecode.com/svn/trunk/html5.js'></script>
+    <![endif]-->
+    <script src='highlight.min.js'></script>
+    <link rel="stylesheet" href='highlight.min.css'>
+    <link rel='stylesheet' type='text/css' media='all' href='../base.css'>
+    <link rel='stylesheet' type='text/css' media='screen and (max-width: 500px)' href='../mobile.css'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=yes'>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body>
+    <div class='content'>
+    <header>
+      <nav>
+        <a href='../index.html'>Home</a>
+        <a href='../tutorials/'>Tutorials</a>
+        <a href='../demos/'>Demos</a>
+        <a href='../vb/'>Visual&nbsp;Blueprint&trade;</a>
+      </nav>
+      <h1>HTML5.array.org</h1>
+    </header>
+    <section id='articles'>
+      <h2>Reference</h2>
+      <article>
+        <hgroup>
+          <h3>&lt;meter&gt; Tag</h3>
+          <h4>Synopsis</h4>
+        </hgroup>
+        <pre><code class='html'>&lt;meter value='number'
+       min='number'
+       max='number'
+       low='number'
+       high='number'
+       optimum='number'&gt;
+    Fallback Display
+&lt;/meter&gt;</code></pre>
+       <h4>Description</h4>
+        <p>
+          The meter element, new for HTML5, allows you to display a gauge
+          graphic to the user at any point in a web page. This is useful to
+          display some a metered bar to users absolute values.
+        </p>
+        <p>
+          The meter element accepts several attribute values as input. At
+          minimum, you should set a "value" attribute as a real number
+          between 0 and 1. If you also specify "min" and "max" numbers, then
+          the "value" attribute must be anywhere between "min" and "max" and
+          the browser calculates the display as a percentage meter.
+        </p>
+        <p>
+          Extra numeric attributes that you can set include "low", "high",
+          and "optimum" which alter the meter's color depending on which are
+          used. For example, use all three extra attributes and the meter's
+          value is between 0 and "low" is colored red; between "low" and
+          "high", yellow; and between "high" and "optimum", green. If
+          "optimum" is omitted, values below "low" and above "high" is
+          yellow, between "low" and "high" is green. Experiment with these
+          attributes to find the color combination that is appropriate for
+          your meter.
+        </p>
+        <h4>Example</h4>
+        <p>
+        </p>
+      </article>
+    </section>
+    <footer>
+      &copy;2011 Adam McDaniel
+    </footer>
+    </div>
+  </body>
+</html>

@@ -141,6 +141,9 @@ pre code {
 pre .value {
   font-style: italic;
 }
+pre .attribute {
+  color: #228;
+}
 div.copyright {
   float: left;
 }

@@ -147,6 +147,9 @@ div.copyright {
 div.html5badge {
   float: right;
 }
+footer {
+  font-size: 0.5em;
+}
 footer div.clear {
   clear: both;
 }

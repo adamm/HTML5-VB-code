@@ -124,12 +124,12 @@ aside {
   float: right;
   margin: 0px 10px;
 }
-figure {
+figure.html5logo {
   border: 1px solid;
   padding: 10px;
   margin: 10px;
-  float: left;
   background-color: white;
+  float: left;
 }
 pre code {
   margin: 10px 20px;

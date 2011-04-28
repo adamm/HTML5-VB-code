@@ -1,0 +1,7 @@
+menu li {
+  background-color: lightgray;
+}
+menu li:hover {
+  background-color: #fff;
+}
+

@@ -160,3 +160,7 @@ meter {
     width: 200px;
     height: 20px;
 } 
+figcaption {
+  font-style: normal;
+  font-size: 0.9em;
+}  

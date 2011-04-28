@@ -71,6 +71,74 @@
         </details>
       </article>
     </section>
+    <script>
+      $(function() {
+        document.documentElement.className += ' no-details';
+        $('details').each(function() {
+          // Store a reference to the 'summary' element of the current
+          // 'details' element (if any) in a variable
+          var $details = $(this),
+              $detailsSummary = $('summary',$details),
+              $detailsNotSummary = $details.children(':not(summary)'),
+              $detailsNotSummaryContents = $details.contents(':not(summary)'),
+              open;
+
+          // If there is no 'summary' in the current 'details' element...
+          if ( ! $detailsSummary.length ) {
+            $detailsSummary = $( document.createElement( 'summary' ) ).text( 'Details' ).prependTo( $details );
+          }
+
+          // Look for direct child text nodes
+          if ( $detailsNotSummary.length !== $detailsNotSummaryContents.length ) {
+            // Wrap child text notes in a 'span' element
+            $detailsNotSummaryContents.filter( function() {
+              // Only keep the node in the collection if it's a text node
+              // containing more than only whitespace
+              return ( this.nodeType === 3 ) && ( /[^\t\n\r ]/.test( this.data ) );
+            } ).wrap( '<span>' );
+            // There are now no direct child text nodes anymore - they're
+            // wrapped in 'span' elements
+            $detailsNotSummary = $details.children( ':not(summary)' );
+          }
+
+          // Hide content unless there's an open attribute
+          open = $details.attr( 'open' );
+          if ( typeof open == 'string' || ( typeof open == 'boolean' && open ) ) {
+            $details.addClass('open');
+            $detailsNotSummary.show();
+          }
+          else {
+            $detailsNotSummary.hide();
+          }
+
+          // Set the 'tabindex' attribute of the 'summary' element to 0 to
+          // make it keyboard accessible
+          $detailsSummary.attr( 'tabindex', 0 ).click( function() {
+            // Focus on the 'summary' element
+            $detailsSummary.focus();
+            // Toggle the 'open' attribute of the 'details' element
+            if ( typeof $details.attr( 'open' ) !== 'undefined' )
+              $details.removeAttr( 'open' );
+            else
+              $details.attr( 'open', 'open' );
+            // Toggle the additional information in the 'details' element
+            $detailsNotSummary.toggle( 0 );
+            $details.toggleClass( 'open' );
+          } ).keyup( function( event ) {
+            if ( 13 === event.keyCode || 32 === event.keyCode ) {
+              // Enter or Space is pressed - trigger the 'click' event on the
+              // 'summary' element
+              // Opera already seems to trigger the 'click' event when Enter
+              // is pressed
+              //if ( ! ( $.browser.opera && 13 === event.keyCode ) ) {
+                event.preventDefault();
+                $detailsSummary.click();
+              //}
+            }
+          } );
+        } );
+      } );
+    </script>
     <footer>
       &copy;2011 Adam McDaniel
     </footer>

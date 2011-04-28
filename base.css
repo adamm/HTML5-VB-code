@@ -160,7 +160,16 @@ meter {
     width: 200px;
     height: 20px;
 } 
-figcaption {
-  font-style: normal;
+.reference figure {
+  border: 1px solid black;
+  width: 128px;
+}
+.reference figure, .reference figcaption {
+  padding: 5px;
+}
+.reference figcaption {
   font-size: 0.9em;
-}  
+  text-align: center;
+  font-style: italic;
+  border-top: 1px solid gray;
+}

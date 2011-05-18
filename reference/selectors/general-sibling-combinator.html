@@ -41,6 +41,15 @@
           to select an element when followed by previous sibling element.
         </p>
         <h4>Example</h4>
+        <style>
+          h5 ~ figure {
+            background-color: white;
+            text-align: center;
+          }
+          p ~ figure {
+            border-radius: 20px;
+          }
+        </style>
         <article class=example>
           <h5>Linux and GIMP Mascots</h5>
           <figure><img src='tux.png'></figure>

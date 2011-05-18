@@ -36,6 +36,9 @@
   <i>element</i>[<i>attr</i>='<i>value</i>'] { ... }
   <i>element</i>[<i>attr</i>~='<i>value</i>'] { ... }
   <i>element</i>[<i>attr</i>|='<i>value</i>'] { ... }
+  <i>element</i>[<i>attr</i>^='<i>value</i>'] { ... }
+  <i>element</i>[<i>attr</i>$='<i>value</i>'] { ... }
+  <i>element</i>[<i>attr</i>*='<i>value</i>'] { ... }
 &lt;/style&gt;
 </code></pre>
        <h4>Description</h4>
@@ -46,32 +49,15 @@
           stylize the matching HTML code.
         </p>
         <h4>Example</h4>
-          <style>
-            span[data-border=true] {
-              border: 1px dashed blue;
-            }
-            a[title~=Web] {
-              border: 1px solid red;
-            }
-            p[lang|='en'] {
-              font-weight: bold;
-            }
-          </style>
-          <p lang='en-US'>
-            The <a href='http://www.whatwg.org' 
-              title='Web Hypertext Application Technology Working Group'>WHATWG</a> 
-            is a growing community of people interested in evolving the
-            Web.  It focuses primarily on the development of HTML and APIs
-            needed for <span data-border='true'>Web applications</span>.
-          </p>
-          <p lang='fr-FR'>
-            Le <a href='http://www.whatwg.org' 
-              title='Web Hypertext Application Technology Working Group'>WHATWG</a>
-            est une communauté de plus en plus de personnes intéressées par
-            l'évolution du Web. Il se concentre principalement sur le
-            développement de HTML et les API nécessaires pour les
-            applications Web.
-          </p>
+        <style>
+          a[href^='https://']:before {
+            content: url(lock.png);
+          }
+        </style>
+        <p>
+          You can access our <a href='http://html5.array.org'>regular web site</a>,
+          or our <a href='https://html5.array.org'>secure web site</a>.
+        </p>
       </article>
     </section>
     <footer>

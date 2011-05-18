@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>Structural Pseudo-class Selectors - HTML5.array.org</title>
+    <title>Structural Child Pseudo-class Selectors - HTML5.array.org</title>
     <!--[if lt IE 9]>
     <script src='http://html5shim.googlecode.com/svn/trunk/html5.js'></script>
     <![endif]-->
@@ -28,55 +28,48 @@
       <h2>CSS Reference</h2>
       <article class='reference'>
         <hgroup>
-          <h3>Structural Pseudo-class Selectors</h3>
+          <h3>Structural Child Pseudo-class Selectors</h3>
           <h4>Synopsis</h4>
         </hgroup>
         <pre><code>&lt;style&gt;
-  <i>element</i>:first-of-type { ... }
-  <i>element</i>:last-of-type { ... }
-  <i>element</i>:only-of-type { ... }
-  <i>element</i>:nth-of-type(<i>counter</i>) { ... }
-  <i>element</i>:nth-last-of-type(<i>counter</i>) { ... }
+  <i>element</i>:first-child { ... }
+  <i>element</i>:last-child { ... }
+  <i>element</i>:only-child { ... }
+  <i>element</i>:nth-child(<i>counter</i>) { ... }
+  <i>element</i>:nth-last-child(<i>counter</i>) { ... }
 &lt;/style&gt;
 </code></pre>
        <h4>Description</h4>
         <p>
           The pseudo-class is a list of pre-defined names that the web
-          browser users to match a specific structure of elements. The most
-          common pseudo-class is :hover, which is used to alter an
-          element’s style whenever the mouse hovers overtop. In CSS3, the
-          list of pseudo-class names was expanded in two new areas: type
-          and child. The type pseudo-class is described here, the child
-          pseudo-class is on the next page.
+          browser users to match a specific structure of elements. In CSS2,
+          the first child pseudo-class was introduced, :first-child, to
+          match the first child element of its parent but nothing more. In
+          CSS3, the child list was expanded to allow you to match new
+          combinations and patterns of child elements.
         </p>
         <h4>Example</h4>
-        <style>
-          tr:first-of-type { background-color: maroon; color: white }
-          td:first-of-type { background-color: maroon; color: white }
-          tr:nth-of-type(2n) { background-color: peachpuff; }
-          tr:nth-of-type(2n+3) { background-color: darksalmon; }
-        </style>
         <table>
           <tr>
             <th></th><th>Column 1</th><th>Column 2</th><th>Column 3</th>
           </tr>
           <tr>
-            <td>Row 1</td><td>abc</td><td>def</td><td>ghi</td>
+            <th>Row 1</th><td>abc</td><td>def</td><td>ghi</td>
           </tr>
           <tr>
-            <td>Row 2</td><td>jkl</td><td>mno</td><td>pqr</td>
+            <th>Row 2</th><td>jkl</td><td>mno</td><td>pqr</td>
           </tr>
           <tr>
-            <td>Row 3</td><td>stu</td><td>vwx</td><td>yz</td>
+            <th>Row 3</th><td>stu</td><td>vwx</td><td>yz</td>
           </tr>
           <tr>
-            <td>Row 4</td><td>abc</td><td>def</td><td>ghi</td>
+            <th>Row 4</th><td>abc</td><td>def</td><td>ghi</td>
           </tr>
           <tr>
-            <td>Row 5</td><td>jkl</td><td>mno</td><td>pqr</td>
+            <th>Row 5</th><td>jkl</td><td>mno</td><td>pqr</td>
           </tr>
           <tr>
-            <td>Row 6</td><td>stu</td><td>vwx</td><td>yz</td>
+            <th>Row 6</th><td>stu</td><td>vwx</td><td>yz</td>
           </tr>
         </table>
       </article>

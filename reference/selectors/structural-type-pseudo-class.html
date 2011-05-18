@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Structural Type Pseudo-class Selectors - HTML5.array.org</title>
+    <!--[if lt IE 9]>
+    <script src='http://html5shim.googlecode.com/svn/trunk/html5.js'></script>
+    <![endif]-->
+    <script src='highlight.min.js'></script>
+    <link rel="stylesheet" href='../highlight.min.css'>
+    <link rel='stylesheet' type='text/css' media='all' href='../../base.css'>
+    <link rel='stylesheet' type='text/css' media='screen and (max-width: 500px)' href='../../mobile.css'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=yes'>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body>
+    <div class='content'>
+    <header>
+      <nav>
+        <a href='../../index.html'>Home</a>
+        <a href='../../tutorials/'>Tutorials</a>
+        <a href='../../demos/'>Demos</a>
+        <a href='../../vb/'>Visual&nbsp;Blueprint&trade;</a>
+      </nav>
+      <h1>HTML5.array.org</h1>
+    </header>
+    <section id='articles'>
+      <h2>CSS Reference</h2>
+      <article class='reference'>
+        <hgroup>
+          <h3>Structural Type Pseudo-class Selectors</h3>
+          <h4>Synopsis</h4>
+        </hgroup>
+        <pre><code>&lt;style&gt;
+  <i>element</i>:first-of-type { ... }
+  <i>element</i>:last-of-type { ... }
+  <i>element</i>:only-of-type { ... }
+  <i>element</i>:nth-of-type(<i>counter</i>) { ... }
+  <i>element</i>:nth-last-of-type(<i>counter</i>) { ... }
+&lt;/style&gt;
+</code></pre>
+       <h4>Description</h4>
+        <p>
+          The pseudo-class is a list of pre-defined names that the web
+          browser users to match a specific structure of elements. The most
+          common pseudo-class is :hover, which is used to alter an
+          element’s style whenever the mouse hovers overtop. In CSS3, the
+          list of pseudo-class names was expanded in two new areas: type
+          and child. The type pseudo-class is described here, the child
+          pseudo-class is on the next page.
+        </p>
+        <h4>Example</h4>
+        <style>
+          tr:first-of-type { background-color: maroon; color: white }
+          td:first-of-type { background-color: maroon; color: white }
+          tr:nth-of-type(2n) { background-color: peachpuff; }
+          tr:nth-of-type(2n+3) { background-color: darksalmon; }
+        </style>
+        <table>
+          <tr>
+            <th></th><th>Column 1</th><th>Column 2</th><th>Column 3</th>
+          </tr>
+          <tr>
+            <td>Row 1</td><td>abc</td><td>def</td><td>ghi</td>
+          </tr>
+          <tr>
+            <td>Row 2</td><td>jkl</td><td>mno</td><td>pqr</td>
+          </tr>
+          <tr>
+            <td>Row 3</td><td>stu</td><td>vwx</td><td>yz</td>
+          </tr>
+          <tr>
+            <td>Row 4</td><td>abc</td><td>def</td><td>ghi</td>
+          </tr>
+          <tr>
+            <td>Row 5</td><td>jkl</td><td>mno</td><td>pqr</td>
+          </tr>
+          <tr>
+            <td>Row 6</td><td>stu</td><td>vwx</td><td>yz</td>
+          </tr>
+        </table>
+      </article>
+    </section>
+    <footer>
+      &copy;2011 Adam McDaniel
+    </footer>
+    </div>
+  </body>
+</html>

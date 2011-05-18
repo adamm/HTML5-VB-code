@@ -10,6 +10,7 @@
     <link rel='stylesheet' type='text/css' media='all' href='../base.css'>
     <link rel='stylesheet' type='text/css' media='screen and (max-width: 500px)' href='../mobile.css'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=yes'>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
     <script>hljs.initHighlightingOnLoad();</script>
   </head>
   <body>
@@ -32,6 +33,9 @@
         </hgroup>
         <pre><code>&lt;style&gt;
   <i>element</i>[<i>attr</i>] { ... }
+  <i>element</i>[<i>attr</i>='<i>value</i>'] { ... }
+  <i>element</i>[<i>attr</i>~='<i>value</i>'] { ... }
+  <i>element</i>[<i>attr</i>|='<i>value</i>'] { ... }
 &lt;/style&gt;
 </code></pre>
        <h4>Description</h4>
@@ -42,17 +46,20 @@
           stylize the matching HTML code.
         </p>
         <h4>Example</h4>
-          <style>
-            a[title] {
-              font-weight: bold;
-            }
-          </style>
-          <p>
+          <p lang='en-US'>
             The <a href='http://www.whatwg.org' 
               title='Web Hypertext Application Technology Working Group'>WHATWG</a> 
-            is a growing community of people interested in evolving the Web.
-            It focuses primarily on the development of HTML and APIs needed
-            for Web applications.
+            is a growing community of people interested in evolving the
+            Web.  It focuses primarily on the development of HTML and APIs
+            needed for <span data-border='true'>Web applications</span>.
+          </p>
+          <p lang='fr-FR'>
+            Le <a href='http://www.whatwg.org' 
+              title='Web Hypertext Application Technology Working Group'>WHATWG</a>
+            est une communauté de plus en plus de personnes intéressées par
+            l'évolution du Web. Il se concentre principalement sur le
+            développement de HTML et les API nécessaires pour les
+            applications Web.
           </p>
       </article>
     </section>

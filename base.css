@@ -92,6 +92,25 @@ section#articles article {
   clear: left;
   background-color: #E8DDCB;
 }
+section#articles article > * {
+  padding: 2px 5px;
+}
+section#articles article hgroup, section#articles article pre {
+  padding: 0;
+}
+section#articles article hgroup * {
+  padding: 2px 5px;
+}
+section#articles article h3 {
+  margin: 0;
+  background-color: #033664;
+  color: white;
+}
+section#articles article h4 {
+  margin: 0;
+  background-color: #CDB380;
+  color: #222;
+}
 section#articles article p {
   padding: 0 5px;
   font-size: 0.9em;
@@ -104,19 +123,6 @@ article hgroup {
 article hgroup * {
   margin: 0;
   padding: 0;
-}
-section#articles article h3 {
-  margin: 0;
-  padding: 2px 5px;
-  font-size: 1em;
-  background-color: #033664;
-  color: white;
-}
-section#articles article h4 {
-  font-size: 0.75em;
-  padding: 2px 5px;
-  background-color: #CDB380;
-  color: #222;
 }
 aside {
   border: 1px solid;

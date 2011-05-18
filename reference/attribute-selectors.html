@@ -53,10 +53,17 @@
           a[href^='https://']:before {
             content: url(lock.png);
           }
+          a[href$='jpg'] {
+            font-style: italic;
+            font-size: 1.5em;
+          }
         </style>
         <p>
           You can access our <a href='http://html5.array.org'>regular web site</a>,
           or our <a href='https://html5.array.org'>secure web site</a>.
+        </p>
+        <p>
+          Here is a link to a picture of a <a href='tux.jpg'>pengiun</a>.
         </p>
       </article>
     </section>

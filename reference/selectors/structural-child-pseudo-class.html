@@ -49,6 +49,12 @@
           combinations and patterns of child elements.
         </p>
         <h4>Example</h4>
+        <style>
+          tr:first-child { background-color: maroon; color: white }
+          td:first-child { background-color: maroon; color: white }
+          tr:nth-child(2n) { background-color: peachpuff; }
+          tr:nth-child(2n+3) { background-color: darksalmon; }
+        </style>
         <table>
           <tr>
             <th></th><th>Column 1</th><th>Column 2</th><th>Column 3</th>

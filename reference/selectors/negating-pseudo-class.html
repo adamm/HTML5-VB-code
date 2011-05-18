@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Negating Pseudo-class Selector - HTML5.array.org</title>
+    <!--[if lt IE 9]>
+    <script src='http://html5shim.googlecode.com/svn/trunk/html5.js'></script>
+    <![endif]-->
+    <script src='highlight.min.js'></script>
+    <link rel="stylesheet" href='../highlight.min.css'>
+    <link rel='stylesheet' type='text/css' media='all' href='../../base.css'>
+    <link rel='stylesheet' type='text/css' media='screen and (max-width: 500px)' href='../../mobile.css'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=yes'>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body>
+    <div class='content'>
+    <header>
+      <nav>
+        <a href='../../index.html'>Home</a>
+        <a href='../../tutorials/'>Tutorials</a>
+        <a href='../../demos/'>Demos</a>
+        <a href='../../vb/'>Visual&nbsp;Blueprint&trade;</a>
+      </nav>
+      <h1>HTML5.array.org</h1>
+    </header>
+    <section id='articles'>
+      <h2>CSS Reference</h2>
+      <article class='reference'>
+        <hgroup>
+          <h3>Negating Pseudo-class Selector</h3>
+          <h4>Synopsis</h4>
+        </hgroup>
+        <pre><code>&lt;style&gt;
+  <i>selector1</i>:not(<i>selector2</i>) { ... }
+&lt;/style&gt;
+</code></pre>
+        <h4>Description</h4>
+        <p>
+          You can use the new negating pseudo-class selector to match all
+          elements that do not match the supplied argument.  Effectively,
+          you are changing “select everything that matches element” into
+          “select everything except this matching element.”
+        </p>
+        <h4>Example</h4>
+        <style>
+          article.example p:not(.first) {
+            color: blue;
+            font-weight: bold;
+          }
+        </style>
+        <article class=example>
+          <p class="first odd">This is the first paragraph</p>
+          <p class="second even">This is the second paragraph</p>
+          <p class="third odd">This is the third paragraph</p>
+          <p class="fourth even">This is the fourth paragraph</p>
+          <p class="fifth odd">This is the fourth paragraph</p>
+        </article>
+      </article>
+    </section>
+    <footer>
+      &copy;2011 Adam McDaniel
+    </footer>
+    </div>
+  </body>
+</html>

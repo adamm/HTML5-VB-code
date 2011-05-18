@@ -115,6 +115,10 @@ section#articles article p {
   padding: 0 5px;
   font-size: 0.9em;
 }
+section#articles article ul {
+  padding: 0 0 0 1.5em;
+  font-size: 0.9em;
+}
 article hgroup {
   padding: 0;
   background-color: #36818a;

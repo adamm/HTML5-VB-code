@@ -86,19 +86,19 @@ section#sidebar ul li {
 section#articles {
   margin: 2px 0;
 }
-section#articles article {
+section#articles > article {
   border: 1px solid #CDB380;
   margin: 10px;
   clear: left;
   background-color: #E8DDCB;
 }
-section#articles article > * {
+section#articles > article > * {
   padding: 2px 5px;
 }
-section#articles article hgroup, section#articles article pre {
+section#articles > article hgroup, section#articles > article pre {
   padding: 0;
 }
-section#articles article hgroup * {
+section#articles > article hgroup * {
   padding: 2px 5px;
 }
 section#articles article h3 {

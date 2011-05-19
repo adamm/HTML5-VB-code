@@ -70,16 +70,24 @@
             margin: 30px 0;
           }
           div.transition {
-            transition-property: width;
+            transition-property: width, border-radius, transform;
             transition-duration: 1s;
-            -moz-transition-property: width;
+            -moz-transition-property: width, border-radius, transform;
             -moz-transition-duration: 1s;
-            -webkit-transition-property: width;
+            -webkit-transition-property: width, border-radius, transform;
             -webkit-transition-duration: 1s;
             width: 100px;
+            border-radius: 0;
+            transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -webkit-transform: rotate(0deg);
           }
           div.transition:hover {
             width: 300px;
+            border-radius: 30px;
+            transform: rotate(30deg);
+            -moz-transform: rotate(30deg);
+            -webkit-transform: rotate(30deg);
           }
         </style>
         <article class='example'>

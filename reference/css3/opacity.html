@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Opacity Property - HTML5.array.org</title>
+    <!--[if lt IE 9]>
+    <script src='http://html5shim.googlecode.com/svn/trunk/html5.js'></script>
+    <![endif]-->
+    <script src='highlight.min.js'></script>
+    <link rel="stylesheet" href='../highlight.min.css'>
+    <link rel='stylesheet' type='text/css' media='all' href='../../base.css'>
+    <link rel='stylesheet' type='text/css' media='screen and (max-width: 500px)' href='../../mobile.css'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=yes'>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body>
+    <div class='content'>
+    <header>
+      <nav>
+        <a href='../../index.html'>Home</a>
+        <a href='../../tutorials/'>Tutorials</a>
+        <a href='../../demos/'>Demos</a>
+        <a href='../../vb/'>Visual&nbsp;Blueprint&trade;</a>
+      </nav>
+      <h1>HTML5.array.org</h1>
+    </header>
+    <section id='articles'>
+      <h2>CSS Reference</h2>
+      <article class='reference'>
+        <hgroup>
+          <h3>Opacity Property</h3>
+          <h4>Synopsis</h4>
+        </hgroup>
+        <pre><code>&lt;style&gt;
+  <i>selector</i> {
+    opacity: <i>value</i>;
+    filter: alpha(opacity=<i>value</i>);
+  }
+&lt;/style&gt;
+</code></pre>
+        <h4>Description</h4>
+        <p>
+          You can set an element’s visual opacity, also known as
+          transparency in CSS3 using the opacity property. When set, the
+          selected element will become translucent, according to the
+          non-negative real number value between 0 and 1. In other words, a
+          value of “0” is completely transparent, “1” is completely
+          visible, any decimal number in between will achieve a see-through
+          effect.
+        </p>
+        <p>
+          Older versions of Internet Explorer, IE4 to IE8 to be precise,
+          support a similar feature through an alpha filter. Its value is a
+          two-digit percentage, so if you set opacity to “0.75”, you should
+          also set filter to “alpha(opacity=75)”. Note that IE9 does
+          understand the new opacity property.
+        </p>
+        <h4>Example</h4>
+        <style>
+          article.example {
+
+          }
+        </style>
+        <article class='example'>
+
+        </article>
+      </article>
+    </section>
+    <footer>
+      &copy;2011 Adam McDaniel
+    </footer>
+    </div>
+  </body>
+</html>

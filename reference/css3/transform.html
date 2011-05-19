@@ -51,11 +51,35 @@
         <h4>Example</h4>
         <style>
           article.example {
-
+            margin: 30px 0px;
+          }
+          article.example div {
+            display: inline-block;
+            width: 20%;
+            height: 100px;
+            border: 1px solid black;
+            margin-left: 3%;
+            box-shadow: 3px 3px 10px 0px black;
+            background-color: white;
+          }
+          article.example div p {
+            text-align: center;
+            margin: 30px 0;
           }
         </style>
         <article class='example'>
-
+          <div class='scale'>
+            <p>Scaled<br>Object</p>
+          </div>
+          <div class='skew'>
+            <p>Skewed<br>Object</p>
+          </div>
+          <div class='rotate'>
+            <p>Rotated<br>Object</p>
+          </div>
+          <div class='translate'>
+            <p>Translated<br>Object</p>
+          </div>
         </article>
       </article>
     </section>

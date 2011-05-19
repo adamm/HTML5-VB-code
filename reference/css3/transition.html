@@ -54,11 +54,27 @@
         <h4>Example</h4>
         <style>
           article.example {
-
+            margin: 30px 0px;
           }
+          article.example div {
+            left: 100px;
+            display: inline-block;
+            height: 100px;
+            border: 1px solid black;
+            margin-left: 3%;
+            box-shadow: 3px 3px 10px 0px black;
+            background-color: white;
+          }
+          article.example div p {
+            text-align: center;
+            margin: 30px 0;
+          }
+
         </style>
         <article class='example'>
-
+          <div class='transition'>
+            <p>Transitioning<br>Object</p>
+          </div>
         </article>
       </article>
     </section>

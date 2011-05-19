@@ -68,6 +68,16 @@
           article.example {
             margin: 30px;
           }
+          div.scrollbar {
+            overflow: auto;
+            display: block;
+            width: 50%;
+            height: 200px;
+          }
+          div.scrollbar::-webkit-scrollbar {
+            width: 13px;
+            height: 13px;
+          }
         </style>
         <article class='example'>
           <div class='scrollbar'>

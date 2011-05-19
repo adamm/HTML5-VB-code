@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Background Image Property - HTML5.array.org</title>
+    <!--[if lt IE 9]>
+    <script src='http://html5shim.googlecode.com/svn/trunk/html5.js'></script>
+    <![endif]-->
+    <script src='highlight.min.js'></script>
+    <link rel="stylesheet" href='../highlight.min.css'>
+    <link rel='stylesheet' type='text/css' media='all' href='../../base.css'>
+    <link rel='stylesheet' type='text/css' media='screen and (max-width: 500px)' href='../../mobile.css'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=yes'>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body>
+    <div class='content'>
+    <header>
+      <nav>
+        <a href='../../index.html'>Home</a>
+        <a href='../../tutorials/'>Tutorials</a>
+        <a href='../../demos/'>Demos</a>
+        <a href='../../vb/'>Visual&nbsp;Blueprint&trade;</a>
+      </nav>
+      <h1>HTML5.array.org</h1>
+    </header>
+    <section id='articles'>
+      <h2>CSS Reference</h2>
+      <article class='reference'>
+        <hgroup>
+          <h3>Background Image Property</h3>
+          <h4>Synopsis</h4>
+        </hgroup>
+        <pre><code>&lt;style&gt;
+  <i>selector</i> {
+    background-image: url(<i>imagefile</i>), ...;
+    background-size: <i>height width</i>|cover|contain, ...;
+    background-origin: padding-box|border-box|content-box, ...;
+    background-clip: padding-box|border-box|content-box, ...;
+  }
+&lt;/style&gt;
+</code></pre>
+        <h4>Description</h4>
+        <p>
+          In CSS3, three new properties were added to give you better
+          control over the background image, like its repeating size,
+          origin area, and clip area. Also, you can now specify multiple
+          background images to be layered on top of each other within an
+          object identified by a selector.
+        </p>
+        <h4>Example</h4>
+        <style>
+          div#example-box {
+            padding: 50px;
+            margin: 20px;
+            width: 300px;
+            border: 5px solid;
+            background-repeat: no-repeat, repeat-x;
+            background-image: url(tux.png), url(background.png);
+          }
+        </style>
+        <article class='example'>
+          <div id='example-box'>The background-size property allows you to control the absolute size of a background image. The background-size value can be a height and width as either an absolute size or percentage, or two possible keywords: “cover”, which scales the image to the smallest size to fit in a content area, and “contain”, which scales it to the largest size to fit in a content area.</div>
+        </article>
+      </article>
+    </section>
+    <footer>
+      &copy;2011 Adam McDaniel
+    </footer>
+    </div>
+  </body>
+</html>

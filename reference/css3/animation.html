@@ -104,18 +104,23 @@
             }
           }
           div.animate {
-            border: 1px solid black;
-            box-shadow: 3px 3px 10px 0px black;
-          }
-          div.animate:hover {
             -webkit-animation-name: jumpy, rounder;
             -webkit-animation-direction: normal, alternate;
             -webkit-animation-duration: 4s, 1s;
             -webkit-animation-iteration-count: infinite;
+            -webkit-animation-play-state: paused;
+            border: 1px solid black;
+            box-shadow: 3px 3px 10px 0px black;
           }
+//          div.animate:hover {
+//            -webkit-animation-name: jumpy, rounder;
+//            -webkit-animation-direction: normal, alternate;
+//            -webkit-animation-duration: 4s, 1s;
+//            -webkit-animation-iteration-count: infinite;
+//          }
         </style>
         <article class='example'>
-          <div class='animate'>
+          <div class='animate' onclick='startstop()'>
             <p>Animating Object</p>
           </div>
         </article>
@@ -125,5 +130,15 @@
       &copy;2011 Adam McDaniel
     </footer>
     </div>
+    <script type='text/javascript' src='../../jquery-1.5.1.js'></script>
+    <script type='text/javascript'>
+      function startstop() {
+        if ( $('div.animate').css('-webkit-animation-play-state') ==
+                 'paused, paused' )
+          $('div.animate').css('-webkit-animation-play-state', 'running');
+        else
+          $('div.animate').css('-webkit-animation-play-state', 'paused');
+      }
+    </script>
   </body>
 </html>

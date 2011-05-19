@@ -92,7 +92,14 @@
             border-radius: 5px 5px 0 0;
             background-image: url(vertical-decrement-arrow.png);
           }
-
+          ::-webkit-scrollbar-thumb:vertical {
+            -webkit-border-image: url(vertical-thumb.png) 1;
+            border-width: 1px;
+          }
+          ::-webkit-scrollbar-track:vertical {
+            -webkit-border-image: url(vertical-track.png) 1;
+            border-width: 1px;
+          }
         </style>
         <article class='example'>
           <div class='scrollbar'>

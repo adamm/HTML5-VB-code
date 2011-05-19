@@ -47,11 +47,25 @@
         <h4>Example</h4>
         <style>
           article.example {
-
+            margin: 30px;
           }
+
         </style>
         <article class='example'>
-
+          <div class='shadow'>
+            <p>
+              Most HTML5 web browsers do honor the box-shadow property
+              name, but this is very recent. Browsers like Chrome 9 and
+              earlier, Safari 3.0 and Firefox 3.5 instead use their own
+              derivative property name.
+            </p>
+            <p>
+              Therefore, you should also specify
+              -moz-box-shadow and -webkit-box-shadow to support these
+              browsers. The non-standard property names do accept the same
+              prototype as the standard box-shadow.
+            </p>
+          </div>
         </article>
       </article>
     </section>

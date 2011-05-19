@@ -95,10 +95,18 @@
               -webkit-transform-origin: bottom left;
             }
           }
+          @-webkit-keyframes rounder {
+            from {
+              border-radius: 0px;
+            }
+            to {
+              border-radius: 50px;
+            }
+          }
           div.animate {
-            -webkit-animation-name: jumpy;
-            -webkit-animation-direction: normal;
-            -webkit-animation-duration: 4s;
+            -webkit-animation-name: jumpy, rounder;
+            -webkit-animation-direction: normal, alternate;
+            -webkit-animation-duration: 4s, 1s;
             -webkit-animation-iteration-count: infinite;
             border: 1px solid black;
             box-shadow: 3px 3px 10px 0px black;

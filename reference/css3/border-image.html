@@ -43,16 +43,32 @@
 </code></pre>
         <h4>Description</h4>
         <p>
-          
+          You can create custom borders around elements with the help of
+          image templates and CSS3’s new border-image property. Web
+          browsers that support this feature will dynamically map your
+          template image to correctly stretch and shrink its edges to match
+          the selected object, but leave the corners intact.
         </p>
         <h4>Example</h4>
         <style>
-          article.example {
 
-          }
         </style>
         <article class='example'>
-
+          <div class='border-image'>
+            <p>
+              Note that Opera, Mozilla, and Webkit browsers have their own
+              property names, but accept the same value list. As a result,
+              you need to define your border-image definition three more
+              times.
+            </p>
+            <p>
+              It is also a good idea to also define the regular
+              border-style and border-color properties, just incase you
+              encounter a browser that does not understand border-image,
+              such is the case with all versions of Internet Explorer 9 and
+              earlier.
+            </p>
+          </div>
         </article>
       </article>
     </section>

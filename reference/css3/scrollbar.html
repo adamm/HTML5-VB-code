@@ -66,11 +66,18 @@
         <h4>Example</h4>
         <style>
           article.example {
-
+            margin: 30px;
           }
         </style>
         <article class='example'>
-
+          <div class='scrollbar'>
+            <p>The windowwidth and windowheight are length values indicating the size of the scrollable window you want to create. The scrollbarwidth and scrollbarheight represent the maximum width of the vertical scrollbar, and maximum height of the horizontal scrollbar. Now you can start defining the style of the main scrollbar components: the buttons, the movable bar, and the bar’s track.
+            </p>
+            <p>These scrollbar style selectors accept additional pseudo-classes which define the style of scrollbar sub-components. For example, you can extend ::-webkit-scrollbar-button by adding :vertical or :horizontal into the selector to stylize the scrollbar axis differently; then create another rule and add :increment or :decrement to stylize the direction buttons differently. This will allow you to produce unique up, down, left, and right arrow buttons.
+            </p>
+            <p>Creating the scrollbar first requires you to define the basic CSS structure, than apply the images now. Therefore, it is easier to begin with basic CSS border and background-color properties to help you understand how the selectors function, and add images later.
+            </p>
+          </div>
         </article>
       </article>
     </section>

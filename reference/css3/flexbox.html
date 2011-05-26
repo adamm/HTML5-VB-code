@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Flexibe Box Model - HTML5.array.org</title>
+    <!--[if lt IE 9]>
+    <script src='http://html5shim.googlecode.com/svn/trunk/html5.js'></script>
+    <![endif]-->
+    <script src='highlight.min.js'></script>
+    <link rel="stylesheet" href='../highlight.min.css'>
+    <link rel='stylesheet' type='text/css' media='all' href='../../base.css'>
+    <link rel='stylesheet' type='text/css' media='screen and (max-width: 500px)' href='../../mobile.css'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=yes'>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body>
+    <div class='content'>
+    <header>
+      <nav>
+        <a href='../../index.html'>Home</a>
+        <a href='../../tutorials/'>Tutorials</a>
+        <a href='../../demos/'>Demos</a>
+        <a href='../../vb/'>Visual&nbsp;Blueprint&trade;</a>
+      </nav>
+      <h1>HTML5.array.org</h1>
+    </header>
+    <section id='articles'>
+      <h2>CSS Reference</h2>
+      <article class='reference'>
+        <hgroup>
+          <h3>Flexible Box Model</h3>
+          <h4>Synopsis</h4>
+        </hgroup>
+        <pre><code>&lt;style&gt;
+  <i>div.flex-box</i> {
+    display: box;
+    display: -moz-box;
+    display: -webkit-box;
+  }
+&lt;/style&gt;
+&lt;div class='flex-box'&gt;
+  &lt;p&gt;Child 1&lt;/p&gt;
+  &lt;p&gt;Child 2&lt;/p&gt;
+  &lt;p&gt;Child 3&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+        <h4>Description</h4>
+        <p>
+          The Flexible Box Model is a module of the draft CSS3
+          specification, and by extension, HTML5. It allows you to organize
+          web page data into multiple rows or columns within a new display:
+          box object.
+        </p>
+        <p>
+          The Flexible Box Model makes it is easier to construct
+          one-dimensional data -- one row with multiple columns or one
+          column with multiple rows -- than HTML tables, and provides
+          additional flexibility when ordering and stylizing the data in
+          your CSS rules.
+        </p>
+        <h4>Example</h4>
+        <style>
+          article.example {
+            margin: 10px;
+          }
+        </style>
+        <article class='example'>
+          <div class='horizontal-box'>
+            <div>box-child 1</div>
+            <div>box-child 2</div>
+            <div>box-child 3</div>
+          </div>
+        </article>
+      </article>
+    </section>
+    <footer>
+      &copy;2011 Adam McDaniel
+    </footer>
+    </div>
+  </body>
+</html>

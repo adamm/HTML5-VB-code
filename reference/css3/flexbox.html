@@ -63,18 +63,6 @@
           article.example {
             margin: 10px;
           }
-          div.horizontal-box {
-            display: box;
-            display: -moz-box;
-            display: -webkit-box;
-            box-orient: horizontal;
-            -moz-box-orient: horizontal;
-            -webkit-box-orient: horizontal;
-            border: 2px dashed black;
-          }
-          div.horizontal-box > * {
-            border: 2px solid black;
-          }
           div.vertical-box {
             display: box;
             display: -moz-box;
@@ -87,9 +75,26 @@
           div.vertical-box > * {
             border: 2px solid black;
           }
+          div.horizontal-box {
+            display: box;
+            display: -moz-box;
+            display: -webkit-box;
+            box-orient: horizontal;
+            -moz-box-orient: horizontal;
+            -webkit-box-orient: horizontal;
+            border: 2px dashed black;
+          }
+          div.horizontal-box > * {
+            border: 2px solid black;
+          }
+          div.horizontal-box > :nth-child(1) {
+            box-flex: 1;
+            -moz-box-flex: 1;
+            -webkit-box-flex: 1;
+          }
         </style>
         <article class='example'>
-          <div class='vertical-box'>
+          <div class='horizontal-box'>
             <div>box-child 1</div>
             <div>box-child 2</div>
             <div>box-child 3</div>

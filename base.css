@@ -191,3 +191,6 @@ meter {
   color: white;
   background-color: #3d5c9d;
 }
+.bold {
+  font-weight: bold;
+}

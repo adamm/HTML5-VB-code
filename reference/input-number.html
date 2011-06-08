@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Input Number Type - HTML5.array.org</title>
+    <!--[if lt IE 9]>
+    <script src='http://html5shim.googlecode.com/svn/trunk/html5.js'></script>
+    <![endif]-->
+    <script src='highlight.min.js'></script>
+    <link rel="stylesheet" href='highlight.min.css'>
+    <link rel='stylesheet' type='text/css' media='all' href='../base.css'>
+    <link rel='stylesheet' type='text/css' media='screen and (max-width: 500px)' href='../mobile.css'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=yes'>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body>
+    <div class='content'>
+    <header>
+      <nav>
+        <a href='../index.html'>Home</a>
+        <a href='../tutorials/'>Tutorials</a>
+        <a href='../demos/'>Demos</a>
+        <a href='../vb/'>Visual&nbsp;Blueprint&trade;</a>
+      </nav>
+      <h1>HTML5.array.org</h1>
+    </header>
+    <section id='articles'>
+      <h2>Reference</h2>
+      <article class='reference'>
+        <hgroup>
+          <h3>Input Number Type</h3>
+          <h4>Synopsis</h4>
+        </hgroup>
+        <pre><code class='html'>&lt;input type='number' name='field' value='number'
+    min='number' max='number' step='number'&gt;</code></pre>
+        <h4>Description</h4>
+        <p>
+          You can use the number input type to restrict input fields to
+          numeric values only. Supported web browsers will inhibit any
+          non-numeric data from being submitted through this input type by
+          purging any such data as soon as it is typed by the user.
+        </p>
+        <p>
+          Additionally, the number input type also allows you to set a
+          minimum and maximum number range, as well as an interval. If a
+          number is outside of the specified range, or is not divisible by
+          the stepping value, it will be rejected with an automated popup
+          message.
+        </p>
+        <h4>Example</h4>
+        <style>
+          article.example {
+            margin: 20px;
+          }
+        </style>
+        <article class='example'>
+          <form method='get' action='../cgi/data-dumper.pl'>
+
+            Number: <input type='number' name='number-field' value='5'
+              min='0' max='100' step='5'>
+            <input type=submit>
+
+          </form>
+        </article>
+      </article>
+    </section>
+    <footer>
+      &copy;2011 Adam McDaniel
+    </footer>
+    </div>
+  </body>
+</html>

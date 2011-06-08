@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Input Email Type - HTML5.array.org</title>
+    <!--[if lt IE 9]>
+    <script src='http://html5shim.googlecode.com/svn/trunk/html5.js'></script>
+    <![endif]-->
+    <script src='highlight.min.js'></script>
+    <link rel="stylesheet" href='highlight.min.css'>
+    <link rel='stylesheet' type='text/css' media='all' href='../base.css'>
+    <link rel='stylesheet' type='text/css' media='screen and (max-width: 500px)' href='../mobile.css'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=yes'>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body>
+    <div class='content'>
+    <header>
+      <nav>
+        <a href='../index.html'>Home</a>
+        <a href='../tutorials/'>Tutorials</a>
+        <a href='../demos/'>Demos</a>
+        <a href='../vb/'>Visual&nbsp;Blueprint&trade;</a>
+      </nav>
+      <h1>HTML5.array.org</h1>
+    </header>
+    <section id='articles'>
+      <h2>Reference</h2>
+      <article class='reference'>
+        <hgroup>
+          <h3>Input Email Type</h3>
+          <h4>Synopsis</h4>
+        </hgroup>
+        <pre><code class='html'>&lt;input type='email' name='field' value='email' multiple&gt;</code></pre>
+        <h4>Description</h4>
+        <p>
+          You can use the email input type to restrict input fields to
+          values formatted like email addresses only. Supported web
+          browsers will reject values that are not formatted with an
+          “@”-sign and a specific domain name with a TLD, or top-level
+          domain, like user@domain.com. Or to be precise, values that do
+          not follow RFC5322.
+        </p>
+        <p>
+          Note this feature makes no effort to verify that the user owns
+          the email address provided, or whether it is even real. If you
+          require this functionality, you will have to create a server-side
+          CGI script that receives this field value and actually emails the
+          user a secret verification code or URL for subsequent follow-up.
+        </p>
+        <h4>Example</h4>
+        <style>
+          article.example {
+            margin: 20px;
+          }
+        </style>
+        <article class='example'>
+          <form method='get' action='../cgi/data-dumper.pl'>
+
+            Email: <input type='email' name='email-field' value='' multiple>
+            <input type=submit>
+
+          </form>
+        </article>
+      </article>
+    </section>
+    <footer>
+      &copy;2011 Adam McDaniel
+    </footer>
+    </div>
+  </body>
+</html>

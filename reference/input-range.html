@@ -46,6 +46,22 @@
           article.example {
             margin: 20px;
           }
+          input[type='range'] {
+            -webkit-appearance: none;
+            border: 1px solid black;
+            border-radius: 6px;
+            height: 20px;
+            background-image: -webkit-linear-gradient(top, #777777, 
+                #dddddd 30%, white 70%);
+          }
+          input[type='range']::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            border: 1px solid black;
+            border-radius: 5px;
+            height: 20px;
+            width: 20px;
+            background-image: -webkit-linear-gradient(top left, white, #bada55);
+          }
         </style>
         <article class='example'>
           <form method='get' action='../cgi/data-dumper.pl'>

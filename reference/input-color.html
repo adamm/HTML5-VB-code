@@ -47,10 +47,30 @@
             margin: 20px;
           }
         </style>
+        <script src='../jquery-1.5.1.js'></script>
+        <link rel="stylesheet" media="screen" type="text/css" 
+            href="../colorpicker/css/colorpicker.css">
+        <script src='../colorpicker/js/colorpicker.js'></script>
+        <script>
+          $(function(){
+            $("#colorpicker").ColorPicker({
+              onSubmit: function(hsb, hex, rgb, obj) { 
+                $(obj).val('#'+hex);
+                $(obj).ColorPickerHide();
+              },
+              onBeforeShow: function () {
+                $(this).ColorPickerSetColor(this.value);
+              }
+            });
+            $("#colorpicker").bind('keyup', function(){
+                $(this).ColorPickerSetColor(this.value);
+            });
+          });
+        </script>
         <article class='example'>
           <form method='get' action='../cgi/data-dumper.pl'>
 
-            Color: <input type='color' name='color-field'>
+            Color: <input type='color' name='color-field' id='colorpicker'>
             <input type=submit>
 
           </form>

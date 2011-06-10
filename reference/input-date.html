@@ -45,10 +45,19 @@
             margin: 20px;
           }
         </style>
+        <link rel='stylesheet' type='text/css' 
+            href='../jquery-ui/css/ui-lightness/jquery-ui-1.8.13.custom.css'>
+        <script src='../jquery-ui/js/jquery-1.5.1.min.js'></script>
+        <script src='../jquery-ui/js/jquery-ui-1.8.13.custom.min.js'></script>
+        <script>
+          $(function() {
+            $("#datepicker").datepicker();
+          });
+        </script>
         <article class='example'>
           <form method='get' action='../cgi/data-dumper.pl'>
 
-            Date: <input type='date' name='date-field'>
+            Date: <input type='date' name='date-field' id='datepicker'>
             <input type=submit>
 
           </form>

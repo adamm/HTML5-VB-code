@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Input Linked Form - HTML5.array.org</title>
+    <!--[if lt IE 9]>
+    <script src='http://html5shim.googlecode.com/svn/trunk/html5.js'></script>
+    <![endif]-->
+    <script src='highlight.min.js'></script>
+    <link rel="stylesheet" href='highlight.min.css'>
+    <link rel='stylesheet' type='text/css' media='all' href='../base.css'>
+    <link rel='stylesheet' type='text/css' media='screen and (max-width: 500px)' href='../mobile.css'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=yes'>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body>
+    <div class='content'>
+    <header>
+      <nav>
+        <a href='../index.html'>Home</a>
+        <a href='../tutorials/'>Tutorials</a>
+        <a href='../demos/'>Demos</a>
+        <a href='../vb/'>Visual&nbsp;Blueprint&trade;</a>
+      </nav>
+      <h1>HTML5.array.org</h1>
+    </header>
+    <section id='articles'>
+      <h2>Reference</h2>
+      <article class='reference'>
+        <hgroup>
+          <h3>Input Linked Form</h3>
+          <h4>Synopsis</h4>
+        </hgroup>
+        <pre><code class='html'>&lt;form method='method' action='action' <span class='bold'>id='formid'</span>&gt;
+&lt;/form&gt;
+&lt;input type='text' name='field' value='value' <span class='bold'>form='formid'</span>&gt;</code></pre>
+        <h4>Description</h4>
+        <p>
+          In HTML 4.01 and earlier, all input elements needed to be within
+          a form element group. In HTML5, it is now possible to store these
+          input elements outside of the form group, provided that you
+          specify a form attribute in the input element to link the two
+          together.
+        </p>
+        <h4>Example</h4>
+        <style>
+          article.example {
+            margin: 20px;
+          }
+        </style>
+        <article class='example'>
+
+          <form method='get' action='../cgi/data-dumper.pl' id='myform'>
+            Text #1: <input type='text' name='text-field1'>
+            <input type=submit>
+          </form>
+
+        </article>
+      </article>
+    </section>
+    <footer>
+      &copy;2011 Adam McDaniel
+    </footer>
+    </div>
+  </body>
+</html>

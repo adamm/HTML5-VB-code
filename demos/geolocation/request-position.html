@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+  <head>
+    <script type='text/javascript' src='jquery-1.6.1.min.js'></script>
+    <script type='text/javascript' src='gears_init.js'></script>
+    <script type='text/javascript' src='geo.js'></script>
+  </head>
+  <body>
+    <script>
+      if ( geo_position_js.init() ) {
+        geo_position_js.getCurrentPosition( geo_success );
+      }
+      else {
+        alert( 'Geolocation support is not available, upgrade your browser!' );
+      }
+
+    </script>
+  </body>
+</html>

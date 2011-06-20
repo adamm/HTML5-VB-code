@@ -18,6 +18,16 @@
 
         var map = new google.maps.Map( document.getElementById(
               'map_canvas' ), options );
+
+        if ( geo_position_js.init() ) {
+          geo_position_js.getCurrentPosition( function(position){
+            latlng = new google.maps.LatLng( position.coords.latitude,
+              position.coords.longitude );
+            map.panTo(latlng);
+            map.setZoom(8);
+
+          });
+        }
       }
     </script>
   </head>

@@ -15,6 +15,20 @@
 
         var map = new google.maps.Map( document.getElementById(
               'map_canvas' ), options );
+
+        var marker = new google.maps.Marker({
+          position: latlng,
+          map: map,
+          title: "Company head office marker"
+        });
+
+        var infowindow = new google.maps.InfoWindow({
+          content: "<p>Our head office is located at:<br><address>123 Fake Street<br>Whale Cove, Nunavut, Canada</address></p>"
+        });
+
+        google.maps.event.addListener(marker, 'click', function(){
+          infowindow.open(map, marker);
+        });
       }
     </script>
   </head>

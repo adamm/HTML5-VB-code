@@ -26,6 +26,21 @@
             map.panTo(latlng);
             map.setZoom(8);
 
+            var marker = new google.maps.Marker({
+              position: latlng,
+              map: map,
+              title: "Your current location"
+            });
+
+            var infowindow = new google.maps.InfoWindow({
+              content: "<p>Your current location:<br>" +
+                  position.coords.latitude + ", " + position.coords.longitude +
+                  "</p>"
+            });
+
+            google.maps.event.addListener(marker, 'click', function(){
+              infowindow.open(map, marker);
+            });
           });
         }
       }

@@ -12,10 +12,13 @@
           center: latlng,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
+
+        var map = new google.maps.Map( document.getElementById(
+              'map_canvas' ), options );
       }
     </script>
   </head>
   <body onload='initMap()'>
-    
+    <div id='map_canvas' style='width:700px; height:500px'></div>
   </body>
 </html>

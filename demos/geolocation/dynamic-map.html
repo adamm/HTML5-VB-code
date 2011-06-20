@@ -26,6 +26,10 @@
             map.panTo(latlng);
             map.setZoom(8);
 
+            jQuery.post( "../../cgi/data-dumper.pl", position, function(data) {
+              return $('#map_canvas').after("<pre>"+data+"</pre>");
+            });
+
             var marker = new google.maps.Marker({
               position: latlng,
               map: map,

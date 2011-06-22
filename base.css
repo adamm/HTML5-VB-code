@@ -20,7 +20,7 @@ div.content {
   padding: 10px;
 }
 header {
-  background-image: url('terra_bg.png');
+  background-image: url('images/terra_bg.png');
   background-attachment: fixed;
   border: 1px solid black;
   height: 55px;
@@ -47,13 +47,13 @@ header nav a {
 section#sidebar {
   float: right;
   width: 20%;
-  background-image: url('terra_bg.png');
+  background-image: url('images/terra_bg.png');
   background-attachment: fixed;
   color: white;
   margin: 2px 0 5px 5px;
 }
 section#articles h2, section#sidebar h2 {
-  background-image: url('terra_bg.png');
+  background-image: url('images/terra_bg.png');
   background-attachment: fixed;
   color: white;
   margin: 0px;

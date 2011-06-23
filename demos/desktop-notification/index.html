@@ -141,12 +141,18 @@ $(function(){
                 'demos/desktop-notification/custom-notification.html'
               );
               notifyMessage.show();
+              notifyMessage.ondisplay = function() {
+                $('div#status-log').append('<li>Got ondisplay event');
+              };
               notifyMessage.onclick = function() {
                 $('div#status-log').append('<li>Got onclick event');
                 notifyMessage.cancel();
               };
               notifyMessage.onclose = function() {
                 $('div#status-log').append('<li>Got onclose event');
+              };
+              notifyMessage.onerror = function() {
+                $('div#status-log').append('<li>Got onerror event');
               };
             });
           }

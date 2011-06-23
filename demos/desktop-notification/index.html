@@ -141,6 +141,13 @@ $(function(){
                 'demos/desktop-notification/custom-notification.html'
               );
               notifyMessage.show();
+              notifyMessage.onclick = function() {
+                $('div#status-log').append('<li>Got onclick event');
+                notifyMessage.cancel();
+              };
+              notifyMessage.onclose = function() {
+                $('div#status-log').append('<li>Got onclose event');
+              };
             });
           }
         });
@@ -154,6 +161,7 @@ $(function(){
             <span class='fake-link'>Click here</span> to launch a custom
             desktop notification.
           </div>
+          <div id='status-log'></div>
         </article>
       </article>
     </section>

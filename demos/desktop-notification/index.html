@@ -123,6 +123,10 @@ $(function(){
           if ( typeof notifyAPI == 'object' &&
                notifyAPI.checkPermission() == 0 ) {
             $('div#launch-basic-notify span').click(function(){
+              var notifyMessage = notifyAPI.createNotification(
+                'images/sunrise_icon.jpg', 'HTML5.array.org Demo',
+                'This is a simple demonstration of the Desktop Notification API'
+              );
 
             });
           }

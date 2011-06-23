@@ -110,11 +110,18 @@ $(function(){
               iconURL, title, content );
       notifyMessage.show();
     });
+    $('div#launch-custom-notify span').click(function(){
+      var notifyMessage = notifyAPI.createHTMLNotification( URL );
+      notifyMessage.show();
+    });
   }
 }
 &lt;/script&gt;
 &lt;div id='launch-basic-notify'&gt;
   &lt;span&gt;Click here&lt;/span&gt; to launch a basic desktop notification.
+&lt;/div&gt;
+&lt;div id='launch-custom-notify'&gt;
+  &lt;span&gt;Click here&lt;/span&gt; to launch a custom desktop notification.
 &lt;/div&gt;</code></pre>
         <h5>Example #2</h5>
         <script type='text/javascript'>
@@ -129,12 +136,21 @@ $(function(){
               );
               notifyMessage.show();
             });
+            $('div#launch-custom-notify span').click(function(){
+              var notifyMessage = notifyAPI.createHTMLNotification(
+                'demos/desktop-notification/custom-notification.html'
+              );
+            });
           }
         });
         </script>
         <article class='example'>
           <div id='launch-basic-notify'>
             <span class='fake-link'>Click here</span> to launch a basic
+            desktop notification.
+          </div>
+          <div id='launch-custom-notify'>
+            <span class='fake-link'>Click here</span> to launch a custom
             desktop notification.
           </div>
         </article>

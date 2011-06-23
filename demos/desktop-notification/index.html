@@ -36,12 +36,18 @@
         </hgroup>
         <pre><code class='html'>&lt;script type='text/javascript'&gt;
 $(function(){
-  var notifyAPI = window.webkitNotifications;
-  if ( typeof notifyAPI == 'object' &amp;&amp;
-       notifyAPI.checkPermission() == 1 ) {
-    $('div#configure-notify span').click(function(){
-      notifyAPI.requestPermission();
-    });
+  if ( typeof notifyAPI == 'object' ) {
+    var perm = notifyAPI.checkPermission();
+    if ( perm == 1 ) {
+      $('div#configure-notify span').click(function(){
+        notifyAPI.requestPermission();
+      });
+    }
+    else {
+      $('div#configure-notify').html(
+            "Desktop notifications are currently " +
+            (perm == 2 ? "disabled" : "enabled") + ".");
+    }
   }
   else {
     $('div#configure-notify').remove();
@@ -65,11 +71,18 @@ $(function(){
         <script type='text/javascript'>
           $(function(){
             var notifyAPI = window.webkitNotifications;
-            if ( typeof notifyAPI == 'object' &&
-                 notifyAPI.checkPermission() == 1 ) {
-              $('div#configure-notify span').click(function(){
-                notifyAPI.requestPermission();
-              });
+            if ( typeof notifyAPI == 'object' ) {
+              var perm = notifyAPI.checkPermission();
+              if ( perm == 1 ) {
+                $('div#configure-notify span').click(function(){
+                  notifyAPI.requestPermission();
+                });
+              }
+              else {
+                $('div#configure-notify').html(
+                      "Desktop notifications are currently " +
+                      (perm == 2 ? "disabled" : "enabled") + ".");
+              }
             }
             else {
               $('div#configure-notify').remove();

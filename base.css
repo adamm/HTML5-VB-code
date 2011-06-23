@@ -111,6 +111,22 @@ section#articles article h4 {
   background-color: #CDB380;
   color: #222;
 }
+
+section#articles article h5 {
+  margin: 0;
+  background-color: #36818a;
+  color: white;
+}
+/* The demos class has an H5 level, so redefine its colors slightly */
+section#articles article.demos h4 {
+  background-color: #36818a;
+  color: white;
+}
+section#articles article.demos h5 {
+  background-color: #CDB380;
+  color: #222;
+}
+
 section#articles article p {
   padding: 0 5px;
   font-size: 0.9em;
@@ -121,7 +137,6 @@ section#articles article ul {
 }
 article hgroup {
   padding: 0;
-  background-color: #36818a;
   color: white;
 }
 article hgroup * {

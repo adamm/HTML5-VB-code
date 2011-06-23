@@ -56,21 +56,31 @@ $(function(){
           article.example {
             margin: 20px;
           }
+          .fake-link {
+            text-decoration: underline;
+            cursor: pointer;
+            color: #00F;
+          }
         </style>
         <script type='text/javascript'>
           $(function(){
             var notifyAPI = window.webkitNotifications;
             if ( typeof notifyAPI == 'object' &&
                  notifyAPI.checkPermission() == 1 ) {
-
+              $('div#configure-notify span').click(function(){
+                notifyAPI.requestPermission();
+              });
             }
             else {
-
+              $('div#configure-notify').remove();
             }
           });
         </script>
         <article class='example'>
-
+          <div id='configure-notify'>
+            <span class='fake-link'>Click here</span> to configure desktop
+            notifcations.
+          </div>
         </article>
       </article>
     </section>

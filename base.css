@@ -209,3 +209,8 @@ meter {
 .bold {
   font-weight: bold;
 }
+.fake-link {
+  text-decoration: underline;
+  cursor: pointer;
+  color: #00F;
+}

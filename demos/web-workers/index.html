@@ -167,10 +167,17 @@ self.addEventListener( 'message', onMessage, false );
               $(this).addClass( 'bold' );
               $(this).siblings().removeClass( 'bold' );
 
-              workerInput.setLoad = percent;
+              /* Check if the worker object was established earlier. */
+              if ( worker ) {
+                workerInput.setLoad = percent;
 
-              /* Ready! Send the command to the Web Worker to activate */
-              worker.postMessage( workerInput );
+                /* Ready! Send the command to the Web Worker to activate */
+                worker.postMessage( workerInput );
+              }
+              else {
+                /* Call the cpuload.js function directly to activate */
+                setdutycycle( percent );
+              }
             });
 
             // Define the "jquery-waves" animation routine.

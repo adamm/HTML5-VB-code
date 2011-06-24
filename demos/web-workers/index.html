@@ -121,6 +121,11 @@ self.addEventListener( 'message', onMessage, false );
         </style>
         <script type='text/javascript'>
           $(function(){
+            /* Load the cpuload.js wrapper, cpuload-worker.js, which
+             * provides the code to make the legacy program Web Worker
+             * compatible. */
+            var worker = new Worker( 'demos/web-workers/cpuload-worker.js' );
+
             /* Set the 0% button to light-green right away, as the cpuload code
              * is not active when the script first loads */
             $('button.cpuload[data-percent=0]').addClass( 'bold' );

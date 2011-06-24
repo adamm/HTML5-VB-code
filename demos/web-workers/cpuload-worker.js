@@ -8,6 +8,10 @@ importScripts( 'cpuload.js' );
  * of this method to post a message back to the parent. The parent thread
  * will recieve the event message and display the calculation. */
 report_back = function( inelement, intext ) {
+  var output = {};
+
+  output.field = inelement;
+  output.value = intext;
 
 };
 

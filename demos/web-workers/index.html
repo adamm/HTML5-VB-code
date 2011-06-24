@@ -126,6 +126,20 @@ self.addEventListener( 'message', onMessage, false );
              * compatible. */
             var worker = new Worker( 'demos/web-workers/cpuload-worker.js' );
 
+            function onWorkerError( event ) {
+              $('output#error').html( 'ERROR: Line ' + event.lineno + ' in ' +
+                event.filename + ": " + event.message );
+            }
+
+            function onWorkerMessage( event ) {
+              var workerOutput = event.data;
+
+              $('output#' + workerOutput.field).html( workerOutput.value );
+            }
+
+            worker.addEventListener( 'error', onWorkerError, false );
+            worker.addEventListener( 'message', onWorkerMessage, false );
+
             /* Set the 0% button to light-green right away, as the cpuload code
              * is not active when the script first loads */
             $('button.cpuload[data-percent=0]').addClass( 'bold' );

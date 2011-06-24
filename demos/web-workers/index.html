@@ -148,10 +148,16 @@ self.addEventListener( 'message', onMessage, false );
              * data-percent attribute value to cpuload.js */
             $('button.cpuload').click(function(){
               var percent = $(this).attr( 'data-percent' );
+              var workerInput = {};
 
               /* Set the clicked button to light-green */
               $(this).addClass( 'bold' );
               $(this).siblings().removeClass( 'bold' );
+
+              workerInput.setLoad = percent;
+
+              /* Ready! Send the command to the Web Worker to activate */
+              worker.postMessage( workerInput );
             });
 
             // Define the "jquery-waves" animation routine.

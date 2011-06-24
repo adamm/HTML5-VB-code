@@ -13,6 +13,7 @@ report_back = function( inelement, intext ) {
   output.field = inelement;
   output.value = intext;
 
+  self.postMessage( output );
 };
 
 /* CPU Load uses the function setdutycycle() to configure its intensity

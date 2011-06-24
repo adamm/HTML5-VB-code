@@ -11,3 +11,15 @@ report_back = function( inelement, intext ) {
 
 };
 
+/* CPU Load uses the function setdutycycle() to configure its intensity
+ * level and begin calculations. Since the user triggers the configuration
+ * and startup, and the user event launches on the parent, the parent must
+ * instruct the worker to run the function. */
+function onMessage( event ) {
+  var input = event.data;
+
+  setdutycycle( input.setLoad );
+}
+
+/* Activate the message event listener on the worker thread */
+self.addEventListener( 'message', onMessage, false );

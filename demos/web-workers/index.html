@@ -143,6 +143,15 @@ self.addEventListener( 'message', onMessage, false );
               worker.addEventListener( 'error', onWorkerError, false );
               worker.addEventListener( 'message', onWorkerMessage, false );
             }
+            else {
+              // Since Web Workers are not available, import the original
+              // cpuload.js inline the main/only thread using jQuery's
+              // globalEval() method. Display a warning message too.
+              jQuery.get( 'demos/web-workers/cpuload.js', function( data ) {
+                jQuery.globalEval( data );
+              });
+              $('output#error').html( 'Error: Web Workers not available on your web browser! Falling-back to in-line execution.' );
+            }
 
             /* Set the 0% button to light-green right away, as the cpuload code
              * is not active when the script first loads */

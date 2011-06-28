@@ -52,6 +52,11 @@
         <script type='text/javascript'>
           $(function(){
             $('.clickme').click(function(event){
+              // Inhibit any default browser event activity when this custom event 
+              // handler finishes. Use this instead of "return false" ... See:
+              // http://fuelyourcoding.com/jquery-events-stop-misusing-return-false/
+              event.preventDefault();
+
               alert("You clicked " + event.srcElement + " at coordinates: " +
                 event.offsetX + "," + event.offsetY );
             });

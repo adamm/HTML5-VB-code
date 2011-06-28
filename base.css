@@ -20,7 +20,7 @@ div.content {
   padding: 10px;
 }
 header {
-  background-image: url('terra_bg.png');
+  background-image: url('images/terra_bg.png');
   background-attachment: fixed;
   border: 1px solid black;
   height: 55px;
@@ -47,13 +47,13 @@ header nav a {
 section#sidebar {
   float: right;
   width: 20%;
-  background-image: url('terra_bg.png');
+  background-image: url('images/terra_bg.png');
   background-attachment: fixed;
   color: white;
   margin: 2px 0 5px 5px;
 }
 section#articles h2, section#sidebar h2 {
-  background-image: url('terra_bg.png');
+  background-image: url('images/terra_bg.png');
   background-attachment: fixed;
   color: white;
   margin: 0px;
@@ -111,6 +111,22 @@ section#articles article h4 {
   background-color: #CDB380;
   color: #222;
 }
+
+section#articles article h5 {
+  margin: 0;
+  background-color: #36818a;
+  color: white;
+}
+/* The demos class has an H5 level, so redefine its colors slightly */
+section#articles article.demos h4 {
+  background-color: #36818a;
+  color: white;
+}
+section#articles article.demos h5 {
+  background-color: #CDB380;
+  color: #222;
+}
+
 section#articles article p {
   padding: 0 5px;
   font-size: 0.9em;
@@ -121,7 +137,6 @@ section#articles article ul {
 }
 article hgroup {
   padding: 0;
-  background-color: #36818a;
   color: white;
 }
 article hgroup * {
@@ -193,4 +208,9 @@ meter {
 }
 .bold {
   font-weight: bold;
+}
+.fake-link {
+  text-decoration: underline;
+  cursor: pointer;
+  color: #00F;
 }

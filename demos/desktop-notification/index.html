@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Desktop Notification - HTML5.array.org</title>
+    <!--[if lt IE 9]>
+    <script src='http://html5shim.googlecode.com/svn/trunk/html5.js'></script>
+    <![endif]-->
+    <base href='../../'>
+    <script src='jquery-1.6.1.min.js'></script>
+    <script src='highlight.min.js'></script>
+    <link rel='stylesheet' href='highlight.min.css'>
+    <link rel='stylesheet' type='text/css' media='all' href='base.css'>
+    <link rel='stylesheet' type='text/css' media='screen and (max-width: 500px)' href='mobile.css'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=yes'>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body>
+    <div class='content'>
+    <header>
+      <nav>
+        <a href='index.html'>Home</a>
+        <a href='tutorials/'>Tutorials</a>
+        <a href='demos/'>Demos</a>
+        <a href='vb/'>Visual&nbsp;Blueprint&trade;</a>
+      </nav>
+      <h1>HTML5.array.org</h1>
+    </header>
+    <section id='articles'>
+      <h2>Demos</h2>
+      <article class='demos'>
+        <hgroup>
+          <h3>Desktop Notification</h3>
+          <h4>Request Permission</h4>
+          <h5>Example #1 Code</h5>
+        </hgroup>
+        <pre><code class='html'>&lt;script type='text/javascript'&gt;
+$(function(){
+  if ( typeof notifyAPI == 'object' ) {
+    var perm = notifyAPI.checkPermission();
+    if ( perm == 1 ) {
+      $('div#configure-notify span').click(function(){
+        notifyAPI.requestPermission();
+      });
+    }
+    else {
+      $('div#configure-notify').html(
+            "Desktop notifications are currently " +
+            (perm == 2 ? "disabled" : "enabled") + ".");
+    }
+  }
+  else {
+    $('div#configure-notify').remove();
+  }
+}
+&lt;/script&gt;
+&lt;div id='configure-notify'&gt;
+  &lt;span&gt;Click here&lt;/span&gt; to configure desktop notifications.
+&lt;/div&gt;</code></pre>
+        <h5>Example #1</h5>
+        <style>
+          article.example {
+            margin: 20px;
+          }
+        </style>
+        <script type='text/javascript'>
+          $(function(){
+            var notifyAPI = window.webkitNotifications;
+            if ( typeof notifyAPI == 'object' ) {
+              var perm = notifyAPI.checkPermission();
+              if ( perm == 1 ) {
+                $('div#configure-notify span').click(function(){
+                  notifyAPI.requestPermission();
+                });
+              }
+              else {
+                $('div#configure-notify').html(
+                      "Desktop notifications are currently " +
+                      (perm == 2 ? "disabled" : "enabled") + ".");
+              }
+            }
+            else {
+              $('div#configure-notify').remove();
+            }
+          });
+        </script>
+        <article class='example'>
+          <div id='configure-notify'>
+            <span class='fake-link'>Click here</span> to configure desktop
+            notifcations.
+          </div>
+        </article>
+
+        <hgroup>
+          <h4>Launch Basic Desktop Notification</h4>
+          <h5>Example #2 Code</h5>
+        </hgroup>
+        <pre><code class='html'>&lt;script type='text/javascript'&gt;
+$(function(){
+  var notifyAPI = window.webkitNotifications;
+  if ( typeof notifyAPI == 'object' &amp;&amp;
+       notifyAPI.checkPermission() == 0 ) {
+    $('div#launch-basic-notify span').click(function(){
+      var notifyMessage = notifyAPI.createNotification( 
+              iconURL, title, content );
+      notifyMessage.show();
+    });
+    $('div#launch-custom-notify span').click(function(){
+      var notifyMessage = notifyAPI.createHTMLNotification( URL );
+      notifyMessage.show();
+    });
+  }
+}
+&lt;/script&gt;
+&lt;div id='launch-basic-notify'&gt;
+  &lt;span&gt;Click here&lt;/span&gt; to launch a basic desktop notification.
+&lt;/div&gt;
+&lt;div id='launch-custom-notify'&gt;
+  &lt;span&gt;Click here&lt;/span&gt; to launch a custom desktop notification.
+&lt;/div&gt;</code></pre>
+        <h5>Example #2</h5>
+        <script type='text/javascript'>
+        $(function(){
+          var notifyAPI = window.webkitNotifications;
+          if ( typeof notifyAPI == 'object' &&
+               notifyAPI.checkPermission() == 0 ) {
+            $('div#launch-basic-notify span').click(function(){
+              var notifyMessage = notifyAPI.createNotification(
+                'images/sunrise_icon.jpg', 'HTML5.array.org Demo',
+                'This is a simple demonstration of the Desktop Notification API'
+              );
+              notifyMessage.show();
+            });
+            $('div#launch-custom-notify span').click(function(){
+              var notifyMessage = notifyAPI.createHTMLNotification(
+                'demos/desktop-notification/custom-notification.html'
+              );
+              notifyMessage.show();
+              notifyMessage.ondisplay = function() {
+                $('div#status-log').append('<li>Got ondisplay event');
+              };
+              notifyMessage.onclick = function() {
+                $('div#status-log').append('<li>Got onclick event');
+                notifyMessage.cancel();
+              };
+              notifyMessage.onclose = function() {
+                $('div#status-log').append('<li>Got onclose event');
+              };
+              notifyMessage.onerror = function() {
+                $('div#status-log').append('<li>Got onerror event');
+              };
+            });
+          }
+        });
+        </script>
+        <article class='example'>
+          <div id='launch-basic-notify'>
+            <span class='fake-link'>Click here</span> to launch a basic
+            desktop notification.
+          </div>
+          <div id='launch-custom-notify'>
+            <span class='fake-link'>Click here</span> to launch a custom
+            desktop notification.
+          </div>
+          <div id='status-log'></div>
+        </article>
+      </article>
+    </section>
+    <footer>
+      &copy;2011 Adam McDaniel
+    </footer>
+    </div>
+  </body>
+</html>

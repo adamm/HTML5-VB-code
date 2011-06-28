@@ -1,0 +1,230 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Web Workers - HTML5.array.org</title>
+    <!--[if lt IE 9]>
+    <script src='http://html5shim.googlecode.com/svn/trunk/html5.js'></script>
+    <![endif]-->
+    <base href='../../'>
+    <script src='modernizr-1.7.min.js'></script>
+    <script src='jquery-1.6.1.min.js'></script>
+    <script src='highlight.min.js'></script>
+    <link rel='stylesheet' href='highlight.min.css'>
+    <link rel='stylesheet' type='text/css' media='all' href='base.css'>
+    <link rel='stylesheet' type='text/css' media='screen and (max-width: 500px)' href='mobile.css'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=yes'>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body>
+    <div class='content'>
+    <header>
+      <nav>
+        <a href='index.html'>Home</a>
+        <a href='tutorials/'>Tutorials</a>
+        <a href='demos/'>Demos</a>
+        <a href='vb/'>Visual&nbsp;Blueprint&trade;</a>
+      </nav>
+      <h1>HTML5.array.org</h1>
+    </header>
+    <section id='articles'>
+      <h2>Demos</h2>
+      <article class='demos'>
+        <hgroup>
+          <h3>Web Workers</h3>
+          <h5>Example Worker JavaScript Code</h5>
+        </hgroup>
+
+        <pre><code class='javascript'>function launch_cpu_task() {
+  var results = {};
+  // Perform CPU function here
+  return results;
+}
+
+function onMessage(event) {
+  var input = event.data;
+  var output = {};
+
+  output.results = launch_cpu_task();
+
+  self.postMessage( output );
+}
+
+self.addEventListener( 'message', onMessage, false );
+</code></pre>
+        <h5>Example Parent HTML/JavaScript Code</h5>
+        <style>
+          pre .html .javascript {
+            opacity: 1;
+          }
+        </style>
+        <pre><code class='html'>&lt;script type='text/javascript'&gt;
+  var worker = new Worker( 'worker.js' );
+
+  function onWorkerError( event ) {
+    $('output#error').html( 'ERROR: Line ' + event.lineno + ' in ' +
+      event.filename + ": " + event.message );
+  }
+
+  function onMessage( event ) {
+    var input = event.data;
+
+    $('output#message').html( input );
+  }
+
+  worker.addEventListener( 'error', onError, false );
+  worker.addEventListener( 'message', onWorkerMessage, false );
+
+  $(function(){
+    $('button').click(function(){
+      var input = {};
+
+      worker.postMessage(input);
+    });
+  }
+&lt;/script&gt;
+
+&lt;button&gt;Start Worker&lt;/button&gt;
+&lt;output id='message'&gt;&lt;/button&gt;
+&lt;output id='error'&gt;&lt;/button&gt;
+</code></pre>
+        <h5>Demo</h5>
+        <style>
+          article.example {
+            margin: 20px;
+          }
+          #cputest {
+            width: 50%;
+            float: left;
+          }
+          #jquery-waves {
+            width: 50%;
+            float: right;
+            height: 25em;
+          }
+          #jquery-waves div p {
+            overflow: hidden;
+            height: 1em;
+            margin: 0px;
+            border: 1px solid black;
+            border-radius: 10px;
+            background-image: linear-gradient( 85deg, #2f2727, #1a82f7, #2f2727 );
+            background-image: -o-linear-gradient( 85deg, #2f2727, #1a82f7, #2f2727 );
+            background-image: -ms-linear-gradient( 85deg, #2f2727, #1a82f7, #2f2727 );
+            background-image: -moz-linear-gradient( 85deg, #2f2727, #1a82f7, #2f2727 );
+            background-image: -webkit-linear-gradient( 85deg, #2f2727, #1a82f7, #2f2727 );
+
+          }
+          .clear {
+            clear: both;
+          }
+        </style>
+        <script type='text/javascript'>
+          $(function(){
+            var worker = undefined;
+
+            if ( Modernizr.webworkers ) {
+              /* Load the cpuload.js wrapper, cpuload-worker.js, which
+               * provides the code to make the legacy program Web Worker
+               * compatible. */
+              worker = new Worker( 'demos/web-workers/cpuload-worker.js' );
+
+              function onWorkerError( event ) {
+                $('output#error').html( 'ERROR: Line ' + event.lineno + ' in ' +
+                  event.filename + ": " + event.message );
+              }
+
+              function onWorkerMessage( event ) {
+                var workerOutput = event.data;
+
+                $('output#' + workerOutput.field).html( workerOutput.value );
+              }
+
+              worker.addEventListener( 'error', onWorkerError, false );
+              worker.addEventListener( 'message', onWorkerMessage, false );
+            }
+            else {
+              // Since Web Workers are not available, import the original
+              // cpuload.js inline the main/only thread using jQuery's
+              // globalEval() method. Display a warning message too.
+              jQuery.get( 'demos/web-workers/cpuload.js', function( data ) {
+                jQuery.globalEval( data );
+              });
+              $('output#error').html( 'Error: Web Workers not available on your web browser! Falling-back to in-line execution.' );
+            }
+
+            /* Set the 0% button to light-green right away, as the cpuload code
+             * is not active when the script first loads */
+            $('button.cpuload[data-percent=0]').addClass( 'bold' );
+
+            /* Respond to click events for the five buttons, forward the
+             * data-percent attribute value to cpuload.js */
+            $('button.cpuload').click(function(){
+              var percent = $(this).attr( 'data-percent' );
+              var workerInput = {};
+
+              /* Set the clicked button to light-green */
+              $(this).addClass( 'bold' );
+              $(this).siblings().removeClass( 'bold' );
+
+              /* Check if the worker object was established earlier. */
+              if ( worker ) {
+                workerInput.setLoad = percent;
+
+                /* Ready! Send the command to the Web Worker to activate */
+                worker.postMessage( workerInput );
+              }
+              else {
+                /* Call the cpuload.js function directly to activate */
+                setdutycycle( percent );
+              }
+            });
+
+            // Define the "jquery-waves" animation routine.
+            $('#jquery-waves div p').hover(function(){
+              // Expand the wave height
+              $(this).animate({ height: '5em' }, 750);
+            }, function() {
+              $(this).animate({ height: '1em' }, 750);
+            });
+          });
+        </script>
+        <article class='example'>
+          <div id='cputest'>
+            <p>
+              Set CPU Stress Level:<br>
+              <button class='cpuload' data-percent='0'>0%</button>
+              <button class='cpuload' data-percent='25'>25%</button>
+              <button class='cpuload' data-percent='50'>50%</button>
+              <button class='cpuload' data-percent='75'>75%</button>
+              <button class='cpuload' data-percent='100'>100%</button>
+            </p>
+            <p>Output calculation:<br>
+              d1: <output id='d1'></output><br>
+              d2: <output id='d2'></output><br>
+              d3: <output id='d3'></output><br>
+              d4: <output id='d4'></output>
+            </p>
+            <p><output id='error'></output></p>
+          </div>
+          <div id='jquery-waves'>
+            Hover your mouse over the waves while the CPU Stress program is
+            active.
+            <div>
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+            </div>
+          </div>
+        </article>
+        <div class='clear'></div>
+      </article>
+    </section>
+    <footer>
+      &copy;2011 Adam McDaniel
+    </footer>
+    </div>
+  </body>
+</html>

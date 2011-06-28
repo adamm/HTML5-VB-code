@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <head>
+    <script type='text/javascript' src='jquery-1.6.1.min.js'></script>
+    <script type='text/javascript' src='gears_init.js'></script>
+    <script type='text/javascript' src='geo.js'></script>
+  </head>
+  <body>
+    <script>
+      if ( geo_position_js.init() ) {
+        geo_position_js.getCurrentPosition( geo_success, geo_failure );
+      }
+      else {
+        alert( 'Geolocation support is not available, upgrade your browser!' );
+      }
+
+      function geo_success( position ) {
+        var lat = position.coords.latitude;
+        var lng = position.coords.longitude;
+        $('div#results').html( lat + ", " + lng )
+      }
+
+      function geo_failure( error ) {
+        $('div#results').html( "Boo-urns! Error: " + error.message +
+            " (" + error.code + ")" );
+      }
+    </script>
+    <div id='results'></div>
+  </body>
+</html>

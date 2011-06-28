@@ -53,7 +53,14 @@
         </style>
         <script type='text/javascript'>
           $(function(){
-
+              $('figure#lynk-pool').after( 
+                "<figure id='sad-dogs' class='picture'>" +
+                "<img src='images/sad_dogs.jpg'>" +
+                "<figcaption>The dogs are do not like being cooped up inside." +
+                "</figcaption></figure>"
+              );
+              $('figure#sad-dogs figcaption').html("Fire, Evil-lyn and Aero are " +
+                "sick of being cooped up inside when it's raining.");
           });
         </script>
         <article class='example'>

@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+  <head>
+    <title>jQuery - HTML5.array.org</title>
+    <!--[if lt IE 9]>
+    <script src='http://html5shim.googlecode.com/svn/trunk/html5.js'></script>
+    <![endif]-->
+    <base href='../../'>
+    <script type='text/javascript' src='jquery-1.6.1.js'></script>
+    <script type='text/javascript' src='highlight.min.js'></script>
+    <link rel="stylesheet" href='highlight.min.css'>
+    <link rel='stylesheet' type='text/css' media='all' href='base.css'>
+    <link rel='stylesheet' type='text/css' media='screen and (max-width: 500px)' href='mobile.css'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=yes'>
+    <meta content='text/html; charset=UTF-8' http-equiv='content-type'>
+    <script type='text/javascript'>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body>
+    <div class='content'>
+    <header>
+      <nav>
+        <a href='index.html'>Home</a>
+        <a href='tutorials/'>Tutorials</a>
+        <a href='demos/'>Demos</a>
+        <a href='vb/'>Visual&nbsp;Blueprint&trade;</a>
+      </nav>
+      <h1>HTML5.array.org</h1>
+    </header>
+    <section id='articles'>
+      <h2>Demos</h2>
+      <article class='demos'>
+        <hgroup>
+          <h3>jQuery</h3>
+          <h4>Hide &amp; Show Content</h4>
+          <h5>Synopsis</h5>
+        </hgroup>
+        <pre><code>&lt;script type='text/javascript'&gt;
+  $(function(){
+    $(<i>selector1</i>).<i>event</i>(function(event){
+      $(<i>selector</i>).hide(<i>duration</i>);
+    });
+    $(<i>selector2</i>).<i>event</i>(function(event){
+      $(<i>selector</i>).show(<i>duration</i>);
+    });
+  });
+&lt;/script&gt;
+</code></pre>
+        <h5>Example</h5>
+        <style>
+          article.example {
+            margin: 20px;
+          }
+        </style>
+        <script type='text/javascript'>
+
+        </script>
+        <article class='example'>
+          <span id='hide-content' class='fake-link'>Hide Picture</span>
+          <span id='show-content' class='fake-link'>Show Picture</span>
+          <figure id='content' class='picture'>
+            <img src='images/aero_bogomips.jpg'>
+            <figcaption>Aero and Bogomips at the dog park.</figcaption>
+          </figure>
+        </article>
+      </article>
+    </section>
+    <footer>
+      &copy;2011 Adam McDaniel
+    </footer>
+    </div>
+  </body>
+</html>

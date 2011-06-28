@@ -214,3 +214,8 @@ meter {
   cursor: pointer;
   color: #00F;
 }
+/* Avoid highlight.min.css from lowering the opacity of javascript embedded in
+ * HTML in the example code blocks */
+pre .html .javascript {
+  opacity: 1;
+}

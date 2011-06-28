@@ -52,7 +52,14 @@
           }
         </style>
         <script type='text/javascript'>
-
+          $(function(){
+            $('span#hide-content').click(function(event){
+              $('#content').hide(500);
+            });
+            $('span#show-content').click(function(event){
+              $('#content').show(500);
+            });
+          });
         </script>
         <article class='example'>
           <span id='hide-content' class='fake-link'>Hide Picture</span>

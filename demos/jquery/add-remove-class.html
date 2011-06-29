@@ -63,12 +63,25 @@
         </style>
         <script type='text/javascript'>
           $(function(){
+            function citePhotographCredit(obj) {
+              if ( $('#content').hasClass('photograph') ) {
+                $('#content small cite').html( "Shauna McDaniel" );
+                $('#content small').show();
+              } else {
+                $('#content small').hide();
+              }
+            }
+
             $('span#add-photograph-class').click(function(event){
               $('#content').addClass('photograph');
+              citePhotographCredit();
             });
             $('span#remove-photograph-class').click(function(event){
               $('#content').removeClass('photograph');
+              citePhotographCredit();
             });
+
+            citePhotographCredit();
           });
         </script>
         <article class='example'>

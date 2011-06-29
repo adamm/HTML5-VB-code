@@ -58,6 +58,13 @@
             border: 1px solid black;
           }
         </style>
+        <script type='text/javascript'>
+          $(function(){
+            $('button.set-background').click(function(){
+              var color = $(this).attr('data-color');
+            });
+          });
+        </script>
         <article class='example'>
           <div style='float: left'>
             Select a background color:<br>

@@ -62,6 +62,9 @@
           $(function(){
             $('button.set-background').click(function(){
               var color = $(this).attr('data-color');
+
+              $('#content').css('background-color', color );
+              $('#content').html("Applied " + (color || 'no') + ' background color');
             });
           });
         </script>

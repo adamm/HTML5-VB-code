@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+  <head>
+    <title>jQuery - HTML5.array.org</title>
+    <!--[if lt IE 9]>
+    <script src='http://html5shim.googlecode.com/svn/trunk/html5.js'></script>
+    <![endif]-->
+    <base href='../../'>
+    <script type='text/javascript' src='jquery-1.6.1.js'></script>
+    <script type='text/javascript' src='highlight.min.js'></script>
+    <link rel="stylesheet" href='highlight.min.css'>
+    <link rel='stylesheet' type='text/css' media='all' href='base.css'>
+    <link rel='stylesheet' type='text/css' media='screen and (max-width: 500px)' href='mobile.css'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=yes'>
+    <meta content='text/html; charset=UTF-8' http-equiv='content-type'>
+    <script type='text/javascript'>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body>
+    <div class='content'>
+    <header>
+      <nav>
+        <a href='index.html'>Home</a>
+        <a href='tutorials/'>Tutorials</a>
+        <a href='demos/'>Demos</a>
+        <a href='vb/'>Visual&nbsp;Blueprint&trade;</a>
+      </nav>
+      <h1>HTML5.array.org</h1>
+    </header>
+    <section id='articles'>
+      <h2>Demos</h2>
+      <article class='demos'>
+        <hgroup>
+          <h3>jQuery</h3>
+          <h4>Custom Data Attributes</h4>
+          <h5>Synopsis</h5>
+        </hgroup>
+        <pre><code>&lt;button class='<i>run-program</i>' data-<i>var</i>='<i>value1</i>'&gt;Button #1&lt;/button&gt;
+&lt;button class='<i>run-program</i>' data-<i>var</i>='<i>value2</i>'&gt;Button #2&lt;/button&gt;
+&lt;button class='<i>run-program</i>' data-<i>var</i>='<i>value3</i>'&gt;Button #3&lt;/button&gt;
+&lt;button class='<i>run-program</i>' data-<i>var</i>='<i>value4</i>'&gt;Button #4&lt;/button&gt;
+&lt;script type='text/javascript'&gt;
+  $(function(){
+    $('button#<i>run-program</i>').click(function(){
+      var dataVariable = $(this).attr('data-<i>var</i>');
+      // Use dataVariable in this handler function.
+    });
+  });
+&lt;/script&gt;
+</code></pre>
+        <h5>Example</h5>
+        <style type='text/css'>
+          article.example {
+            margin: 20px;
+          }
+          article div#content {
+            width: 50%;
+            height: 100px;
+            border: 1px solid black;
+          }
+        </style>
+        <article class='example'>
+          <div style='float: left'>
+            Select a background color:<br>
+            <button class='set-background' data-color=''>None</button>
+            <button class='set-background' data-color='red'>Red</button>
+            <button class='set-background' data-color='yellow'>Yellow</button>
+            <button class='set-background' data-color='white'>White</button>
+          </div>
+          <div style='float: right' id='content'></div>
+          <div style='clear: both'></div>
+        </article>
+      </article>
+    </section>
+    <footer>
+      &copy;2011 Adam McDaniel
+    </footer>
+    </div>
+  </body>
+</html>

@@ -51,11 +51,14 @@
         </style>
         <script type='text/javascript'>
           $(function(){
-
+            $('.clickme').click(function(event){
+              alert("You clicked " + event.srcElement + " at coordinates: " +
+                event.offsetX + "," + event.offsetY );
+            });
           });
         </script>
         <article class='example'>
-          <figure id='tripp' class='picture'>
+          <figure id='tripp' class='picture clickme'>
             <img src='images/tripp.jpg'>
             <figcaption>Tripp, after no longer finding his handler
             entertaining, sees something move, in the bush, over

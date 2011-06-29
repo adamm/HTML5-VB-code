@@ -69,7 +69,13 @@
         </style>
         <script type='text/javascript'>
           $(function(){
+            $('a[href^=#]').click(function(event){
+              // Do not allow the browser to follow the hashtag link,
+              // jQuery will scroll to it instead.
+              event.preventDefault();
 
+              $.scrollTo( this.hash, 1000 );
+            });
           });
         </script>
         <article class='example'>

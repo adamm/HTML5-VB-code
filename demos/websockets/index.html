@@ -146,8 +146,15 @@
             $('button#send').click(function() {
               var message = $('input#message').val();
               websocket.send(message);
+              logMessage('Sent: ' + message);
             });
           });
+
+          function logMessage(message) {
+            // The .scrollTop(9e9) call ensures the display is always at
+            // the bottom of the scrollable window 
+            $('output#log').append('<li>' + message).scrollTop(9e9);
+          }
 
           function onOpen() {
             $(window).unload(function() {
@@ -156,11 +163,15 @@
 
             $('.useWhileOnline').removeAttr('disabled');
             $('.useWhileOffline').attr('disabled','true');
+
+            logMessage('Connected');
           }
 
           function onClose() {
             $('.useWhileOnline').attr('disabled','true');
             $('.useWhileOffline').removeAttr('disabled');
+
+            logMessage('Disconnected');
           }
 
           function onMessage() {

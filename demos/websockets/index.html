@@ -125,6 +125,9 @@
           }
 
           function onOpen() {
+            $(window).unload(function() {
+              websocket.close();
+            });
           }
 
           function onClose() {

@@ -111,6 +111,13 @@
           }
         </style>
         <script type='text/javascript'>
+          if ( 'WebSocket' in window ) {
+            var websocket = new WebSocket('ws://html5.array.org/time');
+          }
+          else {
+            alert("Oh noes~! WebSockets are not supported on " +
+                  "your browser!\n(I know!!!11)");
+          }
         </script>
         <article class='example'>
         </article>

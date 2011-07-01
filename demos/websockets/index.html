@@ -174,10 +174,12 @@
             logMessage('Disconnected');
           }
 
-          function onMessage() {
+          function onMessage(event) {
+            logMessage('Recieved: ' + event.data);
           }
 
-          function onError() {
+          function onError(event) {
+            logMessage('Error: ' + event.data);
           }
         </script>
         <article class='example'>

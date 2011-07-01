@@ -111,18 +111,29 @@
           }
         </style>
         <script type='text/javascript'>
-          if ( 'WebSocket' in window ) {
-            var websocket = new WebSocket('ws://html5.array.org/time');
+          var websocket;
+          $(function() {
+            $('button#connect').click(function() {
+              if ( 'WebSocket' in window ) {
+                var wsURL = $('input#wsURL').val();
 
-            websocket.addEventListener('open', onOpen, false );
-            websocket.addEventListener('close', onClose, false );
-            websocket.addEventListener('message', onMessage, false );
-            websocket.addEventListener('error', onError, false );
-          }
-          else {
-            alert("Oh noes~! WebSockets are not supported on " +
-                  "your browser!\n(I know!!!11)");
-          }
+                websocket = new WebSocket(wsURL);
+
+                websocket.addEventListener('open', onOpen, false );
+                websocket.addEventListener('close', onClose, false );
+                websocket.addEventListener('message', onMessage, false );
+                websocket.addEventListener('error', onError, false );
+              }
+              else {
+                alert("Oh noes~! WebSockets are not supported on " +
+                      "your browser!\n(I know!!!11)");
+              }
+            });
+
+            $('button#disconnect').click(function() {
+              websocket.close();
+            });
+          });
 
           function onOpen() {
             $(window).unload(function() {
@@ -140,6 +151,11 @@
           }
         </script>
         <article class='example'>
+          <div>
+            <input type='text' id='wsURL' value='ws://html5.array.org:3000/time'>
+            <button id='connect'>Connect</button>
+            <button id='disconnect'>Disconnect</button>
+          </div>
         </article>
       </article>
     </section>

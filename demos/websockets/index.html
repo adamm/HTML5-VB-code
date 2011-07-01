@@ -152,9 +152,14 @@
         </script>
         <article class='example'>
           <div>
-            <input type='text' id='wsURL' value='ws://html5.array.org:3000/time'>
-            <button id='connect'>Connect</button>
-            <button id='disconnect'>Disconnect</button>
+            <input class='useWhileOffline' type='text' id='wsURL'
+                   value='ws://html5.array.org:3000/time'>
+            <button class='useWhileOffline' id='connect'>Connect</button>
+            <button class='useWhileOnline' id='disconnect'>Disconnect</button>
+          <div>
+          </div>
+            <input class='useWhileOnline' type='text' id='message'>
+            <button class='useWhileOnline' id='send'>Send</button>
           </div>
         </article>
       </article>

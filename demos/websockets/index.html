@@ -147,9 +147,14 @@
             $(window).unload(function() {
               websocket.close();
             });
+
+            $('.useWhileOnline').removeAttr('disabled');
+            $('.useWhileOffline').attr('disabled','true');
           }
 
           function onClose() {
+            $('.useWhileOnline').attr('disabled','true');
+            $('.useWhileOffline').removeAttr('disabled');
           }
 
           function onMessage() {

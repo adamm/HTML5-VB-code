@@ -133,6 +133,11 @@
             $('button#disconnect').click(function() {
               websocket.close();
             });
+
+            $('button#send').click(function() {
+              var message = $('input#message').val();
+              websocket.send(message);
+            });
           });
 
           function onOpen() {

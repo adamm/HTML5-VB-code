@@ -113,6 +113,11 @@
         <script type='text/javascript'>
           if ( 'WebSocket' in window ) {
             var websocket = new WebSocket('ws://html5.array.org/time');
+
+            websocket.addEventListener('open', onOpen, false );
+            websocket.addEventListener('close', onClose, false );
+            websocket.addEventListener('message', onMessage, false );
+            websocket.addEventListener('error', onError, false );
           }
           else {
             alert("Oh noes~! WebSockets are not supported on " +

@@ -113,6 +113,9 @@
         <script type='text/javascript'>
           var websocket;
           $(function() {
+            $('.useWhileOnline').attr('disabled','true');
+            $('.useWhileOffline').removeAttr('disabled');
+
             $('button#connect').click(function() {
               if ( 'WebSocket' in window ) {
                 var wsURL = $('input#wsURL').val();

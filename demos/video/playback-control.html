@@ -61,10 +61,27 @@
           }
         </style>
         <article class='example'>
+          <!-- Unicode character U+25B6 looks like a "play" symbol -->
+          <!-- Characters U+25AE U+25AE look like a "pause" symbol -->
+          <div id='controls'>
+            <button id='play'>&#x25B6;</button>
+          </div>
           <script type="text/javascript">
             $(function(){
               var video = document.getElementById('bogomips');
 
+              video.load();
+              $('button#play').click(function(){
+                // video.paused returns the current paused-playback state.
+                if ( video.paused ) {
+                  video.play();
+                  $('button#play').html('&#x25AE;&#x25AE;');
+                }
+                else {
+                  video.pause();
+                  $('button#play').html('&#x25B6;');
+                }
+              });
             });
           </script>
           <video id='bogomips' width='640' height='480' poster='media/bogomips.png'>

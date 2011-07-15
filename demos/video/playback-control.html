@@ -65,10 +65,21 @@
           <!-- Characters U+25AE U+25AE look like a "pause" symbol -->
           <div id='controls'>
             <button id='play'>&#x25B6;</button>
+            <input id='progress' type='range' min='0' max='0' value='0'>
+            <output id='time'></output>
           </div>
           <script type="text/javascript">
             $(function(){
               var video = document.getElementById('bogomips');
+              video.addEventListener('timeupdate', function() {
+                var wholeSeconds = ~~(this.currentTime);
+                var tenthsOfSeconds = ~~(this.currentTime*10)/10;
+                $('input#progress').val(wholeSeconds);
+                $('output#time').text(tenthsOfSeconds);
+              },false);
+              video.addEventListener('durationchange', function() {
+                $('input#progress').attr('max',~~(this.duration));
+              },false);
 
               video.load();
               $('button#play').click(function(){

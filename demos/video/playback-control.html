@@ -93,6 +93,12 @@
                   $('button#play').html('&#x25B6;');
                 }
               });
+              $('input#progress').mousedown(function(){video.pause()});
+              $('input#progress').change(function(){
+                video.currentTime = $(this).val();
+                $('output#time').text($(this).val());
+              });
+              $('input#progress').mouseup(function(){video.play()});
             });
           </script>
           <video id='bogomips' width='640' height='480' poster='media/bogomips.png'>

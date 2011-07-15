@@ -61,11 +61,21 @@
           VideoJS.setupAllWhenReady();
         </script>
         <article class='example'>
-          <video id='bogomips' width='640' height='480' controls poster='media/bogomips.png'>
-            <source src='media/bogomips.mp4' type='video/mp4; codecs="avc1.640029, mp4a.40.2"'>
-            <source src='media/bogomips.webm' type='video/webm; codecs="vp8, vorbis"'>
-            <source src='media/bogomips.ogv' type='video/ogg; codecs="theora, vorbis"'>
-          </video>
+          <div class="video-js-box">
+            <video class='video-js' id='bogomips' width='640' height='480' controls poster='media/bogomips.png'>
+              <source src='media/bogomips.mp4' type='video/mp4; codecs="avc1.640029, mp4a.40.2"'>
+              <source src='media/bogomips.webm' type='video/webm; codecs="vp8, vorbis"'>
+              <source src='media/bogomips.ogv' type='video/ogg; codecs="theora, vorbis"'>
+              <object class='vjs-flash-fallback' width='640' height='480'
+                  type='application/x-shockwave-flash'
+                  data='http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf'>
+                <param name='movie' 
+                    value='http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf'>
+                <param name='allowfullscreen' value='true' />
+                <param name='flashvars' value='config={"playlist":["http://html5.array.org/media/bogomips.png",{"url":"http://html5.array.org/media/bogomips.mp4","autoPlay":false,"autoBuffering":true}]}' />
+              </object>
+            </video>
+          </div>
         </article>
       </article>
     </section>

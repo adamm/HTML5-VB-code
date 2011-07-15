@@ -61,7 +61,13 @@
           }
         </style>
         <article class='example'>
-          <video width='640' height='480' poster='media/bogomips.png'>
+          <script type="text/javascript">
+            $(function(){
+              var video = document.getElementById('bogomips');
+
+            });
+          </script>
+          <video id='bogomips' width='640' height='480' poster='media/bogomips.png'>
             <source src="media/bogomips.mp4" type='video/mp4; codecs="avc1.640029, mp4a.40.2"'>
             <source src="media/bogomips.webm" type='video/webm; codecs="vp8, vorbis"'>
             <source src="media/bogomips.ogv" type='video/ogg; codecs="theora, vorbis"'>

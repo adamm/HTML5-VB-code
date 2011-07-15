@@ -54,6 +54,12 @@
             margin: 20px;
           }
         </style>
+        <script type='text/javascript' src='video.js'></script>
+        <link rel='stylesheet' type='text/css' media='screen' href='video-js.css'>
+        <script type='text/javascript'>
+          // Add VideoJS to all video tags on the page when the DOM is ready
+          VideoJS.setupAllWhenReady();
+        </script>
         <article class='example'>
           <video id='bogomips' width='640' height='480' controls poster='media/bogomips.png'>
             <source src='media/bogomips.mp4' type='video/mp4; codecs="avc1.640029, mp4a.40.2"'>

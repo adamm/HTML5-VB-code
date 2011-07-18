@@ -186,6 +186,10 @@
               event.dataTransfer.effectAllowed = 'move';
               event.dataTransfer.setData('text', data);
               $('output#log').append(event.type + ": " + data + "<br>");
+
+              $(srcDragElement).addClass('hide');
+              if (event.dataTransfer.setDragImage)
+                event.dataTransfer.setDragImage(this, this.width/2, this.height/2);
             }
 
             function onDragEnter(event) {
@@ -234,6 +238,8 @@
 
             function onDragEnd(event) {
               $('output#log').append(event.type + "<br>");
+
+              $(srcDragElement).removeClass('hide');
             }
           });
         </script>

@@ -163,6 +163,9 @@
         </style>
         <script type="text/javascript">
           $(function(){
+            function checkBrowserOrder() {
+              $('output#results').html("What? Opera came after Chrome? That's silly! Try again.");
+            }
             $('[draggable=true]').each(function(){
               this.addEventListener('dragstart', onDragStart, false );
               this.addEventListener('dragend',   onDragEnd, false );
@@ -214,7 +217,13 @@
               // adjacent to the source drag element.
               if ( $(srcDragElement).prev()[0] != this &&
                    $(srcDragElement).next()[0] != this ) {
+                var movedDropzoneElement = $(srcDragElement).prev().detach()
+                var movedElement = $(srcDragElement).detach();
+                $(this).after(movedDropzoneElement).after(movedElement);
 
+                var data = event.dataTransfer.getData('text');
+                $('output#log').append("Checking " + data + "<br>");
+                checkBrowserOrder(data);
               }
               else {
                 $('output#log').append("Nothing to do.<br>");
@@ -247,6 +256,7 @@
             <img class='icon' draggable='true' src='images/safari.png' title='Safari'>
             <span class='dropzone'></span>
           </div>
+          <output id='results'></output>
           <output id='log'></output>
         </article>
       </article>

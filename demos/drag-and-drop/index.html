@@ -195,6 +195,8 @@
 
               event.dataTransfer.dropEffect = 'move';
               $('output#log').append(event.type + "<br>");
+
+              return false;
             }
 
             function onDragLeave(event) {

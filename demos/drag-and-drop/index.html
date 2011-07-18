@@ -174,8 +174,12 @@
               this.addEventListener('drop',      onDrop, false );
             });
 
+            var srcDragElement;
+
             function onDragStart(event) {
               $('output#log').append(event.type + "<br>");
+
+              srcDragElement = this;
             }
 
             function onDragEnter(event) {

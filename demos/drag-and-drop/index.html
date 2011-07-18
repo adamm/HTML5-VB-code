@@ -204,7 +204,13 @@
             }
 
             function onDrop(event) {
-              $('output#log').append(event.type + "<br>");
+              if ( event.preventDefault )
+                event.preventDefault();
+
+              var effect = event.dataTransfer.dropEffect;
+              $('output#log').append(event.type + ": " + effect + "<br>");
+
+              return false;
             }
 
             function onDragEnd(event) {

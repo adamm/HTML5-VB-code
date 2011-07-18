@@ -163,7 +163,10 @@
         </style>
         <script type="text/javascript">
           $(function(){
-
+            $('[draggable=true]').each(function(){
+              this.addEventListener('dragstart', onDragStart, false );
+              this.addEventListener('dragend',   onDragEnd, false );
+            });
           });
         </script>
         <article class='example'>

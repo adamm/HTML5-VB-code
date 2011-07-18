@@ -210,6 +210,16 @@
               var effect = event.dataTransfer.dropEffect;
               $('output#log').append(event.type + ": " + effect + "<br>");
 
+              // Verify that the user is dropping into a dropzone not
+              // adjacent to the source drag element.
+              if ( $(srcDragElement).prev()[0] != this &&
+                   $(srcDragElement).next()[0] != this ) {
+
+              }
+              else {
+                $('output#log').append("Nothing to do.<br>");
+              }
+
               return false;
             }
 

@@ -190,6 +190,9 @@
             }
 
             function onDragOver(event) {
+              if ( event.preventDefault )
+                event.preventDefault();
+
               $('output#log').append(event.type + "<br>");
             }
 

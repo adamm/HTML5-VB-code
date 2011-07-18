@@ -177,9 +177,12 @@
             var srcDragElement;
 
             function onDragStart(event) {
-              $('output#log').append(event.type + "<br>");
+              var data = $(this).attr('title');
 
               srcDragElement = this;
+              event.dataTransfer.effectAllowed = 'move';
+              event.dataTransfer.setData('text', data);
+              $('output#log').append(event.type + ": " + data + "<br>");
             }
 
             function onDragEnter(event) {

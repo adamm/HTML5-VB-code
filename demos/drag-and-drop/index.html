@@ -167,6 +167,14 @@
               this.addEventListener('dragstart', onDragStart, false );
               this.addEventListener('dragend',   onDragEnd, false );
             });
+
+            function onDragStart(event) {
+              $('output#log').append(event.type + "<br>");
+            }
+
+            function onDragEnd(event) {
+              $('output#log').append(event.type + "<br>");
+            }
           });
         </script>
         <article class='example'>

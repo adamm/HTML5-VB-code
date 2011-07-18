@@ -194,6 +194,8 @@
 
             function onDragEnter(event) {
               $('output#log').append(event.type + "<br>");
+
+              $(this).addClass('hover');
             }
 
             function onDragOver(event) {
@@ -208,6 +210,8 @@
 
             function onDragLeave(event) {
               $('output#log').append(event.type + "<br>");
+
+              $(this).removeClass('hover');
             }
 
             function onDrop(event) {
@@ -240,6 +244,9 @@
               $('output#log').append(event.type + "<br>");
 
               $(srcDragElement).removeClass('hide');
+              $('.hover').each(function() {
+                $(this).removeClass('hover');
+              });
             }
           });
         </script>

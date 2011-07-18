@@ -168,7 +168,9 @@
               this.addEventListener('dragend',   onDragEnd, false );
             });
             $('.dropzone').each(function(){
+              this.addEventListener('dragenter', onDragEnter, false );
               this.addEventListener('dragover',  onDragOver, false );
+              this.addEventListener('dragleave', onDragLeave, false );
               this.addEventListener('drop',      onDrop, false );
             });
 
@@ -176,7 +178,15 @@
               $('output#log').append(event.type + "<br>");
             }
 
+            function onDragEnter(event) {
+              $('output#log').append(event.type + "<br>");
+            }
+
             function onDragOver(event) {
+              $('output#log').append(event.type + "<br>");
+            }
+
+            function onDragLeave(event) {
               $('output#log').append(event.type + "<br>");
             }
 

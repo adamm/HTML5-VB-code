@@ -167,6 +167,10 @@
               this.addEventListener('dragstart', onDragStart, false );
               this.addEventListener('dragend',   onDragEnd, false );
             });
+            $('.dropzone').each(function(){
+              this.addEventListener('dragover',  onDragOver, false );
+              this.addEventListener('drop',      onDrop, false );
+            });
 
             function onDragStart(event) {
               $('output#log').append(event.type + "<br>");

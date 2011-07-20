@@ -193,9 +193,16 @@ function displayObjectById(id) {
             // browsers.
 
             var db, database = 'myDatabase';
+            var objectStore = 'myStore';
+
             var openDB = indexedDB.open(database);
             openDB.onsuccess = function(event) {
               db = event.target.result;
+              try {
+                // Basic transaction call to trigger NOT_FOUND_ERR exception
+                var store = db.transaction(objectStore, IDBTransaction.READ_ONLY).objectStore(objectStore);
+              } catch(e) {
+              }
             }
             openDB.onerror = popupErrorEvent;
 

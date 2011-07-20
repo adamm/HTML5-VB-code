@@ -191,6 +191,12 @@ function displayObjectById(id) {
             // This shim is very flimsy. It is very likely to change as
             // IndexedDB becomes more stable and supported in more
             // browsers.
+
+            var db, database = 'myDatabase';
+            var openDB = indexedDB.open(database);
+            openDB.onsuccess = function(event) {
+              db = event.target.result;
+            }
           });
         </script>
         <article class='example'>

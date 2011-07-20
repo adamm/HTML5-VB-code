@@ -61,13 +61,21 @@ sessionStorage.setItem(<mark>key</mark>, JSON.stringify(<mark>object</mark>));
             var count = 0;
 
             if (sessionStorage.getItem('sessionCount'))
-              count = sessionStorage.getItem('sessionCount');
+              count = JSON.parse(sessionStorage.getItem('sessionCount'));
             sessionStorage.setItem('sessionCount', JSON.stringify(++count));
+
+            $('output#sessionCount').text(count);
+            if ( count != 1 )
+              $('output#sessionCountPlural').text('s');
 
             count = 0;
             if (localStorage.getItem('localCount'))
-              count = localStorage.getItem('localCount');
+              count = JSON.parse(localStorage.getItem('localCount'));
             localStorage.setItem('localCount', JSON.stringify(++count));
+
+            $('output#localCount').text(count);
+            if ( count != 1 )
+              $('output#localCountPlural').text('s');
           });
         </script>
         <article class='example'>

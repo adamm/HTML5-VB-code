@@ -60,6 +60,9 @@ sessionStorage.setItem(<mark>key</mark>, JSON.stringify(<mark>object</mark>));
           $(function(){
             var count = 0;
             sessionStorage.setItem('sessionCount', ++count);
+
+            count = 0;
+            localStorage.setItem('localCount', ++count);
           });
         </script>
         <article class='example'>

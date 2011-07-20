@@ -197,6 +197,13 @@ function displayObjectById(id) {
             openDB.onsuccess = function(event) {
               db = event.target.result;
             }
+            openDB.onerror = popupErrorEvent;
+
+            function popupErrorEvent(event) {
+              console.log('Error ', event.target);
+              alert('Error:' + event.target.errorCode + ": " +
+                event.target.webkitErrorMessage + "\n(see console log)");
+            }
           });
         </script>
         <article class='example'>

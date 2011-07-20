@@ -58,6 +58,8 @@ sessionStorage.setItem(<mark>key</mark>, JSON.stringify(<mark>object</mark>));
         </style>
         <script type="text/javascript">
           $(function(){
+            var count = 0;
+            sessionStorage.setItem('sessionCount', ++count);
           });
         </script>
         <article class='example'>

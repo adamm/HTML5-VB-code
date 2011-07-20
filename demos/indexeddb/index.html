@@ -181,6 +181,10 @@ function displayObjectById(id) {
         </style>
         <script type="text/javascript">
           $(function(){
+            // Merge the various IndexedDB interface names into properly
+            // named variables. Falling back to the Webkit and Mozilla names
+            // makes it possible for Chrome and Firefox to use the same code.
+            var indexedDB = window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB;
           });
         </script>
         <article class='example'>

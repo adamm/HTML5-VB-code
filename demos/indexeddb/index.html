@@ -185,6 +185,12 @@ function displayObjectById(id) {
             // named variables. Falling back to the Webkit and Mozilla names
             // makes it possible for Chrome and Firefox to use the same code.
             var indexedDB = window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB;
+            var IDBDatabaseException = window.IDBDatabaseException || window.webkitIDBDatabaseException;
+            var IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange;
+            var IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction;
+            // This shim is very flimsy. It is very likely to change as
+            // IndexedDB becomes more stable and supported in more
+            // browsers.
           });
         </script>
         <article class='example'>

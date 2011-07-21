@@ -285,6 +285,16 @@ function displayObjectById(id) {
               request.onerror = popupErrorEvent;
             }
 
+            function deleteObjectStore() {
+              var request = db.setVersion('1.0');
+
+              request.onsuccess = function(event) {
+                db.deleteObjectStore(objectStore);
+                console.log('Deleted object store', objectStore, 'from', db);
+              }
+              request.onerror = popupErrorEvent;
+            }
+
             $('button#add-object').click(function(){
               try {
                 var object = {};
@@ -297,6 +307,9 @@ function displayObjectById(id) {
                 console.log( "Exception error!!", e);
               }
             });
+            $('button#delete-store').click(function(){
+              deleteObjectStore();
+            });
           });
         </script>
         <article class='example'>
@@ -305,6 +318,7 @@ function displayObjectById(id) {
           <input id='key2' type='text' value='key2' size='5'>: <input id='value2' type='text'><br>
           <input id='key3' type='text' value='key3' size='5'>: <input id='value3' type='text'>
           <button id='add-object'>Add Object</button>
+          <button id='delete-store'>Delete Store</button><br>
         </article>
       </article>
     </section>

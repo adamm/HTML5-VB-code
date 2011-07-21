@@ -258,10 +258,31 @@ function displayObjectById(id) {
               var container = $('ol#objects');
               var li = $('<li></li>');
               var text = JSON.stringify(data);
+              var delImage = $('<img>');
+
+              delImage.attr('src', 'images/gtk-close.png');
+              delImage.css('vertical-align', 'middle');
+              delImage.click(function(event) {
+                deleteObjectById(data.id);
+              });
 
               li.attr('id',data.id);
               li.text(text);
+              li.append(delImage);
               container.append(li);
+            }
+
+            function deleteObjectById(id) {
+              var transaction = db.transaction(objectStore, IDBTransaction.READ_WRITE);
+              var store = transaction.objectStore(objectStore);
+              var request = store.delete(id);
+
+              request.onsuccess = function(event) {
+                console.log('deleteObjectById', id);
+                // Use jQuery to hide the object from the browser
+                $('ol#objects li#'+id).remove();
+              };
+              request.onerror = popupErrorEvent;
             }
 
             $('button#add-object').click(function(){

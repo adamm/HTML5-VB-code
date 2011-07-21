@@ -201,11 +201,16 @@ function displayObjectById(id) {
               try {
                 // Basic transaction call to trigger NOT_FOUND_ERR exception
                 var store = db.transaction(objectStore, IDBTransaction.READ_ONLY).objectStore(objectStore);
+                console.log('Loaded database and object store', db, store);
               } catch(e) {
+                console.log('Transaction Exception', e);
                 if ( e.code == IDBDatabaseException.NOT_FOUND_ERR ) {
                   var request = db.setVersion('1.0');
 
                   request.onsuccess = function(event) {
+                    var store = db.createObjectStore(objectStore, 
+                                  {keyPath: 'id', autoIncrement: true});
+                    console.log('Created store', store);
                   }
                   request.onerror = popupErrorEvent;
                 }

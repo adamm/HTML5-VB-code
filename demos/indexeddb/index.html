@@ -245,11 +245,29 @@ function displayObjectById(id) {
 
               li.attr('id',data.id);
               li.text(text);
-              container.append(row);
+              container.append(li);
             }
+
+            $('button#add-object').click(function(){
+              try {
+                var object = {};
+                object[$('input#key1').val()] = $('input#value1').val();
+                object[$('input#key2').val()] = $('input#value2').val();
+                object[$('input#key3').val()] = $('input#value3').val();
+                addObject(object);
+              }
+              catch(e) {
+                console.log( "Exception error!!", e);
+              }
+            });
           });
         </script>
         <article class='example'>
+          <ol id='objects'></ol>
+          <input id='key1' type='text' value='key1' size='5'>: <input id='value1' type='text'><br>
+          <input id='key2' type='text' value='key2' size='5'>: <input id='value2' type='text'><br>
+          <input id='key3' type='text' value='key3' size='5'>: <input id='value3' type='text'>
+          <button id='add-object'>Add Object</button>
         </article>
       </article>
     </section>

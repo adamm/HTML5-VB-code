@@ -238,6 +238,16 @@ function displayObjectById(id) {
               request.onerror = popupErrorEvent;
             }
 
+            function displayObjects() {
+              var transaction = db.transaction(objectStore, IDBTransaction.READ_ONLY);
+              var store = transaction.objectStore(objectStore);
+              var request = store.openCursor();
+
+              request.onsuccess = function(event) {
+              };
+              request.onerror = popupErrorEvent;
+            }
+
             function renderObject(data) {
               var container = $('ol#objects');
               var li = $('<li></li>');

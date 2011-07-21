@@ -162,6 +162,8 @@ pre code {
   font-size: 0.9em;
   padding: 0;
   background: none;
+  overflow: auto;
+  width: 690px;
 }
 pre .value {
   font-style: italic;

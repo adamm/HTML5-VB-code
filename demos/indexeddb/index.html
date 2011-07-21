@@ -202,6 +202,7 @@ function displayObjectById(id) {
                 // Basic transaction call to trigger NOT_FOUND_ERR exception
                 var store = db.transaction(objectStore, IDBTransaction.READ_ONLY).objectStore(objectStore);
                 console.log('Loaded database and object store', db, store);
+                displayObjects();
               } catch(e) {
                 console.log('Transaction Exception', e);
                 if ( e.code == IDBDatabaseException.NOT_FOUND_ERR ) {

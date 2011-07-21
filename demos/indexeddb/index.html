@@ -244,6 +244,11 @@ function displayObjectById(id) {
               var request = store.openCursor();
 
               request.onsuccess = function(event) {
+                if ( cursor = event.target.result ) {
+                  console.log('displayObject', cursor.value);
+                  renderObject(cursor.value);
+                  cursor.continue();
+                }
               };
               request.onerror = popupErrorEvent;
             }

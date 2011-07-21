@@ -223,6 +223,13 @@ function displayObjectById(id) {
               alert('Error:' + event.target.errorCode + ": " +
                 event.target.webkitErrorMessage + "\n(see console log)");
             }
+
+            function addObject(object) {
+              var transaction = db.transaction(objectStore, IDBTransaction.READ_WRITE);
+              var store = transaction.objectStore(objectStore);
+              var request = store.add(object);
+              console.log('addObject', object, request);
+            }
           });
         </script>
         <article class='example'>

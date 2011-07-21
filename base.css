@@ -221,3 +221,6 @@ meter {
 pre .html .javascript {
   opacity: 1;
 }
+.faded {
+  opacity: 0.2;
+}

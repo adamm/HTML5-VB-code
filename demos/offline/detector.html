@@ -61,6 +61,16 @@ if ( "onLine" in navigator ) {
         </style>
         <script type="text/javascript">
           $(function(){
+            function browserOnline()  {
+              $('output#browserStatus').text('online');
+            }
+            function browserOffline() {
+              $('output#browserStatus').text('offline');
+            }
+
+            window.addEventListener('online', browserOnline, false);
+            window.addEventListener('offline', browserOffline, false);
+
             if ( "onLine" in navigator ) {
               if ( navigator.onLine ) {
                 browserOnline();

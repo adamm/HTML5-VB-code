@@ -53,6 +53,89 @@ if ( "onLine" in navigator ) {
   }
 }
 </code></pre>
+        <hgroup>
+          <h4>Network Status Detection</h4>
+          <h5>Synopsis</h5>
+        </hgroup>
+        <pre><code class='javascript'>
+function testXHR(callback) {
+  var xhr = new XMLHttpRequest();
+  var noResponseTimer = setTimeout(function() {
+    xhr.abort();
+    callback(false);
+  }, 5000);
+
+  xhr.onreadystatechange = function(event) {
+    if (xhr.readyState != 4)
+      return;
+
+    clearTimeout(noResponseTimer);
+    if (xhr.status == 200)
+      callback(true);
+    else
+      callback(false);
+  }
+  xhr.open('GET', <mark>URL</mark> + '?' + new Date().getTime())
+  try {
+    xhr.send();
+  }
+  catch(e) {
+    callback(false);
+  }
+}
+
+var networkTimer;
+function testNetwork() {
+  testXHR(fireNetworkEvent);
+  networkTimer = setInterval(function(){
+    testXHR(fireNetworkEvent);
+  }, <mark>30000</mark>);
+}
+
+function lostNetwork() {
+  clearInterval(networkTimer);
+  fireNetworkEvent(false);
+}
+
+var networkStatus;
+function fireNetworkEvent(state) {
+  if ( networkStatus == state )
+    return;
+
+  networkStatus = state;
+  var event = document.createEvent('Event');
+  event.initEvent(state ? 'netonline' : 'netoffline', true, true);
+  window.dispatchEvent(event);
+}
+
+function networkOnline()  {
+  // Network is online
+}
+function networkOffline() {
+  // Network is offline
+}
+
+<span class='faded'>window.addEventListener('online', browserOnline, false);</span>
+window.addEventListener('online', testNetwork, false);
+<span class='faded'>window.addEventListener('offline', browserOffline, false);</span>
+window.addEventListener('offline', lostNetwork, false);
+window.addEventListener('netonline', networkOnline, false);
+window.addEventListener('netoffline', networkOffline, false);
+
+<span class='faded'>if ( "onLine" in navigator ) {
+  if ( navigator.onLine ) {
+    browserOnline();</span>
+    testNetwork();
+<span class='faded'>  }
+  else {
+    browserOffline();</span>
+    fireNetworkEvent(false);
+<span class='faded'>  }
+}</span>
+else {
+  testNetwork();
+}
+</code></pre>
         <h5>Example</h5>
         <style>
           article.example {
@@ -61,29 +144,10 @@ if ( "onLine" in navigator ) {
         </style>
         <script type="text/javascript">
           $(function(){
-            function browserOnline()  {
-              $('output#browserStatus').text('online');
-            }
-            function browserOffline() {
-              $('output#browserStatus').text('offline');
-            }
-
-            window.addEventListener('online', browserOnline, false);
-            window.addEventListener('offline', browserOffline, false);
-
-            if ( "onLine" in navigator ) {
-              if ( navigator.onLine ) {
-                browserOnline();
-              }
-              else {
-                browserOffline();
-              }
-            }
           });
         </script>
         <article class='example'>
           <p>
-            The browser is: <output id='browserStatus'>(state unknown)</output>
           </p>
         </article>
       </article>

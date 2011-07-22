@@ -2,6 +2,7 @@ function testXHR(callback) {
   var xhr = new XMLHttpRequest();
   var noResponseTimer = setTimeout(function() {
     xhr.abort();
+    callback(false);
   }, 5000);
 
   xhr.onreadystatechange = function(event) {
@@ -9,7 +10,13 @@ function testXHR(callback) {
       return;
 
     clearTimeout(noResponseTimer);
+    if (xhr.status == 200)
+      callback(true);
+    else
+      callback(false);
   }
+  xhr.open('GET', '/');
+  xhr.send();
 }
 
 function fireNetworkEvent(state) {

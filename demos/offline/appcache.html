@@ -48,6 +48,24 @@
         <pre><code class='html'>&lt;!doctype html&gt;
 &lt;html manifest='mysite.manifest'&gt;
 </code></pre>
+        <hgroup>
+          <h4>Update the Application Cache</h4>
+          <h5>Synopsis</h5>
+        </hgroup>
+        <pre><code class='javascript'>if ('applicationCache' in window) {
+  var appCache = applicationCache;
+  appCache.addEventListener('updateready', function(event){
+    appCache.swapCache();
+    if ( ! appCache.autoUpdate || confirm( "Update found. Reload?" ) )
+      location.reload();
+  }, false);
+
+  setInterval(function() {
+    appCache.autoUpdate = 1;
+    appCache.update();
+  }, 10000 );
+}
+</code></pre>
         <h5>Example</h5>
         <style>
           article.example {

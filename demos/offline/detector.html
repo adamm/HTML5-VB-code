@@ -61,6 +61,14 @@ if ( "onLine" in navigator ) {
         </style>
         <script type="text/javascript">
           $(function(){
+            if ( "onLine" in navigator ) {
+              if ( navigator.onLine ) {
+                browserOnline();
+              }
+              else {
+                browserOffline();
+              }
+            }
           });
         </script>
         <article class='example'>

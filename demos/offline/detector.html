@@ -145,6 +145,10 @@ else {
         <script type='text/javascript' src='demos/offline/network-detector.js'></script>
         <script type='text/javascript'>
           $(function(){
+            window.addEventListener('online', browserOnline, false);
+            window.addEventListener('offline', browserOffline, false);
+            window.addEventListener('netonline', networkOnline, false);
+            window.addEventListener('netoffline', networkOffline, false);
           });
         </script>
         <article class='example'>

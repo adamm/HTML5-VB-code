@@ -15,8 +15,13 @@ function testXHR(callback) {
     else
       callback(false);
   }
-  xhr.open('GET', '/');
-  xhr.send();
+  xhr.open('GET', '/' + '?' + new Date().getTime());
+  try {
+    xhr.send();
+  }
+  catch(e) {
+    callback(false);
+  }
 }
 
 function fireNetworkEvent(state) {

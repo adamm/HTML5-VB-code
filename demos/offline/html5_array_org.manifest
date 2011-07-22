@@ -1,3 +1,10 @@
 CACHE MANIFEST
 # Version 1
 
+appcache.html
+../../jquery-1.6.1.js
+../../highlight.min.js
+../../highlight.min.css
+../../base.css
+../../mobile.css
+../../images/terra_bg.png

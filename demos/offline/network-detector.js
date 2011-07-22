@@ -24,7 +24,12 @@ function testXHR(callback) {
   }
 }
 
+var networkStatus;
 function fireNetworkEvent(state) {
+  if ( networkStatus == state )
+    return;
+
+  networkStatus = state;
   var event = document.createEvent('Event');
   event.initEvent(state ? 'netonline' : 'netoffline', true, true);
   window.dispatchEvent(event);
@@ -41,7 +46,20 @@ function testNetwork() {
 
 function lostNetwork() {
   clearInterval(networkTimer);
+  fireNetworkEvent(false);
 }
 
 window.addEventListener('online', testNetwork, false);
 window.addEventListener('offline', lostNetwork, false);
+
+if ( "onLine" in navigator ) {
+  if ( navigator.onLine ) {
+    testNetwork();
+  }
+  else {
+    fireNetworkEvent(false);
+  }
+}
+else {
+  testNetwork();
+}

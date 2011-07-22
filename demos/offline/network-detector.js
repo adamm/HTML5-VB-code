@@ -27,11 +27,16 @@ function testXHR(callback) {
 function fireNetworkEvent(state) {
 }
 
+var networkTimer;
 function testNetwork() {
   testXHR(fireNetworkEvent);
+  networkTimer = setInterval(function(){
+    testXHR(fireNetworkEvent);
+  }, 30000);
 }
 
 function lostNetwork() {
+  clearInterval(networkTimer);
 }
 
 window.addEventListener('online', testNetwork, false);

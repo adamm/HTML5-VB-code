@@ -78,8 +78,14 @@ if ('applicationCache' in window) {
   var appCache = applicationCache;
   appCache.addEventListener('updateready', function(event){
     appCache.swapCache();
-    location.reload();
+    if ( !appCache.autoUpdate || confirm( "Update found. Reload?" ) )
+      location.reload();
   }, false);
+
+  setInterval(function() {
+    appCache.autoUpdate = 1;
+    appCache.update();
+  }, 10000 );
 }
           });
         </script>

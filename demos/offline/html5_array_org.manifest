@@ -2,6 +2,8 @@ CACHE MANIFEST
 # Version 1
 
 appcache.html
+detector.html
+network-detector.js
 ../../jquery-1.6.1.js
 ../../highlight.min.js
 ../../highlight.min.css

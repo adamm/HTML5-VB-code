@@ -74,6 +74,13 @@
         </style>
         <script type="text/javascript">
           $(function(){
+if ('applicationCache' in window) {
+  var appCache = applicationCache;
+  appCache.addEventListener('updateready', function(event){
+    appCache.swapCache();
+    location.reload();
+  }, false);
+}
           });
         </script>
         <article class='example'>

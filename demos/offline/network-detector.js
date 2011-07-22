@@ -25,6 +25,10 @@ function testXHR(callback) {
 }
 
 function fireNetworkEvent(state) {
+  var event = document.createEvent('Event');
+  event.initEvent(state ? 'netonline' : 'netoffline', true, true);
+  window.dispatchEvent(event);
+  console.log('Firing event', event.type);
 }
 
 var networkTimer;

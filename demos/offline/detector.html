@@ -145,10 +145,33 @@ else {
         <script type='text/javascript' src='demos/offline/network-detector.js'></script>
         <script type='text/javascript'>
           $(function(){
+            function browserOnline() {
+              $('output#browserStatus').text('online');
+            }
+            function browserOffline() {
+              $('output#browserStatus').text('offline');
+            }
+            function networkOnline() {
+              $('output#networkStatus').text('online');
+            }
+            function networkOffline() {
+              $('output#networkStatus').text('offline');
+            }
+
             window.addEventListener('online', browserOnline, false);
             window.addEventListener('offline', browserOffline, false);
             window.addEventListener('netonline', networkOnline, false);
             window.addEventListener('netoffline', networkOffline, false);
+
+            if ( "onLine" in navigator ) {
+              // Note the network tests that are triggered by
+              // navigator.onLine are run separately, within
+              // network-detector.js
+              if ( navigator.onLine )
+                browserOnline();
+              else
+                browserOffline();
+            }
           });
         </script>
         <article class='example'>

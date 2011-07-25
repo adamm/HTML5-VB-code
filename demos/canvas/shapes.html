@@ -83,6 +83,19 @@ context.quadraticCurveTo(<i>cpx</i>, <i>cpy</i>, <i>x</i>, <i>y</i>);
             if (canvas.getContext) {
               var context = canvas.getContext('2d');
 
+              // Draw lines parallel to each axis every 100 pixels at the
+              // half-pixel, this produces cleaner lines. See Dive Into
+              // HTML5's "Pixel Madness" for a very good explanation:
+              // http://diveintohtml5.org/canvas.html#pixel-madness
+              context.beginPath();
+              for ( var i = 0.5; i < canvas.width; i += 100 ) {
+                context.moveTo(i, 0);
+                context.lineTo(i, canvas.height);
+              }
+              for ( var i = 0.5; i < canvas.height; i += 100 ) {
+                context.moveTo(0, i);
+                context.lineTo(canvas.width, i);
+              }
             }
           });
         </script>

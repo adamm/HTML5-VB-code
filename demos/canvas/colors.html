@@ -110,7 +110,6 @@ context.strokeStyle = gradient;
                 gradient.addColorStop(0, 'red');
                 gradient.addColorStop(0.5, 'white');
                 gradient.addColorStop(1, 'blue');
-                //gradient.addColorStop(1, 'rgba(255,255,255,0)');
 
                 context.save();
 
@@ -158,6 +157,7 @@ context.strokeStyle = gradient;
               draw3();
 
               function draw3() {
+                var gradient = context.createRadialGradient(250,250,50,250,250,200);
               }
             }
           });

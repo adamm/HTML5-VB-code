@@ -62,6 +62,12 @@ context.strokeText(<i>text</i>, <i>x</i>, <i>y</i>);
               context.save();
 
               context.font = 'bold italic small-caps 60px "Times New Roman",serif';
+              context.textAlign = 'center';
+              context.textBaseline = 'middle';
+              context.fillText('Abcd1234', 300, 200);
+              context.strokeText('Abcd1234', 300, 300);
+
+              context.restore();
             }
           });
         </script>

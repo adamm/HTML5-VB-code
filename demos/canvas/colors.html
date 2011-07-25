@@ -79,6 +79,43 @@ context.strokeStyle = '<i>color</i>';
             Your browser does not support the HTML5 canvas.
           </canvas>
         </article>
+        <hgroup>
+          <h4>Linear Gradient Colors</h4>
+          <h5>Synopsis</h5>
+        </hgroup>
+        <pre><code class='javascript'>var gradient = context.createLinearGradient(<i>x0</i>, <i>y0</i>, <i>x1</i>, <i>y1</i>);
+gradient.addColorStop(<i>offset0</i>, '<i>color0</i>');
+gradient.addColorStop(<i>offset1</i>, '<i>color1</i>');
+...
+context.fillStyle = gradient;
+context.strokeStyle = gradient;
+</code></pre>
+        <h5>Example</h5>
+        <style>
+          article.example {
+            margin: 10px;
+          }
+        </style>
+        <script type="text/javascript">
+          $(function(){
+            var canvas = $('canvas#surface')[1];
+            if (canvas.getContext) {
+              var context = canvas.getContext('2d');
+
+              drawGridLayout(context);
+              draw2();
+
+              function draw2() {
+              }
+            }
+          });
+        </script>
+        <article class='example'>
+          <input type=checkbox id='showgrid' checked>Show Grid Layout
+          <canvas id='surface' width='700' height='500'>
+            Your browser does not support the HTML5 canvas.
+          </canvas>
+        </article>
       </article>
     </section>
     <footer>

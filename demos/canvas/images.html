@@ -113,6 +113,57 @@ image.onload = function() {
             Your browser does not support the HTML5 canvas.
           </canvas>
         </article>
+        <hgroup>
+          <h4>Crop an Image</h4>
+          <h5>Synopsis</h5>
+        </hgroup>
+        <pre><code class='javascript'>var image = new Image();
+image.src = '<i>image.jpg</i>';
+image.onload = function() {
+  context.drawImage(image, <i>srcX</i>, <i>srcY</i>, <i>srcW</i>, <i>srcH</i>, <i>destX</i>, <i>destY</i>, <i>destW</i>, <i>destH</i>);
+};</code></pre>
+        <h5>Example</h5>
+        <style>
+          article.example {
+            margin: 10px;
+          }
+        </style>
+        <script type="text/javascript">
+          $(function(){
+            var canvas = $('canvas#surface')[2];
+            if (canvas.getContext) {
+              var context = canvas.getContext('2d');
+
+              drawGridLayout(context);
+              draw3();
+
+              function draw3() {
+                var image = new Image();
+
+                image.src = 'images/rpg_sprite_walk.png';
+                image.onload = function() {
+                  var spriteWidth = 24;
+                  var spriteHeight = 32;
+                  // Stride Column # (24 pixels wide)
+                  // 7 strides total
+                  var stride = 5;
+                  // Direction Row # (32 pixels high)
+                  // 0: front, 1: back, 2: left, 3: right
+                  var direction = 3;
+
+                  var spriteX = stride * spriteWidth;
+                  var spriteY = direction * spriteHeight;
+                };
+              }
+            }
+          });
+        </script>
+        <article class='example'>
+          <input type=checkbox id='showgrid' checked>Show Grid Layout
+          <canvas id='surface' width='700' height='500'>
+            Your browser does not support the HTML5 canvas.
+          </canvas>
+        </article>
       </article>
     </section>
     <footer>

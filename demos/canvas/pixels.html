@@ -68,6 +68,10 @@
                     for ( var x = 0; x < image.width; x++ ) {
                       for ( var y = 0; y < image.height; y++ ) {
                         var index = (y * image.width + x) * 4
+                        var red   = image.data[index+0];
+                        var green = image.data[index+1];
+                        var blue  = image.data[index+2];
+                        var alpha = image.data[index+3];
                       }
                     }
                   }

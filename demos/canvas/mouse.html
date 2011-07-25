@@ -40,6 +40,9 @@
           article.example {
             margin: 10px;
           }
+          .no-cursor {
+            cursor: none;
+          }
         </style>
         <script type='text/javascript' src='demos/canvas/canvas-grid.js'></script>
         <script type="text/javascript">
@@ -59,6 +62,17 @@
 
                   context.clearRect(0, 0, context.canvas.width, context.canvas.height);
                   context.drawImage(tux, 0, 0);
+
+                  canvas.addEventListener('mousedown', onMouseDown, false);
+
+                  function onMouseDown(event) {
+                    event.preventDefault();
+                    if ( event.button == 0 ) {
+
+                      $('canvas').addClass('no-cursor');
+                      onCanvasMouseEvent(event);
+                    }
+                  }
 
                   // Take a snapshot the image at (x,y,w,h).
                   // Redraw the snapshot, magnified, beside the original image.

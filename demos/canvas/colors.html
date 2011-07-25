@@ -109,7 +109,8 @@ context.strokeStyle = gradient;
                 var gradient = context.createLinearGradient(100, 100, 400, 400);
                 gradient.addColorStop(0, 'red');
                 gradient.addColorStop(0.5, 'white');
-                gradient.addColorStop(1, 'rgba(255,255,255,0)');
+                gradient.addColorStop(1, 'blue');
+                //gradient.addColorStop(1, 'rgba(255,255,255,0)');
 
                 context.save();
 
@@ -120,6 +121,43 @@ context.strokeStyle = gradient;
                 context.fillRect(250, 250, 200, 100);
 
                 context.restore();
+              }
+            }
+          });
+        </script>
+        <article class='example'>
+          <input type=checkbox id='showgrid' checked>Show Grid Layout
+          <canvas id='surface' width='700' height='500'>
+            Your browser does not support the HTML5 canvas.
+          </canvas>
+        </article>
+        <hgroup>
+          <h4>Radial Gradient Colors</h4>
+          <h5>Synopsis</h5>
+        </hgroup>
+        <pre><code class='javascript'>var gradient = context.createRadialGradient(<i>x0</i>, <i>y0</i>, <i>r0</i>, <i>x1</i>, <i>y1</i>, <i>r1</i>);
+gradient.addColorStop(<i>offset0</i>, '<i>color0</i>');
+gradient.addColorStop(<i>offset1</i>, '<i>color1</i>');
+...
+context.fillStyle = gradient;
+context.strokeStyle = gradient;
+</code></pre>
+        <h5>Example</h5>
+        <style>
+          article.example {
+            margin: 10px;
+          }
+        </style>
+        <script type="text/javascript">
+          $(function(){
+            var canvas = $('canvas#surface')[2];
+            if (canvas.getContext) {
+              var context = canvas.getContext('2d');
+
+              drawGridLayout(context);
+              draw3();
+
+              function draw3() {
               }
             }
           });

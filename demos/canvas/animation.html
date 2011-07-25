@@ -113,12 +113,17 @@ window.clearRequestTimeout = function(handle) {
               context.strokeStyle = 'black';
               context.fillStyle = 'yellow';
 
+              movePuckman();
+
               function movePuckman() {
                 /* Animation Stage 2 */
                 bouncePuckman();
                 /* Animation Stage 3 */
                 clearPuckman();
+                /* Animation Stage 4 */
+                drawPuckman();
 
+                requestAnimFrame(movePuckman);
               }
 
               function bouncePuckman() {
@@ -155,6 +160,48 @@ window.clearRequestTimeout = function(handle) {
                  * different framerate as the move animation. */
                 context.clearRect(lastX-r-1, lastY-r-1, r*2+2, r*2+2 );
                 context.clearRect(x-r-1, y-r-1, r*2+2, r*2+2 );
+              }
+
+              function drawPuckman() {
+
+                context.save();
+                context.translate(x, y);
+                if ( a != aTarget ) {
+                  a = ((a * 9) + aTarget)/10;
+                  if ( Math.abs(aTarget) - Math.abs(a) < 0.05 ) {
+                    a = aTarget;
+                  }
+                }
+                context.rotate(a);
+
+                context.beginPath();
+                if (mouthWidth)
+                  context.moveTo(0, 0);
+                switch(mouthWidth) {
+                  case 0:
+                    context.arc(0, 0, r, (Math.PI/180)*0.1,
+                        (Math.PI/180)*359.9, false);
+                    break;
+                  case 1:
+                    context.arc(0, 0, r, 0.25*Math.PI/6, 11.75*Math.PI/6, false);
+                    break;
+                  case 2:
+                    context.arc(0, 0, r, 0.5*Math.PI/6, 11.5*Math.PI/6, false);
+                    break;
+                  case 3:
+                    context.arc(0, 0, r, 1*Math.PI/6, 11*Math.PI/6, false);
+                    break;
+                  case 4:
+                    context.arc(0, 0, r, 1*Math.PI/5, 9*Math.PI/5, false);
+                    break;
+                  case 5:
+                    context.arc(0, 0, r, 1*Math.PI/4, 7*Math.PI/4, false);
+                    break;
+                };
+                context.closePath();
+                context.stroke();
+                context.fill();
+                context.restore();
               }
             }
           });

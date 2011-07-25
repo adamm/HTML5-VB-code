@@ -81,7 +81,12 @@
             if (canvas.getContext) {
               var context = canvas.getContext('2d');
 
+              context.translate(context.canvas.width/2, context.canvas.height/2);
               drawGridLayout(context);
+
+              context.beginPath();
+              context.arc(100, 100, 50, 0, 2*Math.PI, false);
+              context.fill();
             }
           });
         </script>

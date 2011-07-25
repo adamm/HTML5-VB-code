@@ -1,0 +1,192 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Offline Detection - HTML5.array.org</title>
+    <!--[if lt IE 9]>
+    <script src='http://html5shim.googlecode.com/svn/trunk/html5.js'></script>
+    <![endif]-->
+    <base href='../..'>
+    <script type='text/javascript' src='jquery-1.6.1.js'></script>
+    <script type='text/javascript' src='highlight.min.js'></script>
+    <link rel="stylesheet" href='highlight.min.css'>
+    <link rel='stylesheet' type='text/css' media='all' href='base.css'>
+    <link rel='stylesheet' type='text/css' media='screen and (max-width: 500px)' href='mobile.css'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=yes'>
+    <meta content='text/html; charset=UTF-8' http-equiv='content-type'>
+    <script type='text/javascript'>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body>
+    <div class='content'>
+    <header>
+      <nav>
+        <a href='index.html'>Home</a>
+        <a href='tutorials/'>Tutorials</a>
+        <a href='demos/'>Demos</a>
+        <a href='vb/'>Visual&nbsp;Blueprint&trade;</a>
+      </nav>
+      <h1>HTML5.array.org</h1>
+    </header>
+    <section id='articles'>
+      <h2>Demos</h2>
+      <article class='demos'>
+        <hgroup>
+          <h3>Offline Detection</h3>
+          <h4>Browser Status Detection</h4>
+          <h5>Synopsis</h5>
+        </hgroup>
+        <pre><code class='javascript'>function browserOnline()  {
+  // Browser is online
+}
+function browserOffline() {
+  // Browser is offline
+}
+
+window.addEventListener('online', browserOnline, false);
+window.addEventListener('offline', browserOffline, false);
+
+if ( "onLine" in navigator ) {
+  if ( navigator.onLine ) {
+    browserOnline();
+  }
+  else {
+    browserOffline();
+  }
+}
+</code></pre>
+        <hgroup>
+          <h4>Network Status Detection</h4>
+          <h5>Synopsis</h5>
+        </hgroup>
+        <pre><code class='javascript'>
+function testXHR(callback) {
+  var xhr = new XMLHttpRequest();
+  var noResponseTimer = setTimeout(function() {
+    xhr.abort();
+    callback(false);
+  }, 5000);
+
+  xhr.onreadystatechange = function(event) {
+    if (xhr.readyState != 4)
+      return;
+
+    clearTimeout(noResponseTimer);
+    if (xhr.status == 200)
+      callback(true);
+    else
+      callback(false);
+  }
+  xhr.open('GET', <mark>URL</mark> + '?' + new Date().getTime())
+  try {
+    xhr.send();
+  }
+  catch(e) {
+    callback(false);
+  }
+}
+
+var networkTimer;
+function testNetwork() {
+  testXHR(fireNetworkEvent);
+  networkTimer = setInterval(function(){
+    testXHR(fireNetworkEvent);
+  }, <mark>30000</mark>);
+}
+
+function lostNetwork() {
+  clearInterval(networkTimer);
+  fireNetworkEvent(false);
+}
+
+var networkStatus;
+function fireNetworkEvent(state) {
+  if ( networkStatus == state )
+    return;
+
+  networkStatus = state;
+  var event = document.createEvent('Event');
+  event.initEvent(state ? 'netonline' : 'netoffline', true, true);
+  window.dispatchEvent(event);
+}
+
+function networkOnline()  {
+  // Network is online
+}
+function networkOffline() {
+  // Network is offline
+}
+
+<span class='faded'>window.addEventListener('online', browserOnline, false);</span>
+window.addEventListener('online', testNetwork, false);
+<span class='faded'>window.addEventListener('offline', browserOffline, false);</span>
+window.addEventListener('offline', lostNetwork, false);
+window.addEventListener('netonline', networkOnline, false);
+window.addEventListener('netoffline', networkOffline, false);
+
+<span class='faded'>if ( "onLine" in navigator ) {
+  if ( navigator.onLine ) {
+    browserOnline();</span>
+    testNetwork();
+<span class='faded'>  }
+  else {
+    browserOffline();</span>
+    fireNetworkEvent(false);
+<span class='faded'>  }
+}</span>
+else {
+  testNetwork();
+}
+</code></pre>
+        <h5>Example</h5>
+        <style>
+          article.example {
+            margin: 10px; font-size: 1.5em;
+          }
+        </style>
+        <script type='text/javascript' src='demos/offline/network-detector.js'></script>
+        <script type='text/javascript'>
+          $(function(){
+            function browserOnline() {
+              $('output#browserStatus').text('online');
+            }
+            function browserOffline() {
+              $('output#browserStatus').text('offline');
+            }
+            function networkOnline() {
+              $('output#networkStatus').text('online');
+            }
+            function networkOffline() {
+              $('output#networkStatus').text('offline');
+            }
+
+            window.addEventListener('online', browserOnline, false);
+            window.addEventListener('offline', browserOffline, false);
+            window.addEventListener('netonline', networkOnline, false);
+            window.addEventListener('netoffline', networkOffline, false);
+
+            if ( "onLine" in navigator ) {
+              // Note the network tests that are triggered by
+              // navigator.onLine are run separately, within
+              // network-detector.js
+              if ( navigator.onLine )
+                browserOnline();
+              else
+                browserOffline();
+            }
+          });
+        </script>
+        <article class='example'>
+          <p>
+            The browser is <output id='browserStatus'>(state unknown)</output>
+          </p>
+          <p>
+            The network is <output id='networkStatus'>(state unknown)</output>
+          </p>
+        </article>
+      </article>
+    </section>
+    <footer>
+      &copy;2011 Adam McDaniel
+    </footer>
+    </div>
+  </body>
+</html>

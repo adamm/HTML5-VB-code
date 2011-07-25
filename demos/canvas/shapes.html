@@ -96,6 +96,13 @@ context.quadraticCurveTo(<i>cpx</i>, <i>cpy</i>, <i>x</i>, <i>y</i>);
                 context.moveTo(0, i);
                 context.lineTo(canvas.width, i);
               }
+
+              context.rect(150, 150, 200, 100);
+
+              context.moveTo(200, 250);
+              context.arc(250, 250, 50, Math.PI, 2*Math.PI, true);
+              context.stroke();
+
             }
           });
         </script>

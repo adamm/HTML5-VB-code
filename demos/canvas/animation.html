@@ -96,6 +96,66 @@ window.clearRequestTimeout = function(handle) {
             if ( canvas.getContext ) {
               var context = canvas.getContext('2d');
 
+              /* Animation Stage 1 */
+              var mouthWidth = 3;
+              var mouthDirection = 1;
+              var x = 0;
+              var y = 0;
+              var r = 50;
+              var xDirection = -5;
+              var yDirection = -3;
+              var a = 0;
+              var aTarget = Math.atan2(yDirection, xDirection);
+              var lastX = x;
+              var lastY = y;
+
+              context.lineWidth = 2;
+              context.strokeStyle = 'black';
+              context.fillStyle = 'yellow';
+
+              function movePuckman() {
+                /* Animation Stage 2 */
+                bouncePuckman();
+                /* Animation Stage 3 */
+                clearPuckman();
+
+              }
+
+              function bouncePuckman() {
+                lastX = x;
+                lastY = y;
+
+                x += xDirection;
+                if ( x > context.canvas.width - r - 1) {
+                  x = context.canvas.width - r - 1;
+                  xDirection *= -1;
+                  aTarget = Math.atan2(yDirection, xDirection);
+                }
+                if ( x < 0 + r + 1) {
+                  x = 0 + r + 1;
+                  xDirection *= -1;
+                  aTarget = Math.atan2(yDirection, xDirection);
+                }
+                y += yDirection;
+                if ( y > context.canvas.height - r - 1 ) {
+                  y = context.canvas.height - r - 1;
+                  yDirection *= -1;
+                  aTarget = Math.atan2(yDirection, xDirection);
+                }
+                if ( y < 0 + r + 1) {
+                  y = 0 + r + 1;
+                  yDirection *= -1;
+                  aTarget = Math.atan2(yDirection, xDirection);
+                }
+              }
+
+              function clearPuckman() {
+                /* We want to clear the last position, plus the current
+                 * position because the mouth animation moves at a
+                 * different framerate as the move animation. */
+                context.clearRect(lastX-r-1, lastY-r-1, r*2+2, r*2+2 );
+                context.clearRect(x-r-1, y-r-1, r*2+2, r*2+2 );
+              }
             }
           });
         </script>

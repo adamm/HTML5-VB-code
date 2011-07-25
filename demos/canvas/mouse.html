@@ -80,9 +80,24 @@
                   // Take a snapshot the image at (x,y,w,h).
                   // Redraw the snapshot, magnified, beside the original image.
                   function onCanvasMouseEvent(event) {
+                    var x = event.offsetX || event.pageX - offset.left;
+                    var y = event.offsetY || event.pageY - offset.top;
+
+                    // Adjust (x,y) to the top-left corner of the zoom-box. This
+                    // centers the zoom-box at the user's click point.
+                    x -= ~~(zoom/2);
+                    y -= ~~(zoom/2);
+
+                    context.clearRect(0, 0,context.canvas.width, context.canvas.height);
+                    context.drawImage(tux, 0, 0);
+                    magnifyImage(x,y,40,40);
                   }
 
                   function onMouseUp(event) {
+                    event.preventDefault();
+                    $('canvas').removeClass('no-cursor');
+                    canvas.removeEventListener('mousemove', onCanvasMouseEvent, false);
+                    canvas.removeEventListener('mouseup', onMouseUp, false);
                   };
 
 

@@ -79,9 +79,8 @@
 
                     for ( var i = 0; i < image.data.length; i += 4 ) {
                       var sum = image.data[i] + image.data[i+1] + image.data[i+2];
-                      image.data[i] = image.data[i+1] = image.data[i+2] = sum / 3;
-                      image.data[i+0] += 150;
-                      image.data[i+1] += 75;
+                      // Invert the red channel only.
+                      image.data[i] = 255 - image.data[i];
                     }
                     context.putImageData(image,srcX,srcY);
                   }

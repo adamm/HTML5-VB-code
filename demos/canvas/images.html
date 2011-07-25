@@ -122,6 +122,7 @@ image.src = '<i>image.jpg</i>';
 image.onload = function() {
   context.drawImage(image, <i>srcX</i>, <i>srcY</i>, <i>srcW</i>, <i>srcH</i>, <i>destX</i>, <i>destY</i>, <i>destW</i>, <i>destH</i>);
 };</code></pre>
+        <img src='images/rpg_sprite_walk.png'>
         <h5>Example</h5>
         <style>
           article.example {
@@ -153,6 +154,8 @@ image.onload = function() {
 
                   var spriteX = stride * spriteWidth;
                   var spriteY = direction * spriteHeight;
+                  context.drawImage(image, spriteX, spriteY, spriteWidth, spriteHeight, 
+                      100, 100, spriteWidth * 4, spriteHeight * 4 );
                 };
               }
             }

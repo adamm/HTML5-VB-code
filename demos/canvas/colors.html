@@ -54,6 +54,14 @@ context.strokeStyle = '<i>color</i>';
               draw1();
 
               function draw1() {
+                context.save();
+
+                context.strokeStyle = '#BADA55';
+                context.fillStyle = 'rgba(0,128,128,0.5)';
+
+                context.lineWidth = 10;
+                context.strokeRect(100, 100, 300, 200);
+                context.fillRect(250, 250, 200, 100);
               }
             }
           });

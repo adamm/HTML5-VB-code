@@ -65,6 +65,32 @@ context.strokeRect(<i>x</i>, <i>y</i>, <i>w</i>, <i>h</i>);
             Your browser does not support the HTML5 canvas.
           </canvas>
         </article>
+        <hgroup>
+          <h4>Complex Paths</h4>
+          <h5>Synopsis</h5>
+        </hgroup>
+        <pre><code class='javascript'>context.moveTo(<i>x</i>, <i>y</i>);
+context.lineTo(<i>x</i>, <i>y</i>);
+context.rect(<i>x</i>, <i>y</i>, <i>w</i>, <i>h</i>);
+context.arc(<i>x</i>, <i>y</i>, <i>radius</i>, <i>startAngle</i>, <i>endAngle</i>, <i>drawClockwise</i>);
+context.bezierCurveTo(<i>cp1x</i>, <i>cp1y</i>, <i>cp2x</i>, <i>cp2y</i>, <i>x</i>, <i>y</i>);
+context.quadraticCurveTo(<i>cpx</i>, <i>cpy</i>, <i>x</i>, <i>y</i>);
+</code></pre>
+        <h5>Example</h5>
+        <script type="text/javascript">
+          $(function(){
+            var canvas = $('canvas#surface')[1];
+            if (canvas.getContext) {
+              var context = canvas.getContext('2d');
+
+            }
+          });
+        </script>
+        <article class='example'>
+          <canvas id='surface' width='700' height='500'>
+            Your browser does not support the HTML5 canvas.
+          </canvas>
+        </article>
       </article>
     </section>
     <footer>

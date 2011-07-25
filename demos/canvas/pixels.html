@@ -64,9 +64,13 @@
                   magnifyImage(135, 60, 40, 40);
 
                   function magnifyImage(srcX, srcY, srcH, srcW) {
-
+                    var image = context.getImageData(srcX, srcY, srcH, srcW);
+                    for ( var x = 0; x < image.width; x++ ) {
+                      for ( var y = 0; y < image.height; y++ ) {
+                        var index = (y * image.width + x) * 4
+                      }
+                    }
                   }
-
                 };
               }
             }

@@ -158,6 +158,9 @@ context.strokeStyle = gradient;
 
               function draw3() {
                 var gradient = context.createRadialGradient(250,250,50,250,250,200);
+                gradient.addColorStop(0, 'red');
+                gradient.addColorStop(0.5, 'white');
+                gradient.addColorStop(1, 'blue');
               }
             }
           });

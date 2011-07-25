@@ -96,6 +96,38 @@
             Your browser does not support the HTML5 canvas.
           </canvas>
         </article>
+        <hgroup>
+          <h4>Transform the X and Y-axes</h4>
+          <h5>Synopsis</h5>
+        </hgroup>
+        <pre><code class='javascript'>context.transform(<i>a</i>, <i>b</i>, <i>c</i>, <i>d</i>, <i>x</i>, <i>y</i>);
+</code></pre>
+        <h5>Example</h5>
+        <style>
+          article.example {
+            margin: 10px;
+          }
+        </style>
+        <script type="text/javascript">
+          $(function(){
+            var canvas = $('canvas#surface')[2];
+            if (canvas.getContext) {
+              var context = canvas.getContext('2d');
+
+              context.setTransform(1.5, 0.5, 0.5, 2, canvas.width/2, canvas.height/2);
+              drawGridLayout(context);
+
+              context.beginPath();
+              context.arc(100, 100, 50, 0, 2*Math.PI, false);
+              context.fill();
+            }
+          });
+        </script>
+        <article class='example'>
+          <canvas id='surface' width='700' height='500'>
+            Your browser does not support the HTML5 canvas.
+          </canvas>
+        </article>
       </article>
     </section>
     <footer>

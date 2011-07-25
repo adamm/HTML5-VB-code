@@ -108,6 +108,14 @@ context.quadraticCurveTo(<i>cpx</i>, <i>cpy</i>, <i>x</i>, <i>y</i>);
               context.bezierCurveTo(0, 0, 250, 500, 500, 500);
 
               context.fill();
+
+              context.beginPath();
+              context.arc(50, 20, 25, Math.PI, 0, true);
+              context.stroke();
+              context.beginPath();
+              context.arc(50, 60, 25, Math.PI, 0, true);
+              context.closePath();
+              context.stroke();
             }
           });
         </script>

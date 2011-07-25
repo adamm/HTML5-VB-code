@@ -72,8 +72,28 @@
                         var green = image.data[index+1];
                         var blue  = image.data[index+2];
                         var alpha = image.data[index+3];
+
+                        drawMagnifiedPixel(x,y,red,green,blue,image.width,image.height);
                       }
                     }
+                  }
+
+                  function drawMagnifiedPixel(x,y,r,g,b,w,h) {
+                    var wZoom = 300/w;
+                    var hZoom = 300/h;
+                    var xZoom = 300 + x * wZoom;
+                    var yZoom = y * hZoom;
+
+                    // Extend the zoom area slightly to overwrite any gaps between
+                    // xZoom+wZoom and the next pixel's xZoom. This problem becomes
+                    // obvious when 300/w does not divide cleanly.
+                    wZoom++;
+                    hZoom++;
+
+                    context.save();
+                    context.fillStyle = 'rgb('+r+','+g+','+b+')';
+                    context.fillRect(xZoom, yZoom, wZoom, hZoom);
+                    context.restore();
                   }
                 };
               }

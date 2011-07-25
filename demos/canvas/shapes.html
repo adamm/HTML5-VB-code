@@ -49,6 +49,9 @@ context.strokeRect(<i>x</i>, <i>y</i>, <i>w</i>, <i>h</i>);
             var canvas = $('canvas#surface')[0];
             if (canvas.getContext) {
               var context = canvas.getContext('2d');
+
+              context.fillStyle = '#FF8000';
+              context.fillRect(50, 50, 300, 200);
             }
           });
         </script>

@@ -49,6 +49,7 @@
             if (canvas.getContext) {
               var context = canvas.getContext('2d');
 
+              context.translate(200, 200);
               drawGridLayout(context);
 
               context.beginPath();

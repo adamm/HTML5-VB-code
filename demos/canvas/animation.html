@@ -158,8 +158,11 @@ window.clearRequestTimeout = function(handle) {
                 /* We want to clear the last position, plus the current
                  * position because the mouth animation moves at a
                  * different framerate as the move animation. */
-                context.clearRect(lastX-r-1, lastY-r-1, r*2+2, r*2+2 );
-                context.clearRect(x-r-1, y-r-1, r*2+2, r*2+2 );
+                context.save();
+                context.fillStyle = '#e8ddcb';
+                context.fillRect(lastX-r-1, lastY-r-1, r*2+2, r*2+2 );
+                context.fillRect(x-r-1, y-r-1, r*2+2, r*2+2 );
+                context.restore();
               }
 
               function drawPuckman() {

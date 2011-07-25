@@ -21,6 +21,14 @@ function drawGridLayout(context) {
     context.moveTo(i, -context.canvas.height);
     context.lineTo(i, context.canvas.height);
   }
+  for (i = 0.5; i > -context.canvas.height; i -= 10) {
+    context.moveTo(-context.canvas.width, i);
+    context.lineTo(context.canvas.width, i);
+  }
+  for (i = 0.5; i > -context.canvas.width; i -= 10) {
+    context.moveTo(i, -context.canvas.height);
+    context.lineTo(i, context.canvas.height);
+  }
   context.stroke();
 
   // Draw black lines parallel to each axis every 100 pixels at the half-pixel.
@@ -31,6 +39,14 @@ function drawGridLayout(context) {
     context.lineTo(context.canvas.width, i);
   }
   for (i = 0.5; i < context.canvas.width; i += 100) {
+    context.moveTo(i, -context.canvas.height);
+    context.lineTo(i, context.canvas.height);
+  }
+  for (i = 0.5; i > -context.canvas.height; i -= 100) {
+    context.moveTo(-context.canvas.width, i);
+    context.lineTo(context.canvas.width, i);
+  }
+  for (i = 0.5; i > -context.canvas.width; i -= 100) {
     context.moveTo(i, -context.canvas.height);
     context.lineTo(i, context.canvas.height);
   }
@@ -83,6 +99,14 @@ function drawGridLayout(context) {
     context.fillText(i, i+3.5, 0);
   }
   for (i = 0; i < context.canvas.height; i += 100) {
+    if ( i == 0 ) continue;
+    context.fillText(i, 3.5, i);
+  }
+  for (i = 0; i > -context.canvas.width; i -= 100) {
+    if ( i == 0 ) continue;
+    context.fillText(i, i+3.5, 0);
+  }
+  for (i = 0; i > -context.canvas.height; i -= 100) {
     if ( i == 0 ) continue;
     context.fillText(i, 3.5, i);
   }

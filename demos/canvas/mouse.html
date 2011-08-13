@@ -74,7 +74,14 @@
                     }
                   }
 
+                  var canvasOffset = $('canvas#surface').offset();
+                  window.addEventListener('resize', function() {
+                    canvasOffset = $('canvas#surface').offset();
+                  }, false);
+
                   function onMouseMove(event) {
+                    var x = event.offsetX || event.pageX - canvasOffset.left;
+                    var y = event.offsetY || event.pageY - canvasOffset.top;
                   }
 
                   function onMouseUp(event) {

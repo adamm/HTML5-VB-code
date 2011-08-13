@@ -71,6 +71,7 @@
                       canvas.addEventListener('mousemove', onMouseMove, false);
                       canvas.addEventListener('mouseup', onMouseUp, false);
                       $('canvas').addClass('no-cursor');
+                      onMouseMove(event);
                     }
                   }
 
@@ -82,6 +83,16 @@
                   function onMouseMove(event) {
                     var x = event.offsetX || event.pageX - canvasOffset.left;
                     var y = event.offsetY || event.pageY - canvasOffset.top;
+
+                    // Adjust (x,y) to the top-left corner of the zoom-box. This
+                    // centers the zoom-box at the user's click point.
+                    x -= ~~(zoom/2);
+                    y -= ~~(zoom/2);
+
+                    context.clearRect(0, 0, context.canvas.width,
+                        context.canvas.height);
+                    context.drawImage(tux, 0, 0);
+                    magnifyImage(x, y, 40, 40);
                   }
 
                   function onMouseUp(event) {

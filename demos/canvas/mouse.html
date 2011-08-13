@@ -40,6 +40,9 @@
           article.example {
             margin: 10px;
           }
+          .no-cursor {
+            cursor: none;
+          }
         </style>
         <script type='text/javascript' src='demos/canvas/canvas-grid.js'></script>
         <script type="text/javascript">
@@ -67,6 +70,7 @@
                     if ( event.button == 0 ) {
                       canvas.addEventListener('mousemove', onMouseMove, false);
                       canvas.addEventListener('mouseup', onMouseUp, false);
+                      $('canvas').addClass('no-cursor');
                     }
                   }
 
@@ -76,6 +80,7 @@
                   function onMouseUp(event) {
                     canvas.removeEventListener('mousemove', onMouseMove, false);
                     canvas.removeEventListener('mouseup', onMouseUp, false);
+                    $('canvas').removeClass('no-cursor');
                   }
 
                   function magnifyImage(srcX, srcY) {

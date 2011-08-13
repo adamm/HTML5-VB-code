@@ -65,13 +65,16 @@
                   function onMouseDown(event) {
                     event.preventDefault();
                     if ( event.button == 0 ) {
-
+                      canvas.addEventListener('mousemove', onMouseMove, false);
+                      canvas.addEventListener('mouseup', onMouseUp, false);
                     }
                   }
 
-                  // Take a snapshot the image at (x,y,w,h).
-                  // Redraw the snapshot, magnified, beside the original image.
-                  magnifyImage(135, 60);
+                  function onMouseMove(event) {
+                  }
+
+                  function onMouseUp(event) {
+                  }
 
                   function magnifyImage(srcX, srcY) {
                     var image = context.getImageData(srcX, srcY, zoom, zoom);

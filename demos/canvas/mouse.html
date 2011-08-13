@@ -74,6 +74,8 @@
                   }
 
                   function onMouseUp(event) {
+                    canvas.removeEventListener('mousemove', onMouseMove, false);
+                    canvas.removeEventListener('mouseup', onMouseUp, false);
                   }
 
                   function magnifyImage(srcX, srcY) {

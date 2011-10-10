@@ -1,0 +1,249 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Canvas Animation - HTML5.array.org</title>
+    <!--[if lt IE 9]>
+    <script src='http://html5shim.googlecode.com/svn/trunk/html5.js'></script>
+    <![endif]-->
+    <base href='../..'>
+    <script type='text/javascript' src='jquery-1.6.1.js'></script>
+    <script type='text/javascript' src='highlight.min.js'></script>
+    <link rel="stylesheet" href='highlight.min.css'>
+    <link rel='stylesheet' type='text/css' media='all' href='base.css'>
+    <link rel='stylesheet' type='text/css' media='screen and (max-width: 500px)' href='mobile.css'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=yes'>
+    <meta content='text/html; charset=UTF-8' http-equiv='content-type'>
+    <script type='text/javascript'>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body>
+    <div class='content'>
+    <header>
+      <nav>
+        <a href='index.html'>Home</a>
+        <a href='tutorials/'>Tutorials</a>
+        <a href='demos/'>Demos</a>
+        <a href='vb/'>Visual&nbsp;Blueprint&trade;</a>
+      </nav>
+      <h1>HTML5.array.org</h1>
+    </header>
+    <section id='articles'>
+      <h2>Demos</h2>
+      <article class='demos'>
+        <hgroup>
+          <h3>Canvas Animation</h3>
+          <h4>Animation Frame Shim</h4>
+          <h5>Synopsis</h5>
+        </hgroup>
+        <pre ><code class='javascript'>
+// shim layer with setTimeout fallback
+window.requestAnimFrame = (function(){
+  return  window.requestAnimationFrame       ||
+          window.webkitRequestAnimationFrame ||
+          window.mozRequestAnimationFrame    ||
+          window.oRequestAnimationFrame      ||
+          window.msRequestAnimationFrame     ||
+          function(/* function */ callback, /* DOMElement */ element){
+            window.setTimeout(callback, 1000 / 60);
+          };
+})();
+
+window.requestTimeout = function(fn, delay) {
+    if( !window.requestAnimationFrame       &&
+        !window.webkitRequestAnimationFrame &&
+        !window.mozRequestAnimationFrame    &&
+        !window.oRequestAnimationFrame      &&
+        !window.msRequestAnimationFrame)
+            return window.setTimeout(fn, delay);
+
+    var start = new Date().getTime(),
+        handle = new Object();
+
+    function loop(){
+        var current = new Date().getTime(),
+        delta = current - start;
+
+        delta &gt;= delay ? fn.call() : handle.value = requestAnimFrame(loop);
+    };
+
+    handle.value = requestAnimFrame(loop);
+    return handle;
+};
+
+window.clearRequestTimeout = function(handle) {
+    window.cancelAnimationFrame ?
+      window.cancelAnimationFrame(handle.value) :
+    window.webkitCancelRequestAnimationFrame ?
+      window.webkitCancelRequestAnimationFrame(handle.value)   :
+    window.mozCancelRequestAnimationFrame ?
+      window.mozCancelRequestAnimationFrame(handle.value) :
+    window.oCancelRequestAnimationFrame ?
+      window.oCancelRequestAnimationFrame(handle.value) :
+    window.msCancelRequestAnimationFrame ?
+      msCancelRequestAnimationFrame(handle.value) :
+    clearTimeout(handle);
+};
+</code></pre>
+        <h5>Example</h5>
+        <style>
+          article.example {
+            margin: 10px;
+          }
+        </style>
+        <script type='text/javascript' src='demos/canvas/requestAnimFrame.js'></script>
+        <script type="text/javascript">
+          $(function(){
+            var canvas = $('canvas#surface')[0];
+            if ( canvas.getContext ) {
+              var context = canvas.getContext('2d');
+
+              /* Animation Stage 1 */
+              var mouthWidth = 0;
+              var mouthDirection = 1;
+              var x = 0;
+              var y = 0;
+              var r = 50;
+              var xDirection = -5;
+              var yDirection = -3;
+              var a = 0;
+              var aTarget = Math.atan2(yDirection, xDirection);
+              var lastX = x;
+              var lastY = y;
+
+              context.lineWidth = 2;
+              context.strokeStyle = 'black';
+              context.fillStyle = 'yellow';
+
+              /* Launch the concurrent animation loops */
+              animatePuckman();
+              movePuckman();
+
+              function animatePuckman() {
+                /* Animation Stage 2 */
+                calculatePuckmanMouth();
+                /* Animation Stage 3 */
+                clearPuckman();
+                /* Animation Stage 4 */
+                drawPuckman();
+
+                requestTimeout(animatePuckman,25);
+              }
+
+              function movePuckman() {
+                /* Animation Stage 2 */
+                bouncePuckman();
+                /* Animation Stage 3 */
+                clearPuckman();
+                /* Animation Stage 4 */
+                drawPuckman();
+
+                requestTimeout(movePuckman,10);
+              }
+
+              function calculatePuckmanMouth() {
+                mouthWidth += mouthDirection;
+                if ( mouthWidth > 5 ) {
+                  mouthWidth = 5;
+                  mouthDirection *= -1;
+                }
+                if ( mouthWidth < 0 ) {
+                  mouthWidth = 0;
+                  mouthDirection *= -1;
+                }
+              }
+
+              function bouncePuckman() {
+                lastX = x;
+                lastY = y;
+
+                x += xDirection;
+                if ( x > context.canvas.width - r - 1) {
+                  x = context.canvas.width - r - 1;
+                  xDirection *= -1;
+                  aTarget = Math.atan2(yDirection, xDirection);
+                }
+                if ( x < 0 + r + 1) {
+                  x = 0 + r + 1;
+                  xDirection *= -1;
+                  aTarget = Math.atan2(yDirection, xDirection);
+                }
+                y += yDirection;
+                if ( y > context.canvas.height - r - 1 ) {
+                  y = context.canvas.height - r - 1;
+                  yDirection *= -1;
+                  aTarget = Math.atan2(yDirection, xDirection);
+                }
+                if ( y < 0 + r + 1) {
+                  y = 0 + r + 1;
+                  yDirection *= -1;
+                  aTarget = Math.atan2(yDirection, xDirection);
+                }
+              }
+
+              function clearPuckman() {
+                /* We want to clear the last position, plus the current
+                 * position because the mouth animation moves at a
+                 * different framerate as the move animation. */
+                context.save();
+                context.fillStyle = '#e8ddcb';
+                context.fillRect(lastX-r-1, lastY-r-1, r*2+2, r*2+2 );
+                context.fillRect(x-r-1, y-r-1, r*2+2, r*2+2 );
+                context.restore();
+              }
+
+              function drawPuckman() {
+
+                context.save();
+                context.translate(x, y);
+                if ( a != aTarget ) {
+                  a = ((a * 9) + aTarget)/10;
+                  if ( Math.abs(aTarget) - Math.abs(a) < 0.05 ) {
+                    a = aTarget;
+                  }
+                }
+                context.rotate(a);
+
+                context.beginPath();
+                if (mouthWidth)
+                  context.moveTo(0, 0);
+                switch(mouthWidth) {
+                  case 0:
+                    context.arc(0, 0, r, (Math.PI/180)*0.1,
+                        (Math.PI/180)*359.9, false);
+                    break;
+                  case 1:
+                    context.arc(0, 0, r, 0.25*Math.PI/6, 11.75*Math.PI/6, false);
+                    break;
+                  case 2:
+                    context.arc(0, 0, r, 0.5*Math.PI/6, 11.5*Math.PI/6, false);
+                    break;
+                  case 3:
+                    context.arc(0, 0, r, 1*Math.PI/6, 11*Math.PI/6, false);
+                    break;
+                  case 4:
+                    context.arc(0, 0, r, 1*Math.PI/5, 9*Math.PI/5, false);
+                    break;
+                  case 5:
+                    context.arc(0, 0, r, 1*Math.PI/4, 7*Math.PI/4, false);
+                    break;
+                };
+                context.closePath();
+                context.stroke();
+                context.fill();
+                context.restore();
+              }
+            }
+          });
+        </script>
+        <article class='example'>
+          <canvas id='surface' width='700' height='500'>
+            Your browser does not support the HTML5 canvas.
+          </canvas>
+        </article>
+      </article>
+    </section>
+    <footer>
+      &copy;2011 Adam McDaniel
+    </footer>
+    </div>
+  </body>
+</html>

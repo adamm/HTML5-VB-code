@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Web Page Offline</title>
+    <script type='text/javascript' src='network-detector.js'></script>
+    <script type='text/javascript'>
+      addEventListener('netonline', function() {
+        location.reload();
+      }, false);
+    </script>
+  </head>
+  <body>
+    <p>I'm sorry, this web page is only available while you are online.</p>
+    <p>Please connect back to the Internet to access this web page!</p>
+  </body>
+</html>

@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Canvas Pixels - HTML5.array.org</title>
+    <!--[if lt IE 9]>
+    <script src='http://html5shim.googlecode.com/svn/trunk/html5.js'></script>
+    <![endif]-->
+    <base href='../..'>
+    <script type='text/javascript' src='jquery-1.6.1.js'></script>
+    <script type='text/javascript' src='highlight.min.js'></script>
+    <link rel="stylesheet" href='highlight.min.css'>
+    <link rel='stylesheet' type='text/css' media='all' href='base.css'>
+    <link rel='stylesheet' type='text/css' media='screen and (max-width: 500px)' href='mobile.css'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=yes'>
+    <meta content='text/html; charset=UTF-8' http-equiv='content-type'>
+    <script type='text/javascript'>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body>
+    <div class='content'>
+    <header>
+      <nav>
+        <a href='index.html'>Home</a>
+        <a href='tutorials/'>Tutorials</a>
+        <a href='demos/'>Demos</a>
+        <a href='vb/'>Visual&nbsp;Blueprint&trade;</a>
+      </nav>
+      <h1>HTML5.array.org</h1>
+    </header>
+    <section id='articles'>
+      <h2>Demos</h2>
+      <article class='demos'>
+        <hgroup>
+          <h3>Canvas Pixels</h3>
+          <h4>Query Pixels</h4>
+          <h5>Synopsis</h5>
+        </hgroup>
+        <pre><code class='javascript'>var image = context.getImageData(<i>x</i>, <i>y</i>, <i>w</i>, <i>h</i>);</code></pre>
+        <h5>Example</h5>
+        <style>
+          article.example {
+            margin: 10px;
+          }
+        </style>
+        <script type='text/javascript' src='demos/canvas/canvas-grid.js'></script>
+        <script type="text/javascript">
+          $(function(){
+            var canvas = $('canvas#surface')[0];
+            if (canvas.getContext) {
+              var context = canvas.getContext('2d');
+
+              //drawGridLayout(context);
+              draw1();
+
+              function draw1() {
+                var tux = new Image();
+                tux.src = "images/tux.jpg";
+                tux.onload = function() {
+
+                  context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+                  context.drawImage(tux, 0, 0);
+
+                  // Take a snapshot the image at (x,y,w,h).
+                  // Redraw the snapshot, magnified, beside the original image.
+                  magnifyImage(135, 60, 40, 40);
+
+                  function magnifyImage(srcX, srcY, srcH, srcW) {
+                    var image = context.getImageData(srcX, srcY, srcH, srcW);
+                    for ( var x = 0; x < image.width; x++ ) {
+                      for ( var y = 0; y < image.height; y++ ) {
+                        var index = (y * image.width + x) * 4
+                        var red   = image.data[index+0];
+                        var green = image.data[index+1];
+                        var blue  = image.data[index+2];
+                        var alpha = image.data[index+3];
+
+                        drawMagnifiedPixel(x,y,red,green,blue,image.width,image.height);
+                      }
+                    }
+
+                    for ( var i = 0; i < image.data.length; i += 4 ) {
+                      var sum = image.data[i] + image.data[i+1] + image.data[i+2];
+                      // Invert the red channel only.
+                      image.data[i] = 255 - image.data[i];
+                    }
+                    context.putImageData(image,srcX,srcY);
+                  }
+
+                  function drawMagnifiedPixel(x,y,r,g,b,w,h) {
+                    var wZoom = 300/w;
+                    var hZoom = 300/h;
+                    var xZoom = 300 + x * wZoom;
+                    var yZoom = y * hZoom;
+
+                    // Extend the zoom area slightly to overwrite any gaps between
+                    // xZoom+wZoom and the next pixel's xZoom. This problem becomes
+                    // obvious when 300/w does not divide cleanly.
+                    wZoom++;
+                    hZoom++;
+
+                    context.save();
+                    context.fillStyle = 'rgb('+r+','+g+','+b+')';
+                    context.fillRect(xZoom, yZoom, wZoom, hZoom);
+                    context.restore();
+                  }
+                };
+              }
+            }
+          });
+        </script>
+        <article class='example'>
+          <canvas id='surface' width='700' height='500'>
+            Your browser does not support the HTML5 canvas.
+          </canvas>
+        </article>
+      </article>
+    </section>
+    <footer>
+      &copy;2011 Adam McDaniel
+    </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,282 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Drag-and-Drop - HTML5.array.org</title>
+    <!--[if lt IE 9]>
+    <script src='http://html5shim.googlecode.com/svn/trunk/html5.js'></script>
+    <![endif]-->
+    <base href='http://192.168.1.11/~adamm/html5/chapter12/'>
+    <script type='text/javascript' src='jquery-1.6.1.js'></script>
+    <script type='text/javascript' src='highlight.min.js'></script>
+    <link rel="stylesheet" href='highlight.min.css'>
+    <link rel='stylesheet' type='text/css' media='all' href='base.css'>
+    <link rel='stylesheet' type='text/css' media='screen and (max-width: 500px)' href='mobile.css'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=yes'>
+    <meta content='text/html; charset=UTF-8' http-equiv='content-type'>
+    <script type='text/javascript'>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body>
+    <div class='content'>
+    <header>
+      <nav>
+        <a href='index.html'>Home</a>
+        <a href='tutorials/'>Tutorials</a>
+        <a href='demos/'>Demos</a>
+        <a href='vb/'>Visual&nbsp;Blueprint&trade;</a>
+      </nav>
+      <h1>HTML5.array.org</h1>
+    </header>
+    <section id='articles'>
+      <h2>Demos</h2>
+      <article class='demos'>
+        <hgroup>
+          <h3>Drag-and-Drop</h3>
+          <h4>Draggable Elements</h4>
+          <h5>Synopsis</h5>
+        </hgroup>
+        <pre><code class='html'>&lt;<i>element</i> <mark>draggable='true'</mark>&gt;...&lt;<i>element</i>&gt;
+&lt;<i>element</i> <mark>draggable='true'</mark>&gt;...&lt;<i>element</i>&gt;
+&lt;<i>element</i> <mark>draggable='true'</mark>&gt;...&lt;<i>element</i>&gt;
+</code></pre>
+        <hgroup>
+          <h4>Dropzone Elements</h4>
+          <h5>Synopsis</h5>
+        </hgroup>
+        <pre><code class='html'>&lt;<i>element</i> <mark>class='dropzone'</mark>&gt;...&lt;<i>element</i>&gt;
+&lt;<i>element</i> <mark>class='dropzone'</mark>&gt;...&lt;<i>element</i>&gt;
+&lt;<i>element</i> <mark>class='dropzone'</mark>&gt;...&lt;<i>element</i>&gt;
+</code></pre>
+        <hgroup>
+          <h4>Register Event Handlers</h4>
+          <h5>Synopsis</h5>
+        </hgroup>
+        <pre><code class='html'>&lt;script type='text/javascript'&gt;
+  $('[draggable=true]').each(function(){
+    this.addEventListener('dragstart', onDragStart, false );
+    this.addEventListener('dragend', onDragEnd, false );
+  });
+  $('.dropzone').each(function(){
+    this.addEventListener('dragenter', onDragEnter, false );
+    this.addEventListener('dragover', onDragOver, false );
+    this.addEventListener('dragleave', onDragLeave, false );
+    this.addEventListener('drop', onDrop, false );
+  });
+&lt;/script&gt;
+</code></pre>
+        <hgroup>
+          <h4>Handle Drag-and-drop Events</h4>
+          <h5>Synopsis</h5>
+        </hgroup>
+        <pre><code class='html'>&lt;script type='text/javascript'&gt;
+  var srcDragElement;
+
+  function onDragStart(event) {
+    srcDragElement = this;
+
+    event.dataTransfer.effectAllowed = <mark><i>effects</i></mark>;
+    event.dataTransfer.setData('text', <mark><i>data</i></mark>);
+
+    $(srcDragElement).addClass('hide');
+  }
+
+  function onDragEnter(event) {
+    $(this).addClass('hover');
+  }
+
+  function onDragOver(event) {
+    if ( event.preventDefault )
+      event.preventDefault();
+
+    event.dataTransfer.dropEffect = <mark><i>effects</i></mark>;
+
+    return false;
+  }
+
+  function onDragLeave(event) {
+    $(this).removeClass('hover');
+  }
+
+  function onDrop(event) {
+    if ( event.preventDefault )
+      event.preventDefault();
+
+    var data = event.dataTransfer.getData('text');
+    // Process the drop event using <mark>this</mark>, <mark>data</mark>, and <mark>srcDragElement</mark>.
+
+    return false;
+  }
+
+  function onDragEnd(event) {
+    $('.hide').each(function(){
+      $(this).removeClass('hide');
+    });
+    $('.hover').each(function(){
+      $(this).removeClass('hover');
+    });
+  }
+&lt;/script&gt;
+</code></pre>
+        <h5>Example</h5>
+        <style>
+          article.example {
+            margin: 10px;
+          }
+          div.drag-and-drop {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid;
+            text-align: center;
+          }
+          .dropzone {
+            display: inline-block;
+            width: 32px;
+            height: 48px;
+            -webkit-transition-property: width;
+            -webkit-transition-duration: 0.1s;
+            -moz-transition-property: width;
+            -moz-transition-duration: 0.1s;
+            -o-transition-property: width;
+            -o-transition-duration: 0.1s;
+            -ms-transition-property: width;
+            -ms-transition-duration: 0.1s;
+            transition-property: width;
+            transition-duration: 0.1s;
+          }
+          .hover {
+            width: 64px;
+          }
+          .hide {
+            opacity: 0.5;
+          }
+          .icon {
+            cursor: move;
+          }
+          output#log {
+            margin-top: 20px;
+            height: 200px;
+            width: 500px;
+            border: 1px solid black;
+            overflow: auto;
+            display: block;
+          }
+        </style>
+        <script type="text/javascript">
+          $(function(){
+            function checkBrowserOrder() {
+              $('output#results').html("What? Opera came after Chrome? That's silly! Try again.");
+            }
+            $('[draggable=true]').each(function(){
+              this.addEventListener('dragstart', onDragStart, false );
+              this.addEventListener('dragend',   onDragEnd, false );
+            });
+            $('.dropzone').each(function(){
+              this.addEventListener('dragenter', onDragEnter, false );
+              this.addEventListener('dragover',  onDragOver, false );
+              this.addEventListener('dragleave', onDragLeave, false );
+              this.addEventListener('drop',      onDrop, false );
+            });
+
+            var srcDragElement;
+
+            function onDragStart(event) {
+              var data = $(this).attr('title');
+
+              srcDragElement = this;
+              event.dataTransfer.effectAllowed = 'move';
+              event.dataTransfer.setData('text', data);
+              $('output#log').append(event.type + ": " + data + "<br>");
+
+              $(srcDragElement).addClass('hide');
+              if (event.dataTransfer.setDragImage)
+                event.dataTransfer.setDragImage(this, this.width/2, this.height/2);
+            }
+
+            function onDragEnter(event) {
+              $('output#log').append(event.type + "<br>");
+
+              $(this).addClass('hover');
+            }
+
+            function onDragOver(event) {
+              if ( event.preventDefault )
+                event.preventDefault();
+
+              event.dataTransfer.dropEffect = 'move';
+              $('output#log').append(event.type + "<br>");
+
+              return false;
+            }
+
+            function onDragLeave(event) {
+              $('output#log').append(event.type + "<br>");
+
+              $(this).removeClass('hover');
+            }
+
+            function onDrop(event) {
+              if ( event.preventDefault )
+                event.preventDefault();
+
+              var effect = event.dataTransfer.dropEffect;
+              $('output#log').append(event.type + ": " + effect + "<br>");
+
+              // Verify that the user is dropping into a dropzone not
+              // adjacent to the source drag element.
+              if ( $(srcDragElement).prev()[0] != this &&
+                   $(srcDragElement).next()[0] != this ) {
+                var movedDropzoneElement = $(srcDragElement).prev().detach()
+                var movedElement = $(srcDragElement).detach();
+                $(this).after(movedDropzoneElement).after(movedElement);
+
+                var data = event.dataTransfer.getData('text');
+                $('output#log').append("Checking " + data + "<br>");
+                checkBrowserOrder(data);
+              }
+              else {
+                $('output#log').append("Nothing to do.<br>");
+              }
+
+              return false;
+            }
+
+            function onDragEnd(event) {
+              $('output#log').append(event.type + "<br>");
+
+              $(srcDragElement).removeClass('hide');
+              $('.hover').each(function() {
+                $(this).removeClass('hover');
+              });
+            }
+          });
+        </script>
+        <article class='example'>
+          Place the web browsers in the order of initial public release, from oldest to newest.
+          <div class='drag-and-drop'>
+            <span class='dropzone'></span>
+            <img class='icon' draggable='true' src='images/opera.png' title='Opera'>
+            <span class='dropzone'></span>
+            <img class='icon' draggable='true' src='images/netscape.png' title='Netscape'>
+            <span class='dropzone'></span>
+            <img class='icon' draggable='true' src='images/chrome.png' title='Chrome'>
+            <span class='dropzone'></span>
+            <img class='icon' draggable='true' src='images/ie.png' title='Internet Explorer'>
+            <span class='dropzone'></span>
+            <img class='icon' draggable='true' src='images/mosaic.png' title='Mosaic'>
+            <span class='dropzone'></span>
+            <img class='icon' draggable='true' src='images/firefox.png' title='Firefox'>
+            <span class='dropzone'></span>
+            <img class='icon' draggable='true' src='images/safari.png' title='Safari'>
+            <span class='dropzone'></span>
+          </div>
+          <output id='results'></output>
+          <output id='log'></output>
+        </article>
+      </article>
+    </section>
+    <footer>
+      &copy;2011 Adam McDaniel
+    </footer>
+    </div>
+  </body>
+</html>

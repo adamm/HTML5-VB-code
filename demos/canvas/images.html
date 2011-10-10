@@ -1,0 +1,177 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Canvas Images - HTML5.array.org</title>
+    <!--[if lt IE 9]>
+    <script src='http://html5shim.googlecode.com/svn/trunk/html5.js'></script>
+    <![endif]-->
+    <base href='../..'>
+    <script type='text/javascript' src='jquery-1.6.1.js'></script>
+    <script type='text/javascript' src='highlight.min.js'></script>
+    <link rel="stylesheet" href='highlight.min.css'>
+    <link rel='stylesheet' type='text/css' media='all' href='base.css'>
+    <link rel='stylesheet' type='text/css' media='screen and (max-width: 500px)' href='mobile.css'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=yes'>
+    <meta content='text/html; charset=UTF-8' http-equiv='content-type'>
+    <script type='text/javascript'>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body>
+    <div class='content'>
+    <header>
+      <nav>
+        <a href='index.html'>Home</a>
+        <a href='tutorials/'>Tutorials</a>
+        <a href='demos/'>Demos</a>
+        <a href='vb/'>Visual&nbsp;Blueprint&trade;</a>
+      </nav>
+      <h1>HTML5.array.org</h1>
+    </header>
+    <section id='articles'>
+      <h2>Demos</h2>
+      <article class='demos'>
+        <hgroup>
+          <h3>Canvas Images</h3>
+          <h4>Draw an Image</h4>
+          <h5>Synopsis</h5>
+        </hgroup>
+        <pre><code class='javascript'>var image = new Image();
+image.src = '<i>image.jpg</i>';
+image.onload = function() {
+  context.drawImage(image, <i>destX</i>, <i>destY</i>);
+};</code></pre>
+        <h5>Example</h5>
+        <style>
+          article.example {
+            margin: 10px;
+          }
+        </style>
+        <script type='text/javascript' src='demos/canvas/canvas-grid.js'></script>
+        <script type="text/javascript">
+          $(function(){
+            var canvas = $('canvas#surface')[0];
+            if (canvas.getContext) {
+              var context = canvas.getContext('2d');
+
+              drawGridLayout(context);
+              draw1();
+
+              function draw1() {
+                var image = new Image();
+
+                image.src = 'images/laika_jump.jpg';
+                image.onload = function() {
+                  context.drawImage(image, 100, 10 );
+                };
+              }
+            }
+          });
+        </script>
+        <article class='example'>
+          <input type=checkbox id='showgrid' checked>Show Grid Layout
+          <canvas id='surface' width='700' height='500'>
+            Your browser does not support the HTML5 canvas.
+          </canvas>
+        </article>
+        <hgroup>
+          <h4>Scale an Image</h4>
+          <h5>Synopsis</h5>
+        </hgroup>
+        <pre><code class='javascript'>var image = new Image();
+image.src = '<i>image.jpg</i>';
+image.onload = function() {
+  context.drawImage(image, <i>destX</i>, <i>destY</i>, <i>destW</i>, <i>destH</i>);
+};</code></pre>
+        <h5>Example</h5>
+        <style>
+          article.example {
+            margin: 10px;
+          }
+        </style>
+        <script type="text/javascript">
+          $(function(){
+            var canvas = $('canvas#surface')[1];
+            if (canvas.getContext) {
+              var context = canvas.getContext('2d');
+
+              drawGridLayout(context);
+              draw2();
+
+              function draw2() {
+                var image = new Image();
+
+                image.src = 'images/laika_jump.jpg';
+                image.onload = function() {
+                  context.drawImage(image, 100, 10, 500, 700 );
+                };
+              }
+            }
+          });
+        </script>
+        <article class='example'>
+          <input type=checkbox id='showgrid' checked>Show Grid Layout
+          <canvas id='surface' width='700' height='500'>
+            Your browser does not support the HTML5 canvas.
+          </canvas>
+        </article>
+        <hgroup>
+          <h4>Crop an Image</h4>
+          <h5>Synopsis</h5>
+        </hgroup>
+        <pre><code class='javascript'>var image = new Image();
+image.src = '<i>image.jpg</i>';
+image.onload = function() {
+  context.drawImage(image, <i>srcX</i>, <i>srcY</i>, <i>srcW</i>, <i>srcH</i>, <i>destX</i>, <i>destY</i>, <i>destW</i>, <i>destH</i>);
+};</code></pre>
+        <img src='images/rpg_sprite_walk.png'>
+        <h5>Example</h5>
+        <style>
+          article.example {
+            margin: 10px;
+          }
+        </style>
+        <script type="text/javascript">
+          $(function(){
+            var canvas = $('canvas#surface')[2];
+            if (canvas.getContext) {
+              var context = canvas.getContext('2d');
+
+              drawGridLayout(context);
+              draw3();
+
+              function draw3() {
+                var image = new Image();
+
+                image.src = 'images/rpg_sprite_walk.png';
+                image.onload = function() {
+                  var spriteWidth = 24;
+                  var spriteHeight = 32;
+                  // Stride Column # (24 pixels wide)
+                  // 7 strides total
+                  var stride = 5;
+                  // Direction Row # (32 pixels high)
+                  // 0: front, 1: back, 2: left, 3: right
+                  var direction = 3;
+
+                  var spriteX = stride * spriteWidth;
+                  var spriteY = direction * spriteHeight;
+                  context.drawImage(image, spriteX, spriteY, spriteWidth, spriteHeight, 
+                      100, 100, spriteWidth * 4, spriteHeight * 4 );
+                };
+              }
+            }
+          });
+        </script>
+        <article class='example'>
+          <input type=checkbox id='showgrid' checked>Show Grid Layout
+          <canvas id='surface' width='700' height='500'>
+            Your browser does not support the HTML5 canvas.
+          </canvas>
+        </article>
+      </article>
+    </section>
+    <footer>
+      &copy;2011 Adam McDaniel
+    </footer>
+    </div>
+  </body>
+</html>

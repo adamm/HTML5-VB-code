@@ -1,0 +1,16 @@
+CACHE MANIFEST
+# Version 3
+
+appcache.html
+detector.html
+network-detector.js
+offline.html
+../../jquery-1.6.1.js
+../../highlight.min.js
+../../highlight.min.css
+../../base.css
+../../mobile.css
+../../images/terra_bg.png
+
+FALLBACK:
+server-clock.pl offline.html

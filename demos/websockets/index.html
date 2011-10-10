@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+  <head>
+    <title>WebSockets - HTML5.array.org</title>
+    <!--[if lt IE 9]>
+    <script src='http://html5shim.googlecode.com/svn/trunk/html5.js'></script>
+    <![endif]-->
+    <base href='../../'>
+    <script src='modernizr-1.7.min.js'></script>
+    <script src='jquery-1.6.1.min.js'></script>
+    <script src='highlight.min.js'></script>
+    <link rel='stylesheet' href='highlight.min.css'>
+    <link rel='stylesheet' type='text/css' media='all' href='base.css'>
+    <link rel='stylesheet' type='text/css' media='screen and (max-width: 500px)' href='mobile.css'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=yes'>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body>
+    <div class='content'>
+    <header>
+      <nav>
+        <a href='index.html'>Home</a>
+        <a href='tutorials/'>Tutorials</a>
+        <a href='demos/'>Demos</a>
+        <a href='vb/'>Visual&nbsp;Blueprint&trade;</a>
+      </nav>
+      <h1>HTML5.array.org</h1>
+    </header>
+    <section id='articles'>
+      <h2>Demos</h2>
+      <article class='demos'>
+        <hgroup>
+          <h3>WebSockets</h3>
+          <h5>Example WebSocket Client</h5>
+        </hgroup>
+
+        <pre><code class='html'>&lt;script type='text/javascript'&gt;
+  var websocket;
+
+  $(function(){
+    $('button#connect').click(function(){
+      var wsURL = $('input#wsURL').val();
+      websocket = new WebSocket(wsURL);
+
+      websocket.addEventListener('open', onOpen, false );
+      websocket.addEventListener('close', onClose, false );
+      websocket.addEventListener('message', onMessage, false );
+      websocket.addEventListener('error', onError, false );
+    });
+
+    $('button#disconnect').click(function(){
+      websocket.close();
+    });
+  });
+&lt;/script&gt;
+&lt;input type='text' id='wsURL'&gt;
+&lt;button id='connect'&gt;Connect&lt;/button&gt;
+&lt;button id='disconnect'&gt;Disconnect&lt;/button&gt;
+</code></pre>
+        <h5>Example WebSocket Client Displaying Messages</h5>
+        <pre><code class='html'>&lt;script type='text/javascript'&gt;
+  function logMessage(message) {
+    $('output#log').append('&lt;li&gt;' + message).scrollTop(<span class='number'>9e9</span>);
+  }
+
+  function onOpen() {
+    logMessage('Connected');
+  }
+
+  function onClose() {
+    logMessage('Disconnected');
+  }
+
+  function onMessage(event) {
+    logMessage('Recieved: ' + event.data);
+  }
+
+  function onError(event) {
+    logMessage('Error: ' + event.data);
+  }
+&lt;/script&gt;
+&lt;style type='text/css'&gt;
+  output#log {
+    height: 200px;
+    width: 500px;
+    overflow: auto;
+    display: block;
+  }
+&lt;/style&gt;
+&lt;output id='log'&gt;&lt;/output&gt;
+</code></pre>
+        <h5>Example WebSocket Client Sending Messages</h5>
+        <pre><code class='html'>&lt;script type='text/javascript'&gt;
+  $(function() {
+    $('button#send').click(function() {
+      var message = $('input#message').val();
+      websocket.send(message);
+      logMessage('Sending: ' + message);
+    });
+  });
+&lt;/script&gt;
+&lt;input type='text' id='message'&gt;
+&lt;button id='send'&gt;Send&lt;/button&gt;
+</code></pre>
+
+        <h5>Demo</h5>
+        <style type='text/css'>
+          article.example {
+            margin: 20px;
+          }
+          output#log {
+            height: 200px;
+            width: 500px;
+            overflow: auto;
+            display: block;
+          }
+        </style>
+        <script type='text/javascript'>
+          var websocket;
+          $(function() {
+            $('.useWhileOnline').attr('disabled','true');
+            $('.useWhileOffline').removeAttr('disabled');
+
+            $('button#connect').click(function() {
+              if ( 'WebSocket' in window ) {
+                var wsURL = $('input#wsURL').val();
+
+                websocket = new WebSocket(wsURL);
+
+                websocket.addEventListener('open', onOpen, false );
+                websocket.addEventListener('close', onClose, false );
+                websocket.addEventListener('message', onMessage, false );
+                websocket.addEventListener('error', onError, false );
+              }
+              else {
+                alert("Oh noes~! WebSockets are not supported on " +
+                      "your browser!\n(I know!!!11)");
+              }
+            });
+
+            $('button#disconnect').click(function() {
+              websocket.close();
+            });
+
+            $('button#send').click(function() {
+              var message = $('input#message').val();
+              websocket.send(message);
+              logMessage('Sent: ' + message);
+            });
+          });
+
+          function logMessage(message) {
+            // The .scrollTop(9e9) call ensures the display is always at
+            // the bottom of the scrollable window 
+            $('output#log').append('<li>' + message).scrollTop(9e9);
+          }
+
+          function onOpen() {
+            $(window).unload(function() {
+              websocket.close();
+            });
+
+            $('.useWhileOnline').removeAttr('disabled');
+            $('.useWhileOffline').attr('disabled','true');
+
+            logMessage('Connected');
+          }
+
+          function onClose() {
+            $('.useWhileOnline').attr('disabled','true');
+            $('.useWhileOffline').removeAttr('disabled');
+
+            logMessage('Disconnected');
+          }
+
+          function onMessage(event) {
+            logMessage('Recieved: ' + event.data);
+          }
+
+          function onError(event) {
+            logMessage('Error: ' + event.data);
+          }
+        </script>
+        <article class='example'>
+          <div>
+            <input class='useWhileOffline' type='text' id='wsURL' size='30'
+                   value='ws://html5.array.org:3000/time'>
+            <button class='useWhileOffline' id='connect'>Connect</button>
+            <button class='useWhileOnline' id='disconnect'>Disconnect</button>
+          <div>
+          </div>
+            <input class='useWhileOnline' type='text' id='message'>
+            <button class='useWhileOnline' id='send'>Send</button>
+          </div>
+          <div>
+            <output id='log'></output>
+          </div>
+        </article>
+      </article>
+    </section>
+    <footer>
+      &copy;2011 Adam McDaniel
+    </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+  <head>
+    <title>&lt;canvas&gt; Tag - HTML5.array.org</title>
+    <!--[if lt IE 9]>
+    <script src='http://html5shim.googlecode.com/svn/trunk/html5.js'></script>
+    <![endif]-->
+    <base href='..'>
+    <script src='highlight.min.js'></script>
+    <script type='text/javascript' src='jquery-1.6.1.js'></script>
+    <link rel="stylesheet" href='highlight.min.css'>
+    <link rel='stylesheet' type='text/css' media='all' href='base.css'>
+    <link rel='stylesheet' type='text/css' media='screen and (max-width: 500px)' href='mobile.css'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=yes'>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body>
+    <div class='content'>
+    <header>
+      <nav>
+        <a href='index.html'>Home</a>
+        <a href='tutorials/'>Tutorials</a>
+        <a href='demos/'>Demos</a>
+        <a href='vb/'>Visual&nbsp;Blueprint&trade;</a>
+      </nav>
+      <h1>HTML5.array.org</h1>
+    </header>
+    <section id='articles'>
+      <h2>CSS Reference</h2>
+      <article class='reference'>
+        <hgroup>
+          <h3>&lt;canvas&gt; Tag</h3>
+          <h4>Synopsis</h4>
+        </hgroup>
+        <pre><code>&lt;canvas id='surface' width='500' height='300'&gt;
+  Your browser does not support the HTML5 canvas.
+&lt;/canvas&gt;
+
+&lt;script type='text/javascript'&gt;
+  var canvas = document.getElementById('surface');
+  // or, use jQuery:
+  var canvas = $('canvas#surface')[0];
+
+  if (canvas.getContext) {
+    var context = canvas.getContext('2d');
+    /* Use the context interface to draw on this canvas */
+  }
+&lt;/script&gt;
+</code></pre>
+        <h4>Example</h4>
+        <style>
+          article.example {
+            margin: 20px;
+          }
+        </style>
+        <script type='text/javascript'>
+          $(function(){
+            var canvas = $('canvas#surface')[0];
+            if (canvas.getContext) {
+              var context = canvas.getContext('2d');
+
+              var gradient = context.createLinearGradient(0,0,500,300);
+              gradient.addColorStop(0,'red');
+              gradient.addColorStop(0.5,'green');
+              gradient.addColorStop(1,'blue');
+
+              context.fillStyle = gradient;
+              context.fillRect(0, 0, context.canvas.width,
+                context.canvas.height);
+
+              context.font = 'bold italic 25pt arial';
+              context.fillStyle = 'white';
+              context.fillText( 'HTML5 Canvas', 100, 100 );
+            }
+          });
+        </script>
+        <article class='example'>
+          <canvas id='surface' width='500' height='300'>
+            Your browser does not support the HTML5 canvas.
+          </canvas>
+        </article>
+      </article>
+    </section>
+    <footer>
+      &copy;2011 Adam McDaniel
+    </footer>
+    </div>
+  </body>
+</html>
